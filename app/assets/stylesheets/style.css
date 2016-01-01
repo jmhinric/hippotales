@@ -17,12 +17,19 @@
   top: 0;
 }
 
+.home-logo {
+  width: 130px;
+  padding: 5px;
+}
+
 .logo {
-  top: -30px;
+  top: 10px;
   left: 0;
-  padding: 40px;
-  border-radius: 150px;
   background-color: white;
+  /* Used to make the original design with transparent circular background */
+  /*top: -30px;
+  padding: 40px;
+  border-radius: 150px;*/
 }
 
 .menus {
