@@ -1,5 +1,5 @@
 <header>
-  <div class="navbar">
+  <div id="navbar">
     <div class="u-size3of12">
       <div class="logo">
         <a title="HippoTales" href="/">
@@ -39,18 +39,55 @@
   </div>
 </header>
 
-<body>
-  <div id="slideshow-container">
-    <div id="slide1">
+<main>
+  <section id="baby-pictures-container">
+    <div id="baby-picture1">
     </div>
-    <!-- <div id="slide2">
+    <!-- <div id="baby-picture2">
     </div>
-    <div id="slide3">
+    <div id="baby-picture3">
     </div> -->
-  </div>
-</body>
+  </section>
 
-// <script>
+  <section id="subscription-info-container">
+    <div id="info-sections">
+      <div id="our-box-info" class="u-size1of2">
+        <div class="info-header">
+          <%= image_tag "our-box.png", class: "info-image" %>
+          <h2 class="info-title">Our box</h2>
+        </div>
+        <p>
+          Three curated books in a neat box so that you can enjoy a bedtime story with your child.
+          </br></br>
+          One box with three books shipped to you every month for $29.99/month.
+        </p>
+        <a href="/join" class="button-yellow">Buy now</a>
+        <a href="/our-box" class="learn-more">Learn more</a>
+      </div>
+
+      <div id="purchase-gift-info" class="u-size1of2">
+        <div class="info-header">
+          <%= image_tag "purchase-gift.png", class: "info-image" %>
+          <h2 class="info-title"><span class="cursive">Purchase</span> a gift</h2>
+        </div>
+        <p>
+          Our box is a perfect gift for any occasion. Simply go through the checkout process, add a note, and we will make sure your box is delivered with the note inside!
+          </br></br>
+          Choose the length of the subscription and provide the shipping address. Each box costs $29.99/month.
+        </p>
+        <a href="/gift" class="button">Gift it</a>
+        <a href="/our-box" class="learn-more">Learn more</a>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+  <div class="section-triangle"></div>
+
+  <section id="three-steps">
+  </section>
+</main>
+
+<script>
 //   $(function(){
 //       $('.fadein div:gt(0)').hide();
 //       setInterval(function(){
@@ -61,4 +98,4 @@
 //                                    .appendTo('.fadein');
 //       }, 3000);
 //   });
-// </script>
+</script>
