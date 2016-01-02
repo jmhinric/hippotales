@@ -3,6 +3,14 @@ $muli-family: "Muli", arial, sans-serif;
 $arvo-family: "Arvo", serif;
 $cabin-sketch-family: "Cabin Sketch", "Muli", arial, sans-serif;
 
+.cursive {
+  font-family: $cabin-sketch-family;
+}
+
+body {
+  margin: 0;
+}
+
 /* ########################################### */
 /* HOMEPAGE HEADER */
 /* ########################################### */
@@ -117,6 +125,10 @@ a:hover {
 /* HOMEPAGE SLIDESHOW */
 /* ########################################### */
 
+#homepage {
+  font-family: $muli-family;
+}
+
 /* TODO: Add media queries for variable height */
 #baby-picture1, #baby-picture2, #baby-picture3 {
   width: 100%;
@@ -146,12 +158,7 @@ a:hover {
   background-color: rgb(225, 240, 237);
 }
 
-#info-sections {
-  /*position: relative;*/
-}
-
 #info-sections p {
-  font-family: $muli-family;
   line-height: 1.5;
   padding-bottom: 45px;
 }
@@ -174,14 +181,9 @@ a:hover {
 h2 {
   text-align: center;
   color: $book-green-color;
-  font-family: $muli-family;
   font-size: 36px;
   font-weight: 400;
   display: inline-block;
-}
-
-.cursive {
-  font-family: $cabin-sketch-family;
 }
 
 .info-image {
@@ -245,5 +247,51 @@ h2 {
 /* ########################################### */
 
 #three-steps {
-  height: 500px;
+  h1 {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 400;
+    margin: 40px 0;
+  }
+
+  .sign-up-links {
+    margin-top: 110px;
+    margin-bottom: 80px;
+    text-align: center;
+  }
+  .button, .button-yellow {
+    display: inline;
+    margin: 0 auto;
+    margin: 10px 20px;
+  }
+}
+
+#simple-steps {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1.2em;
+
+  img {
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+  h2 {
+    width: 100%;
+    color: black;
+  }
+  .link {
+    text-decoration: underline;
+    color: rgb(119, 151, 138);
+  }
+}
+
+.simple-step {
+  display: inline-block;
+  text-align: center;
+
+  h3 {
+    margin: 0 auto;
+    width: 80%;
+    font-weight: 100;
+  }
 }

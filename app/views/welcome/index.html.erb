@@ -39,7 +39,7 @@
   </div>
 </header>
 
-<main>
+<main id="homepage">
   <section id="baby-pictures-container">
     <div id="baby-picture1">
     </div>
@@ -84,7 +84,32 @@
   <div class="section-triangle"></div>
 
   <section id="three-steps">
+    <h1><span class="cursive">Three</span> simple steps</h1>
+
+    <div id="simple-steps" class="Grid">
+      <div class="Grid-cell simple-step u-size1of3">
+        <h2>1</h2>
+        <%= image_tag "step1.png" %>
+        <h3><a href="/join" class="link">Sign up</a></h3>
+      </div>
+      <div class="Grid-cell simple-step u-size1of3">
+        <h2>2</h2>
+        <%= image_tag "step2.png" %>
+        <h3>Receive a new box every month</h3>
+      </div>
+      <div class="Grid-cell simple-step u-size1of3">
+        <h2>3</h2>
+        <%= image_tag "step3.png" %>
+        <h3>See your child’s eyes light up with each new book!</h3>
+      </div>
+    </div>
+
+    <div class="sign-up-links">
+      <a href="/join" class="button-yellow">Join now</a>
+      <a href="/gift" class="button">Gift it</a>
+    </div>
   </section>
+
 </main>
 
 <script>
