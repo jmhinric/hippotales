@@ -1,4 +1,5 @@
 $book-green-color: rgb(0, 139, 139);
+$blue-background: rgb(225, 240, 237);
 $muli-family: "Muli", arial, sans-serif;
 $arvo-family: "Arvo", serif;
 $cabin-sketch-family: "Cabin Sketch", "Muli", arial, sans-serif;
@@ -155,7 +156,7 @@ a:hover {
 
 #subscription-info-container {
   padding: 50px 70px;
-  background-color: rgb(225, 240, 237);
+  background-color: $blue-background;
 }
 
 #info-sections p {
@@ -217,7 +218,7 @@ h2 {
 }
 
 .button-yellow {
-  background-color: rgb(223, 220, 56);
+  background-color: rgb(223, 218, 73);
 }
 
 .learn-more {
@@ -239,7 +240,7 @@ h2 {
   height: 0;
   border-left: 40px solid transparent;
   border-right: 40px solid transparent;
-  border-top: 40px solid rgb(225, 240, 237);
+  border-top: 40px solid $blue-background;
 }
 
 /* ########################################### */
@@ -332,5 +333,50 @@ h2 {
 }
 
 #social-media {
-  
+  height: 200px;
+}
+
+/*==============================================*/
+/*STICKY FOOTER CSS HERE*/
+/*http://css-tricks.com/snippets/css/sticky-footer/*/
+/*==============================================*/
+
+.whole-page-wrap {
+  min-height: 100%;
+  /*This margin height is equal to the footer height*/
+  margin-bottom: -125px;
+}
+
+.whole-page-wrap:after {
+  content: "";
+  display: block;
+  background-color: $blue-background;
+}
+footer, .whole-page-wrap:after {
+  /* .push must be the same height as footer */
+  height: 125px;
+}
+
+footer {
+  background-color: $blue-background;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  margin-top: 125px;
+
+  li {
+    display: inline-block;
+    padding: 10px 25px;
+  }
+
+  span {
+    display: block;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px dashed #4B4B4B;
+    position: relative;
+    bottom: -6px;
+    font-weight: 200;
+    width: 90%;
+  }
 }
