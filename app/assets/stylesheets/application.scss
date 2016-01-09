@@ -11,10 +11,11 @@
  * file per style scope.
  *
  *= require suit
- *= style
+ *= require style
  *= require homepage
  *= require header
  *= require footer
+ *= require responsive
  *= require_tree .
  *= require_self
  */

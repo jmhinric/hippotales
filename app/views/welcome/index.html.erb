@@ -9,8 +9,8 @@
   </section>
 
   <section id="subscription-info-container">
-    <div id="info-sections">
-      <div id="our-box-info" class="u-size1of2">
+    <div id="info-sections" class="Grid">
+      <div id="our-box-info" class="Grid-cell u-size1of2 subscribe-info">
         <div>
           <div class="info-header">
             <%= image_tag "our-box.png", class: "info-image" %>
@@ -26,7 +26,7 @@
         <a href="/our-box" class="learn-more">Learn more</a>
       </div>
 
-      <div id="purchase-gift-info" class="u-size1of2">
+      <div id="purchase-gift-info" class="Grid-cell u-size1of2 subscribe-info">
         <div class="info-header">
           <%= image_tag "purchase-gift.png", class: "info-image" %>
           <h2 class="info-title"><span class="cursive">Purchase</span> a gift</h2>
@@ -96,6 +96,7 @@
 </main>
 
 <script>
+  // slideshow
   $(function(){
     $('#baby-pictures-container > div:gt(0)').hide();
     setInterval(function(){
@@ -107,4 +108,20 @@
         .appendTo('#baby-pictures-container');
     }, 5000);
   });
+
+  // responsive design
+  $(window).resize(function(){
+    var width = $(window).width();
+    if(width < 800){
+      $('.Grid-cell').removeClass('u-size1of2');
+      $('.Grid-cell').removeClass('u-size1of3');
+      $('.Grid-cell').addClass('u-size1of1');
+    } else {
+      $('.Grid-cell').removeClass('u-size1of1');
+      $('.subscribe-info').addClass('u-size1of2');
+      $('.simple-step').addClass('u-size1of3');
+      $('.quote').addClass('u-size1of2');
+    }
+})
+.resize();
 </script>

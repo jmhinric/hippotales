@@ -50,15 +50,11 @@
   text-align: center;
 }
 
-#our-box-info, #purchase-gift-info {
+.subscribe-info {
   padding: 50px;
   display: inline-block;
   top: 0;
-  width: 49%;
-}
-
-#purchase-gift-info {
-  float: right;
+  width: 100%;
 }
 
 .clear {
@@ -142,7 +138,7 @@
 }
 
 .sign-up-links {
-  margin-top: 110px;
+  margin-top: 40px;
   margin-bottom: 80px;
   text-align: center;
 }
@@ -155,6 +151,8 @@
   img {
     margin-top: 15px;
     margin-bottom: 25px;
+    width: 180px;
+    height: 180px;
   }
   h2 {
     width: 100%;
@@ -169,6 +167,9 @@
 .simple-step {
   display: inline-block;
   text-align: center;
+  width: 100%;
+  padding-bottom: 40px;
+  margin-bottom: 50px;
 
   h3 {
     margin: 0 auto;
@@ -176,6 +177,10 @@
     font-weight: 100;
   }
 }
+
+/* ########################################### */
+/* TESTIMONIALS */
+/* ########################################### */
 
 #testimonials {
   background-color: rgb(247, 247, 247);
@@ -187,6 +192,7 @@
 
     .quote {
       margin: 0 auto;
+      width: 100%;
 
       p {
         font-style: italic;
