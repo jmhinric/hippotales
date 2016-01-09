@@ -1,0 +1,212 @@
+@import "colors";
+@import "fonts";
+
+/* ########################################### */
+/* SLIDESHOW */
+/* ########################################### */
+
+#homepage {
+  font-family: $muli-family;
+}
+
+#baby-pictures-container {
+  height: 550px;
+}
+
+/* TODO: Add media queries for variable height */
+#baby-picture1, #baby-picture2, #baby-picture3 {
+  position: absolute;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 550px;
+}
+
+#baby-picture1 {
+  background-image: url("baby-picture1.jpg");
+}
+
+#baby-picture2 {
+  background-image: url("baby-picture2.jpg");
+}
+
+#baby-picture3 {
+  background-image: url("baby-picture3.jpg");
+}
+
+/* ########################################### */
+/* SUBSCRIPTION INFO */
+/* ########################################### */
+
+#subscription-info-container {
+  padding: 50px 70px;
+  background-color: $blue-background;
+  text-align: center;
+}
+
+#info-sections p {
+  line-height: 1.5;
+  padding-bottom: 45px;
+  text-align: center;
+}
+
+.subscribe-info {
+  padding: 50px;
+  display: inline-block;
+  top: 0;
+  width: 100%;
+}
+
+.clear {
+  clear: both;
+}
+
+.info-image {
+  padding-right: 20px;
+}
+
+.info-header {
+  vertical-align: middle;
+  padding-bottom: 15px;
+}
+
+.info-title, .info-image {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.button, .button-yellow {
+  width: 140px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 15px 25px;
+  font-size: 1.3em;
+  border-radius: 15px;
+}
+
+.button {
+  color: white;
+  background-color: $book-green-color;
+}
+
+.button-yellow {
+  background-color: rgb(223, 218, 73);
+}
+
+.learn-more {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  color: rgb(133, 162, 151);
+  padding-top: 5px;
+}
+
+.section-triangle-container {
+  width: 100px;
+  height: 100px;
+}
+
+.section-triangle {
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 40px solid $blue-background;
+}
+
+/* ########################################### */
+/* HOW IT WORKS - THREE SIMPLE STEPS */
+/* ########################################### */
+
+#how-it-works, #testimonials {
+  padding: 30px 0;
+
+  h1 {
+    text-align: center;
+    font-size: 56px;
+    font-weight: 400;
+    padding: 30px;
+  }
+
+  .button, .button-yellow {
+    display: inline;
+    margin: 0 auto;
+    margin: 10px 20px;
+  }
+}
+
+.sign-up-links {
+  margin-top: 40px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+#simple-steps {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1.2em;
+
+  img {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    width: 180px;
+    height: 180px;
+  }
+  h2 {
+    width: 100%;
+    color: black;
+  }
+  .link {
+    text-decoration: underline;
+    color: rgb(119, 151, 138);
+  }
+}
+
+.simple-step {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 40px;
+  margin-bottom: 50px;
+
+  h3 {
+    margin: 0 auto;
+    width: 80%;
+    font-weight: 100;
+  }
+}
+
+/* ########################################### */
+/* TESTIMONIALS */
+/* ########################################### */
+
+#testimonials {
+  background-color: rgb(247, 247, 247);
+  text-align: center;
+
+  #quotes {
+    width: 80%;
+    margin: 30px auto;
+
+    .quote {
+      margin: 0 auto;
+      width: 100%;
+
+      p {
+        font-style: italic;
+        text-align: center;
+        line-height: 1.4;
+        width: 90%;
+        margin: 0 auto;
+        font-size: 1.3em;
+      }
+
+      .author {
+        margin-top: 30px;
+        color: rgb(119, 151, 138);
+      }
+    }
+  }
+}

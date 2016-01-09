@@ -1,0 +1,110 @@
+@import "colors";
+@import "fonts";
+
+#navbar {
+  width: 78%;
+  margin: 0 auto;
+  height: 160px;
+  position: relative;
+}
+
+.logo, .login-container, .menu-container {
+  position: absolute;
+}
+
+.login-container {
+  top: 0;
+}
+
+.home-logo {
+  width: 130px;
+  padding: 5px;
+}
+
+.logo {
+  top: 10px;
+  left: 0;
+  background-color: white;
+  /* Used to make the original design with transparent circular background */
+  /*top: -30px;
+  padding: 40px;
+  border-radius: 150px;*/
+}
+
+.menus {
+  right: 0;
+  float: right;
+  height: 150px;
+}
+
+.login-container, .menu-container {
+  right: 0;
+  float: right;
+}
+
+.login-container {
+  margin-top: 0;
+}
+
+.login {
+  padding: 12px 30px 12px 30px;
+  background-color: $book-green-color;
+  border-radius: 0 0 10px 10px;
+}
+
+#login-item1 {
+  border-right: 1px white dashed;
+  padding-right: 25px;
+}
+
+#login-item2 {
+  padding-left: 15px;
+}
+
+.menu-container {
+  bottom: 10px;
+}
+
+.menu .menu-item {
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+.menu-item a, .menu-item a:hover {
+  -moz-transition:color .2s ease;
+  -o-transition:color .2s ease;
+  -webkit-transition:color .2s ease;
+}
+
+/* TODO: use JS to add .active-menu-item to selected tab */
+.menu-item a:hover, .menu .active-menu-item a {
+  color: rgb(85, 85, 85);
+}
+
+.login-item, .menu-item {
+  font-family: $muli-family;
+  display: inline-block;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.login a {
+  color: white;
+  font-size: 1.1em;
+}
+
+.menu a {
+  color: rgb(170, 193, 114);
+  font-size: 1.5em;
+  font-family: $arvo-family;
+}
+
+

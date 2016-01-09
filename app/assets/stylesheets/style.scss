@@ -1,0 +1,22 @@
+@import "colors";
+@import "fonts";
+
+html, body {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+  color: $book-green-color;
+  font-size: 36px;
+  font-weight: 400;
+  display: inline-block;
+}
+
+.cursive {
+  font-family: $cabin-sketch-family;
+}

@@ -1,0 +1,127 @@
+<main id="homepage">
+  <section id="baby-pictures-container">
+    <div id="baby-picture1">
+    </div>
+    <div id="baby-picture2">
+    </div>
+    <div id="baby-picture3">
+    </div>
+  </section>
+
+  <section id="subscription-info-container">
+    <div id="info-sections" class="Grid">
+      <div id="our-box-info" class="Grid-cell u-size1of2 subscribe-info">
+        <div>
+          <div class="info-header">
+            <%= image_tag "our-box.png", class: "info-image" %>
+            <h2 class="info-title">Our box</h2>
+          </div>
+        </div>
+        <p>
+          Three curated books in a neat box so that you can enjoy a bedtime story with your child.
+          </br></br>
+          One box with three books shipped to you every month for $29.99/month.
+        </p>
+        <a href="/join" class="button-yellow">Buy now</a>
+        <a href="/our-box" class="learn-more">Learn more</a>
+      </div>
+
+      <div id="purchase-gift-info" class="Grid-cell u-size1of2 subscribe-info">
+        <div class="info-header">
+          <%= image_tag "purchase-gift.png", class: "info-image" %>
+          <h2 class="info-title"><span class="cursive">Purchase</span> a gift</h2>
+        </div>
+        <p>
+          Our box is a perfect gift for any occasion. Simply go through the checkout process, add a note, and we will make sure your box is delivered with the note inside!
+          </br></br>
+          Choose the length of the subscription and provide the shipping address. Each box costs $29.99/month.
+        </p>
+        <a href="/gift" class="button">Gift it</a>
+        <a href="/our-box" class="learn-more">Learn more</a>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+  <div class="section-triangle"></div>
+
+  <section id="how-it-works">
+    <h1><span class="cursive">Three</span> simple steps</h1>
+
+    <div id="simple-steps" class="Grid">
+      <div class="Grid-cell simple-step u-size1of3">
+        <h2>1</h2>
+        <%= image_tag "step1.png" %>
+        <h3><a href="/join" class="link">Sign up</a></h3>
+      </div>
+      <div class="Grid-cell simple-step u-size1of3">
+        <h2>2</h2>
+        <%= image_tag "step2.png" %>
+        <h3>Receive a new box every month</h3>
+      </div>
+      <div class="Grid-cell simple-step u-size1of3">
+        <h2>3</h2>
+        <%= image_tag "step3.png" %>
+        <h3>See your child’s eyes light up with each new book!</h3>
+      </div>
+    </div>
+
+    <div class="sign-up-links">
+      <a href="/join" class="button-yellow">Join now</a>
+      <a href="/gift" class="button">Gift it</a>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h1><span class="cursive">Testi</span>monials</h1>
+
+    <div id="quotes" class="Grid">
+      <div class="Grid-cell u-size1of2 quote">
+        <p>
+          We have tried several other subscription boxes and so far Hippo Tales is the one we decided to keep. The box is very thoughtful and my kid loves unwrapping the box.
+        </p>
+        <p class="author">
+          Karen P.
+        </p>
+      </div>
+      <div class="Grid-cell u-size1of2 quote">
+        <p>
+          We absolutely love the books that come in Hippo Tales box.
+        </p>
+        <p class="author">
+          Jessica M.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  // slideshow
+  $(function(){
+    $('#baby-pictures-container > div:gt(0)').hide();
+    setInterval(function(){
+      $('#baby-pictures-container :first-child')
+        .fadeOut(1000)
+        .next('div')
+        .fadeIn(1000)
+        .end()
+        .appendTo('#baby-pictures-container');
+    }, 5000);
+  });
+
+  // responsive design
+  $(window).resize(function(){
+    var width = $(window).width();
+    if(width < 800){
+      $('.Grid-cell').removeClass('u-size1of2');
+      $('.Grid-cell').removeClass('u-size1of3');
+      $('.Grid-cell').addClass('u-size1of1');
+    } else {
+      $('.Grid-cell').removeClass('u-size1of1');
+      $('.subscribe-info').addClass('u-size1of2');
+      $('.simple-step').addClass('u-size1of3');
+      $('.quote').addClass('u-size1of2');
+    }
+})
+.resize();
+</script>

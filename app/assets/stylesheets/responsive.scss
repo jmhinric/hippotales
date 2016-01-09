@@ -1,0 +1,73 @@
+@media (max-width: 1200px) {
+  #baby-pictures-container, #baby-picture1, #baby-picture2, #baby-picture3 {
+    height: 450px;
+  }
+}
+
+@media (max-width: 1000px) {
+  #baby-pictures-container, #baby-picture1, #baby-picture2, #baby-picture3 {
+    height: 350px;
+  }
+
+  #simple-steps img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 800px) {
+  #baby-pictures-container, #baby-picture1, #baby-picture2, #baby-picture3 {
+    height: 250px;
+  }
+
+  .subscribe-info {
+    padding: 50px 0;
+  }
+
+  #simple-steps {
+    width: 90%;
+
+    .simple-step {
+      border-bottom: 1px solid lightgrey;
+    }
+    img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  #testimonials #quotes {
+    width: 90%;
+
+    .quote {
+      margin-bottom: 50px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid lightgray;
+
+      p.author {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .login-item, .menu-item {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  #baby-pictures-container, #baby-picture1, #baby-picture2, #baby-picture3 {
+    height: 200px;
+  }
+
+  #simple-steps img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 400px) {
+  #baby-pictures-container, #baby-picture1, #baby-picture2, #baby-picture3 {
+    height: 150px;
+  }
+}
