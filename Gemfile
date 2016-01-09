@@ -56,3 +56,8 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 3.0'
 end
+
+# Load bower packages
+source 'https://rails-assets.org' do
+  # gem 'rails-assets-BOWER_PACKAGE_NAME'
+end
