@@ -1,125 +1,16 @@
-$book-green-color: rgb(0, 139, 139);
-$blue-background: rgb(225, 240, 237);
-$muli-family: "Muli", arial, sans-serif;
-$arvo-family: "Arvo", serif;
-$cabin-sketch-family: "Cabin Sketch", "Muli", arial, sans-serif;
+@import "colors";
+@import "fonts";
 
 .cursive {
   font-family: $cabin-sketch-family;
 }
 
-body {
+html, body {
+  height: 100%;
+}
+
+* {
   margin: 0;
-}
-
-/* ########################################### */
-/* HOMEPAGE HEADER */
-/* ########################################### */
-
-#navbar {
-  width: 78%;
-  margin: 0 auto;
-  height: 160px;
-  position: relative;
-}
-
-.logo, .login-container, .menu-container {
-  position: absolute;
-}
-
-.login-container {
-  top: 0;
-}
-
-.home-logo {
-  width: 130px;
-  padding: 5px;
-}
-
-.logo {
-  top: 10px;
-  left: 0;
-  background-color: white;
-  /* Used to make the original design with transparent circular background */
-  /*top: -30px;
-  padding: 40px;
-  border-radius: 150px;*/
-}
-
-.menus {
-  right: 0;
-  float: right;
-  height: 150px;
-}
-
-.login-container, .menu-container {
-  right: 0;
-  float: right;
-}
-
-.login-container {
-  margin-top: 0;
-}
-
-.login {
-  padding: 12px 30px 12px 30px;
-  background-color: $book-green-color;
-  border-radius: 0 0 10px 10px;
-}
-
-#login-item1 {
-  border-right: 1px white dashed;
-  padding-right: 25px;
-}
-
-#login-item2 {
-  padding-left: 15px;
-}
-
-.menu-container {
-  bottom: 10px;
-}
-
-.menu .menu-item {
-  margin-left: 20px;
-  margin-right: 0;
-}
-
-.menu-item a, .menu-item a:hover {
-  -moz-transition:color .2s ease;
-  -o-transition:color .2s ease;
-  -webkit-transition:color .2s ease;
-}
-
-/* TODO: use JS to add .active-menu-item to selected tab */
-.menu-item a:hover, .menu .active-menu-item a {
-  color: rgb(85, 85, 85);
-}
-
-.login-item, .menu-item {
-  font-family: $muli-family;
-  display: inline-block;
-  font-size: 16px;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  cursor: pointer;
-}
-
-.login a {
-  color: white;
-  font-size: 1.1em;
-}
-
-.menu a {
-  color: rgb(170, 193, 114);
-  font-size: 1.5em;
-  font-family: $arvo-family;
 }
 
 /* ########################################### */
@@ -130,12 +21,17 @@ a:hover {
   font-family: $muli-family;
 }
 
+#baby-pictures-container {
+  height: 550px;
+}
+
 /* TODO: Add media queries for variable height */
 #baby-picture1, #baby-picture2, #baby-picture3 {
+  position: absolute;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 607px;
+  height: 550px;
 }
 
 #baby-picture1 {
@@ -157,11 +53,13 @@ a:hover {
 #subscription-info-container {
   padding: 50px 70px;
   background-color: $blue-background;
+  text-align: center;
 }
 
 #info-sections p {
   line-height: 1.5;
   padding-bottom: 45px;
+  text-align: center;
 }
 
 #our-box-info, #purchase-gift-info {
@@ -193,7 +91,6 @@ h2 {
 
 .info-header {
   vertical-align: middle;
-  margin: 0 auto;
   padding-bottom: 15px;
 }
 
@@ -247,7 +144,7 @@ h2 {
 /* HOMEPAGE THREE SIMPLE STEPS */
 /* ########################################### */
 
-#three-steps, #testimonials {
+#how-it-works, #testimonials {
   padding: 30px 0;
 
   h1 {
@@ -330,53 +227,4 @@ h2 {
 
 .author {
 
-}
-
-#social-media {
-  height: 200px;
-}
-
-/*==============================================*/
-/*STICKY FOOTER CSS HERE*/
-/*http://css-tricks.com/snippets/css/sticky-footer/*/
-/*==============================================*/
-
-.whole-page-wrap {
-  min-height: 100%;
-  /*This margin height is equal to the footer height*/
-  margin-bottom: -125px;
-}
-
-.whole-page-wrap:after {
-  content: "";
-  display: block;
-  background-color: $blue-background;
-}
-footer, .whole-page-wrap:after {
-  /* .push must be the same height as footer */
-  height: 125px;
-}
-
-footer {
-  background-color: $blue-background;
-  width: 100%;
-  bottom: 0;
-  text-align: center;
-  margin-top: 125px;
-
-  li {
-    display: inline-block;
-    padding: 10px 25px;
-  }
-
-  span {
-    display: block;
-    margin: 0 auto;
-    padding-top: 20px;
-    border-top: 1px dashed #4B4B4B;
-    position: relative;
-    bottom: -6px;
-    font-weight: 200;
-    width: 90%;
-  }
 }

@@ -1,60 +1,21 @@
-<header>
-  <div id="navbar">
-    <div class="u-size3of12">
-      <div class="logo">
-        <a title="HippoTales" href="/">
-          <%= image_tag "hippotales_logo.png", class:"home-logo" %>
-        </a>
-      </div>
-    </div>
-    <div class="menus u-size9of12">
-      <div class="login-container">
-        <ul class="login">
-          <li id="login-item1" class="login-item">
-            <a href="/login">Login</a>
-          </li>
-          <li id="login-item2"class="login-item">
-            <a href="/contact">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="menu-container">
-        <ul class="menu">
-          <li id="menu-item1" class="menu-item">
-            <a href="/join">Join</a>
-          </li>
-          <li class="menu-item">
-            <a href="/our-box">Our Box</a>
-          </li>
-          <li class="menu-item">
-            <a href="/how-it-works">How It Works</a>
-          </li>
-          <li class="menu-item">
-            <a href="/gift">Gift</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</header>
-
 <main id="homepage">
   <section id="baby-pictures-container">
     <div id="baby-picture1">
     </div>
-    <!-- <div id="baby-picture2">
+    <div id="baby-picture2">
     </div>
     <div id="baby-picture3">
-    </div> -->
+    </div>
   </section>
 
   <section id="subscription-info-container">
     <div id="info-sections">
       <div id="our-box-info" class="u-size1of2">
-        <div class="info-header">
-          <%= image_tag "our-box.png", class: "info-image" %>
-          <h2 class="info-title">Our box</h2>
+        <div>
+          <div class="info-header">
+            <%= image_tag "our-box.png", class: "info-image" %>
+            <h2 class="info-title">Our box</h2>
+          </div>
         </div>
         <p>
           Three curated books in a neat box so that you can enjoy a bedtime story with your child.
@@ -83,7 +44,7 @@
   </section>
   <div class="section-triangle"></div>
 
-  <section id="three-steps">
+  <section id="how-it-works">
     <h1><span class="cursive">Three</span> simple steps</h1>
 
     <div id="simple-steps" class="Grid">
@@ -135,14 +96,15 @@
 </main>
 
 <script>
-//   $(function(){
-//       $('.fadein div:gt(0)').hide();
-//       setInterval(function(){
-//           $('.fadein :first-child').fadeOut()
-//                                    .next('div')
-//                                    .fadeIn()
-//                                    .end()
-//                                    .appendTo('.fadein');
-//       }, 3000);
-//   });
+  $(function(){
+    $('#baby-pictures-container > div:gt(0)').hide();
+    setInterval(function(){
+      $('#baby-pictures-container :first-child')
+        .fadeOut(1000)
+        .next('div')
+        .fadeIn(1000)
+        .end()
+        .appendTo('#baby-pictures-container');
+    }, 5000);
+  });
 </script>
