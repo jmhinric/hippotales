@@ -1,20 +1,8 @@
 @import "colors";
 @import "fonts";
 
-.cursive {
-  font-family: $cabin-sketch-family;
-}
-
-html, body {
-  height: 100%;
-}
-
-* {
-  margin: 0;
-}
-
 /* ########################################### */
-/* HOMEPAGE SLIDESHOW */
+/* SLIDESHOW */
 /* ########################################### */
 
 #homepage {
@@ -47,7 +35,7 @@ html, body {
 }
 
 /* ########################################### */
-/* HOMEPAGE SUBSCRIPTION INFO */
+/* SUBSCRIPTION INFO */
 /* ########################################### */
 
 #subscription-info-container {
@@ -75,14 +63,6 @@ html, body {
 
 .clear {
   clear: both;
-}
-
-h2 {
-  text-align: center;
-  color: $book-green-color;
-  font-size: 36px;
-  font-weight: 400;
-  display: inline-block;
 }
 
 .info-image {
@@ -141,7 +121,7 @@ h2 {
 }
 
 /* ########################################### */
-/* HOMEPAGE THREE SIMPLE STEPS */
+/* HOW IT WORKS - THREE SIMPLE STEPS */
 /* ########################################### */
 
 #how-it-works, #testimonials {
@@ -223,8 +203,4 @@ h2 {
       }
     }
   }
-}
-
-.author {
-
 }
