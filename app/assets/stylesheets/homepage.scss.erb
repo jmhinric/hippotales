@@ -1,3 +1,7 @@
+//= depend_on_asset "baby-picture1.jpg"
+//= depend_on_asset "baby-picture2.jpg"
+//= depend_on_asset "baby-picture3.jpg"
+
 @import "colors";
 @import "fonts";
 
@@ -23,15 +27,15 @@
 }
 
 #baby-picture1 {
-  background-image: url("baby-picture1.jpg");
+  background-image: url('<%= asset_path("baby-picture1.jpg") %> ');
 }
 
 #baby-picture2 {
-  background-image: url("baby-picture2.jpg");
+  background-image: url('<%= asset_path("baby-picture2.jpg") %> ');
 }
 
 #baby-picture3 {
-  background-image: url("baby-picture3.jpg");
+  background-image: url('<%= asset_path("baby-picture3.jpg") %> ');
 }
 
 /* ########################################### */
