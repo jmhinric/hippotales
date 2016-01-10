@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # For 'sprockets_better_errors' gem
+  config.assets.raise_production_errors = true
 end
