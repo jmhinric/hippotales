@@ -11,16 +11,17 @@
 .page-wrap:after {
   content: "";
   display: block;
-  background-color: $blue-background;
+  background-color: $header-footer-blue;
   height: 250px;
 }
+
 footer, .page-wrap:after {
   /* .push must be the same height as footer */
   /*height: 250px;*/
 }
 
 footer {
-  background-color: $blue-background;
+  background-color: $header-footer-blue;
   width: 100%;
   text-align: center;
   height: 250px;

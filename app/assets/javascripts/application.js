@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// Global variable to be able to clear timer of homepage slideshow
+// FIXME find a better solution to this.
+var slideshow;

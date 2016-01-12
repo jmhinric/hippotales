@@ -29,6 +29,10 @@ gem 'rails_12factor', group: :production
 # Better errors involving assets
 gem 'sprockets_better_errors'
 
+# Annotate schema into models
+# annotate --exclude tests,fixtures,factories,serializers
+gem 'annotate', github: 'ctran/annotate_models'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -42,6 +46,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry'
+  gem 'pry-rails'
   gem 'faker', '~> 1.5.0'
   gem 'factory_girl', '~> 4.4.0'
   gem 'factory_girl_rails', '~> 4.4.1'

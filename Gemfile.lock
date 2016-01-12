@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: 56abbaa3eb5e41a3b236f782c0bb2a49dc3d36f1
+  specs:
+    annotate (2.7.0)
+      activerecord (>= 3.2, < 6.0)
+      rake (~> 10.4)
+
+GIT
   remote: git://github.com/rspec/rspec-core.git
   revision: 427e7651746a67a38bb49a1cd89fe53e9ecdfc9d
   branch: master
@@ -136,6 +144,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -213,6 +223,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   byebug
   coffee-rails (~> 4.1.0)
   factory_girl (~> 4.4.0)
@@ -222,6 +233,7 @@ DEPENDENCIES
   jquery-rails
   pg
   pry
+  pry-rails
   rails (= 4.2.4)
   rails_12factor
   rspec-core!

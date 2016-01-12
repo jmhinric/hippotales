@@ -1,4 +1,5 @@
 <main id="homepage">
+  <%= render "shared/header" %>
   <section id="baby-pictures-container">
     <div id="baby-picture1">
     </div>
@@ -23,7 +24,7 @@
           One box with three books shipped to you every month for $29.99/month.
         </p>
         <a href="/join" class="button-yellow">Buy now</a>
-        <a href="/our-box" class="learn-more">Learn more</a>
+        <a href="/our_box" class="learn-more">Learn more</a>
       </div>
 
       <div id="purchase-gift-info" class="Grid-cell u-size1of2 subscribe-info">
@@ -37,7 +38,7 @@
           Choose the length of the subscription and provide the shipping address. Each box costs $29.99/month.
         </p>
         <a href="/gift" class="button">Gift it</a>
-        <a href="/our-box" class="learn-more">Learn more</a>
+        <a href="/our_box" class="learn-more">Learn more</a>
       </div>
     </div>
     <div class="clear"></div>
@@ -98,8 +99,9 @@
 <script>
   // slideshow
   $(function(){
+    clearInterval(slideshow);
     $('#baby-pictures-container > div:gt(0)').hide();
-    setInterval(function(){
+    slideshow = setInterval(function(){
       $('#baby-pictures-container :first-child')
         .fadeOut(1000)
         .next('div')

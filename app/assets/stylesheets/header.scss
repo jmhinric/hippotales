@@ -77,8 +77,8 @@
 }
 
 /* TODO: use JS to add .active-menu-item to selected tab */
-.menu-item a:hover, .menu .active-menu-item a {
-  color: rgb(85, 85, 85);
+.menu-item a:hover {
+  color: $selected-menu-item;
 }
 
 .login-item, .menu-item {
@@ -107,4 +107,8 @@ a:hover {
   font-family: $arvo-family;
 }
 
-
+/* Hightlight menu item for selected page */
+#homepage #menu-how-it-works a,
+#our-box #menu-our-box a {
+  color: $selected-menu-item;
+}

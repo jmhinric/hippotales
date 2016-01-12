@@ -1,0 +1,115 @@
+<main id="our-box">
+  <%= render "shared/header" %>
+
+  <div id="page-title">
+    <h1>Our Box</h1>
+  </div>
+
+  <div id="books">
+    <h3 class="title">
+      Each box we send has 3 to 4 books that are age appropriate for your child. Below are some examples of boxes sent to our current subscribers:
+    </h3>
+
+    <section id="books-zero-one" class="book-section">
+      <h3>Ages: 0 - 1</h3>
+      <% @books0_1.each do |book| %>
+
+        <div class="book-info">
+          <%= image_tag "books/#{book.image}" %>
+          <h4><%= book.title %></h4>
+          <% if book.same_author_illustrator? %>
+            <p>
+              Author/Illustrator: <span> <%= book.display_author %></span>
+            </p>
+          <% elsif book.display_author %>
+            <p>
+              Author<%= "s" if book.multiple_authors? %>:
+              <span> <%= book.display_author %></span>
+            </p>
+          <% elsif book.display_author %>
+            <p>
+              Illustrator<%= "s" if book.multiple_illustrators? %>:
+              <span> <%= book.display_illustrator %></span>
+            </p>
+          <% end %>
+          <% if book.publisher %>
+            <p>
+              Publisher: <span><%= book.publisher_name %></span>
+            </p>
+          <% end %>
+
+          <p class="description"><%= book.description.html_safe %></p>
+        </div>
+
+      <% end %>
+    </section>
+
+    <section id="books-one-two" class="book-section">
+      <h3>Ages: 1 - 2</h3>
+      <% @books1_2.each do |book| %>
+
+        <div class="book-info">
+          <%= image_tag "books/#{book.image}" %>
+          <h4><%= book.title %></h4>
+          <% if book.same_author_illustrator? %>
+            <p>
+              Author/Illustrator: <span> <%= book.display_author %></span>
+            </p>
+          <% elsif book.display_author %>
+            <p>
+              Author<%= "s" if book.multiple_authors? %>:
+              <span> <%= book.display_author %></span>
+            </p>
+          <% elsif book.display_author %>
+            <p>
+              Illustrator<%= "s" if book.multiple_illustrators? %>:
+              <span> <%= book.display_illustrator %></span>
+            </p>
+          <% end %>
+          <% if book.publisher %>
+            <p>
+              Publisher: <span><%= book.publisher_name %></span>
+            </p>
+          <% end %>
+
+          <p class="description"><%= book.description.html_safe %></p>
+        </div>
+
+      <% end %>
+    </section>
+
+    <section id="books-three-six" class="book-section">
+      <h3>Ages: 3 - 6</h3>
+      <% @books3_6.each do |book| %>
+
+        <div class="book-info">
+          <%= image_tag "books/#{book.image}" %>
+          <h4><%= book.title %></h4>
+          <% if book.same_author_illustrator? %>
+            <p>
+              Author/Illustrator: <span> <%= book.display_author %></span>
+            </p>
+          <% elsif book.display_author %>
+            <p>
+              Author<%= "s" if book.multiple_authors? %>:
+              <span> <%= book.display_author %></span>
+            </p>
+          <% elsif book.display_author %>
+            <p>
+              Illustrator<%= "s" if book.multiple_illustrators? %>:
+              <span> <%= book.display_illustrator %></span>
+            </p>
+          <% end %>
+          <% if book.publisher %>
+            <p>
+              Publisher: <span><%= book.publisher_name %></span>
+            </p>
+          <% end %>
+
+          <p class="description"><%= book.description.html_safe %></p>
+        </div>
+
+      <% end %>
+    </section>
+  </div>
+</main>
