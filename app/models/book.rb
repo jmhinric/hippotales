@@ -15,6 +15,8 @@
 #
 
 class Book < ActiveRecord::Base
+  include TextUtils
+
   validates :title, :age, :gender, presence: true
   validates :title, uniqueness: true
 
@@ -24,4 +26,19 @@ class Book < ActiveRecord::Base
 
   enum age: { "0-1" => 0, "1-2" => 1, "3-6" => 2 }
   enum gender: { both: 0, boy: 1, girl: 2 }
+
+  def display_author
+    display_creator(authors)
+  end
+
+  def display_illustrator
+    display_creator(illustrators)
+  end
+
+  private
+
+  def display_creator(creators)
+    return nil unless creators.present?
+    return and_join(creators.map(&:display_name))
+  end
 end

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :book do
-    title { Faker::Book.title }
+    sequence(:title) { |n| "#{Faker::Book.title}-#{n}" }
     isbn { Faker::Code.isbn }
     image "book_image.jpg"
     description { Faker::Lorem.paragraph(3) }
