@@ -77,4 +77,36 @@ RSpec.describe Book, type: :model do
       expect(book.display_illustrator).to eq(illustrator1.display_name + " and " + illustrator2.display_name)
     end
   end
+
+  describe "#same_author_illustrator?" do
+    let(:author) { create :author }
+    let(:authors) { [author] }
+    let(:illustrator) { create :illustrator, creator: author.creator }
+    let(:illustrators) { [illustrator] }
+
+    before { book.update!(authors: authors, illustrators: illustrators) }
+
+    context "same author and illustrator" do
+      it "returns true" do
+        expect(book.same_author_illustrator?).to eq(true)
+      end
+    end
+
+    context "same author and illustrator but multiple authors" do
+      let(:author2) { create :author }
+      let(:authors) { [author, author2] }
+
+      it "returns false" do
+        expect(book.same_author_illustrator?).to eq(false)
+      end
+    end
+
+    context "different author and illustrator" do
+      let(:illustrator) { create :illustrator }
+
+      it "returns false" do
+        expect(book.same_author_illustrator?).to eq(false)
+      end
+    end
+  end
 end

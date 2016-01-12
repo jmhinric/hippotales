@@ -3,7 +3,7 @@ FactoryGirl.define do
     books { [create(:book), create(:book)] }
 
     after(:create) do |author|
-      create(:creator, creatorable: author)
+      create(:creator, author_id: author.id)
       author.books.each { |book| book.update(authors: [author] ) }
     end
   end

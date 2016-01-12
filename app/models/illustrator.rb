@@ -8,7 +8,7 @@
 #
 
 class Illustrator < ActiveRecord::Base
-  has_one :creator, as: :creatorable
+  has_one :creator
   has_and_belongs_to_many :books
 
   delegate :first_name, :middle_name, :last_name, :display_name, to: :creator

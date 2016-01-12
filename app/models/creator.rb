@@ -2,18 +2,19 @@
 #
 # Table name: creators
 #
-#  id               :uuid             not null, primary key
-#  first_name       :string
-#  middle_name      :string
-#  last_name        :string
-#  creatorable_id   :integer
-#  creatorable_type :string
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id             :uuid             not null, primary key
+#  first_name     :string
+#  middle_name    :string
+#  last_name      :string
+#  author_id      :uuid
+#  illustrator_id :uuid
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class Creator < ActiveRecord::Base
-  belongs_to :creatorable, polymorphic: true
+  belongs_to :author
+  belongs_to :illustrator
 
   validates :first_name, :last_name, presence: true
   validates :last_name, uniqueness: {

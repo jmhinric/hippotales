@@ -35,6 +35,22 @@ class Book < ActiveRecord::Base
     display_creator(illustrators)
   end
 
+  def same_author_illustrator?
+    authors.size == 1 && display_author == display_illustrator
+  end
+
+  def multiple_authors?
+    authors.size > 1
+  end
+
+  def multiple_illustrators?
+    illustrators.size > 1
+  end
+
+  def publisher_name
+    publisher.name
+  end
+
   private
 
   def display_creator(creators)

@@ -4,7 +4,8 @@ class CreateCreators < ActiveRecord::Migration
       t.string :first_name
       t.string :middle_name
       t.string :last_name
-      t.references :creatorable, polymorphic: true, index: true
+      t.uuid :author_id
+      t.uuid :illustrator_id
       t.timestamps null: false
     end
 

@@ -52,13 +52,11 @@ ActiveRecord::Schema.define(version: 20160111005634) do
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
-    t.integer  "creatorable_id"
-    t.string   "creatorable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.uuid     "author_id"
+    t.uuid     "illustrator_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
-
-  add_index "creators", ["creatorable_type", "creatorable_id"], name: "index_creators_on_creatorable_type_and_creatorable_id", using: :btree
 
   create_table "illustrators", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.datetime "created_at", null: false
