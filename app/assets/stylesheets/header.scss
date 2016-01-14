@@ -76,7 +76,6 @@
   -webkit-transition:color .2s ease;
 }
 
-/* TODO: use JS to add .active-menu-item to selected tab */
 .menu-item a:hover {
   color: $selected-menu-item;
 }
@@ -101,7 +100,7 @@ a:hover {
 }
 
 .menu a {
-  color: rgb(170, 193, 114);
+  color: $menu-green;
   font-size: 1.5em;
   font-family: $arvo-family;
 }

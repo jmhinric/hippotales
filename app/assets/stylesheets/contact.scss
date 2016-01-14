@@ -5,7 +5,7 @@
 .contact-info {
   width: 60%;
   margin: 0 auto;
-  padding: 60px 0;
+  padding: 30px 0;
 
   .address-phone {
     padding: 15px 0;
@@ -25,7 +25,7 @@
 }
 
 .email-form {
-  padding: 70px 10px;
+  padding: 40px 10px;
 
   #comments {
     width: 80%;
@@ -53,6 +53,14 @@
     border: 1px solid $book-green-color;
   }
 
+  input[type=text], input[type=email] {
+    width: 40%;
+  }
+
+  textarea {
+    width: 70%;
+  }
+
   input[type=submit] {
     font-size: .9em;
     font-weight: 300;
@@ -67,5 +75,13 @@
   input[type=submit]:disabled {
     color: grey;
     cursor: default;
+  }
+
+  input[type=submit]:hover {
+    -moz-transition:all .2s ease;
+    -o-transition:all .2s ease;
+    -webkit-transition:all .2s ease;
+    background: $book-green-color;
+    color: white;
   }
 }

@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 
   get 'join' => 'welcome#join'
   get 'gift' => 'welcome#gift'
-  get 'contact' => 'welcome#contact'
   get 'our_box' => 'welcome#our_box'
+
+  get 'contact' => 'contact_comments#new'
+  post 'contact' => 'contact_comments#create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
