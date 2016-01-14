@@ -1,0 +1,35 @@
+<main id="contact">
+  <%= render "shared/header" %>
+
+  <div id="page-title">
+    <h1>Contact Us</h1>
+  </div>
+
+  <div class="Grid">
+    <section id="contact-info-wrapper" class="u-size1of2">
+      <div class="contact-info">
+        <h2>Hippo Tales</h2>
+        <div class="address-phone">
+          <p>4400 Lavender Lane</p>
+          <p>Springfield, IL 62711</p>
+          <a href="mailto:info@hippotales.com">
+            info@hippotales.com
+          </a>
+          <p>+1 (818) 249-2222</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="email-form-wrapper" class="u-size1of2">
+      <div class="email-form">
+        <h3>Contact Us</h3>
+        <%= form_tag("/contact_us") do %>
+          <%= text_field_tag :name, nil, { placeholder: "Name", required: true } %>
+          <%= text_field_tag :email, nil, { placeholder: "Email", type: 'email', required: true, pattern: '[^@]+@[^@]+\.[a-zA-Z]{2,6}' } %>
+          <%= text_area_tag :comments, nil, { placeholder: "Comments", required: true } %>
+          <%= submit_tag "SUBMIT", class: "contact-submit" %>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</main>
