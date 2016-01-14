@@ -1,0 +1,87 @@
+//= depend_on_asset "baby-picture1.jpg"
+@import "colors";
+@import "fonts";
+
+.contact-info {
+  width: 60%;
+  margin: 0 auto;
+  padding: 30px 0;
+
+  .address-phone {
+    padding: 15px 0;
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  p {
+    line-height: 1.4;
+  }
+  a {
+    line-height: 1.8;
+    color: $link-green;
+  }
+}
+
+.email-form {
+  padding: 40px 10px;
+
+  #comments {
+    width: 80%;
+    height: 100px;
+  }
+
+  input[type=text], input[type=email], textarea {
+    display: block;
+    width: 50%;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 10px 0px 10px 5px;
+    margin: 20px 1px 20px 0px;
+    border: 1px solid #DDDDDD;
+    background: transparent;
+  }
+
+  input[type=text]:focus, input[type=email]:focus, textarea:focus {
+    box-shadow: 0 0 5px $book-green-color;
+    padding: 12px 0px 10px 5px;
+    margin: 20px 1px 20px 0px;
+    border: 1px solid $book-green-color;
+  }
+
+  input[type=text], input[type=email] {
+    width: 40%;
+  }
+
+  textarea {
+    width: 70%;
+  }
+
+  input[type=submit] {
+    font-size: .9em;
+    font-weight: 300;
+    padding: 12px 15px;
+    background: $button-yellow;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+  }
+
+  input[type=submit]:disabled {
+    color: grey;
+    cursor: default;
+  }
+
+  input[type=submit]:hover {
+    -moz-transition:all .2s ease;
+    -o-transition:all .2s ease;
+    -webkit-transition:all .2s ease;
+    background: $book-green-color;
+    color: white;
+  }
+}

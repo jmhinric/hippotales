@@ -1,0 +1,49 @@
+<main id="contact">
+  <%= render "shared/header" %>
+
+  <div id="page-title">
+    <h1>Contact Us</h1>
+  </div>
+
+  <div class="flash">
+    <% if flash[:notice]%>
+      <div class="flash-message success"><%= flash[:notice] %></div>
+    <% elsif flash[:error] %>
+      <div class="flash-message error"><%= flash[:error] %></div>
+    <% end %>
+  </div>
+
+  <div class="Grid">
+    <section id="contact-info-wrapper" class="u-size1of2">
+      <div class="contact-info">
+        <h2>Hippo Tales</h2>
+        <div class="address-phone">
+          <p>4400 Lavender Lane</p>
+          <p>Springfield, IL 62711</p>
+          <a href="mailto:info@hippotales.com">
+            info@hippotales.com
+          </a>
+          <p>+1 (818) 249-2222</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="email-form-wrapper" class="u-size1of2">
+      <div class="email-form">
+        <h3>Contact Us</h3>
+        <%= form_for @contact_comment, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+          <%= f.text_field :name, { placeholder: "Name", required: true } %>
+          <%= f.text_field :email, { placeholder: "Email", type: "email", required: true, pattern: "[^@]+@[^@]+\.[a-zA-Z]{2,6}" } %>
+          <%= f.text_area :message, { placeholder: "Comments", required: true } %>
+          <%= f.submit "SUBMIT", class: "contact-submit" %>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+  $(function(){
+    $('.flash-message').delay(5000).fadeOut(400);
+  });
+</script>

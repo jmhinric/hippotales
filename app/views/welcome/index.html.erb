@@ -97,11 +97,12 @@
 </main>
 
 <script>
-  // slideshow
+  // slideshow- needs to be on homepage so the script is always loaded
+  //   so clearInterval is called
   $(function(){
-    clearInterval(slideshow);
+    clearInterval(HT.Homepage.slideshow);
     $('#baby-pictures-container > div:gt(0)').hide();
-    slideshow = setInterval(function(){
+    HT.Homepage.slideshow = setInterval(function(){
       $('#baby-pictures-container :first-child')
         .fadeOut(1000)
         .next('div')
@@ -110,20 +111,4 @@
         .appendTo('#baby-pictures-container');
     }, 5000);
   });
-
-  // responsive design
-  $(window).resize(function(){
-    var width = $(window).width();
-    if(width < 800){
-      $('.Grid-cell').removeClass('u-size1of2');
-      $('.Grid-cell').removeClass('u-size1of3');
-      $('.Grid-cell').addClass('u-size1of1');
-    } else {
-      $('.Grid-cell').removeClass('u-size1of1');
-      $('.subscribe-info').addClass('u-size1of2');
-      $('.simple-step').addClass('u-size1of3');
-      $('.quote').addClass('u-size1of2');
-    }
-})
-.resize();
 </script>
