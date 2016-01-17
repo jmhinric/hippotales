@@ -5,21 +5,24 @@
     <p>
       Author/Illustrator: <span> <%= book.display_author %></span>
     </p>
-  <% elsif book.display_author %>
-    <p>
-      Author<%= "s" if book.multiple_authors? %>:
-      <span> <%= book.display_author %></span>
-    </p>
-  <% elsif book.display_author %>
-    <p>
-      Illustrator<%= "s" if book.multiple_illustrators? %>:
-      <span> <%= book.display_illustrator %></span>
-    </p>
-  <% end %>
-  <% if book.publisher %>
-    <p>
-      Publisher: <span><%= book.publisher_name %></span>
-    </p>
+  <% else %>
+    <% if book.display_author %>
+      <p>
+        Author<%= "s" if book.multiple_authors? %>:
+        <span> <%= book.display_author %></span>
+      </p>
+    <% end %>
+    <% if book.display_illustrator %>
+      <p>
+        Illustrator<%= "s" if book.multiple_illustrators? %>:
+        <span> <%= book.display_illustrator %></span>
+      </p>
+    <% end %>
+    <% if book.publisher %>
+      <p>
+        Publisher: <span><%= book.publisher_name %></span>
+      </p>
+    <% end %>
   <% end %>
 
   <p class="description"><%= book.description.html_safe %></p>
