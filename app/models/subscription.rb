@@ -17,8 +17,7 @@
 #  updated_at     :datetime         not null
 #
 
-class SubscriptionsController < ApplicationController
-  def join
-
-  end
+class Subscription < ActiveRecord::Base
+  validates :duration, :cost_per_month, :is_gift, :address_line1, :city, :state, :zip, presence: true
+  belongs_to :user
 end
