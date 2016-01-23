@@ -2,7 +2,7 @@
 #
 # Table name: subscriptions
 #
-#  id             :integer          not null, primary key
+#  id             :uuid             not null, primary key
 #  duration       :integer
 #  cost_per_month :decimal(, )
 #  is_gift        :boolean          default(FALSE)

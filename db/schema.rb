@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123174300) do
+ActiveRecord::Schema.define(version: 20160123175100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,20 @@ ActiveRecord::Schema.define(version: 20160123174300) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "children", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "birthday"
+    t.integer  "gender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "children_subscriptions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid "child_id"
+    t.uuid "subscription_id"
+  end
+
   create_table "contact_comments", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -78,7 +92,7 @@ ActiveRecord::Schema.define(version: 20160123174300) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "subscriptions", force: :cascade do |t|
+  create_table "subscriptions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "duration"
     t.decimal  "cost_per_month"
     t.boolean  "is_gift",        default: false

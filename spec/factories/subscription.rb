@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :subscription do
     duration 1
-    is_gift false
+    is_gift "false"
     gift_message "A gift message"
     cost_per_month "9.99"
     address_line1 { Faker::Address.street_address }
@@ -9,6 +9,6 @@ FactoryGirl.define do
     city { Faker::Address.city }
     state { Faker::Address.state_abbr }
     zip { Faker::Address.zip }
-    user { build :user }
+    user { create :user }
   end
 end

@@ -2,7 +2,7 @@
 #
 # Table name: subscriptions
 #
-#  id             :integer          not null, primary key
+#  id             :uuid             not null, primary key
 #  duration       :integer
 #  cost_per_month :decimal(, )
 #  is_gift        :boolean          default(FALSE)
@@ -18,6 +18,7 @@
 #
 
 class Subscription < ActiveRecord::Base
-  validates :duration, :cost_per_month, :is_gift, :address_line1, :city, :state, :zip, presence: true
+  validates :duration, :cost_per_month, :address_line1, :city, :state, :zip, presence: true
   belongs_to :user
+  has_and_belongs_to_many :children
 end

@@ -1,6 +1,6 @@
 class CreateSubscriptions < ActiveRecord::Migration
   def change
-    create_table :subscriptions do |t|
+    create_table :subscriptions, id: :uuid do |t|
       t.integer :duration
       t.decimal :cost_per_month
       t.boolean :is_gift, default: false
