@@ -4,6 +4,7 @@ RSpec.describe Child, type: :model do
   [:first_name, :last_name, :birthday, :gender].each do |attr|
     it { should validate_presence_of(attr) }
   end
+  it { should validate_uniqueness_of(:last_name).scoped_to([:first_name, :birthday]) }
   it { should have_and_belong_to_many :subscriptions }
 
   let(:child) { create :child }
