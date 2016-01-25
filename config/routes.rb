@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post 'contact' => 'contact_comments#create'
 
   get 'join' => 'subscriptions#join'
+  post 'join' => 'subscriptions#create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

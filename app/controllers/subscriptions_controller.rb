@@ -18,7 +18,16 @@
 #
 
 class SubscriptionsController < ApplicationController
+  include Constants
+
   def join
+    @user = User.new
+    @child = Child.new
+    @months = MONTHS
+    @states = US_STATES
+  end
+
+  def create
 
   end
 end

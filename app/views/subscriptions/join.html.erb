@@ -5,4 +5,224 @@
     <h1>Join</h1>
   </div>
 
+  <section class="subscription-container">
+    <h2>SUBSCRIPTION INFORMATION</h2>
+    <%= form_tag('join', class: "subscription-form") do %>
+      <h4 class="section-label">Your Child</h4>
+      <div class="Grid form-section">
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "child_first_name",
+                nil,
+                placeholder: "* First name",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "child_last_name",
+                nil,
+                placeholder: "* Last name",
+                class: "float-right",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <div class="Grid">
+            <div class="Grid-cell u-size1of3 select-birthday">
+              <%= select_month(
+                    nil,
+                    field_name: "child_birth_month",
+                    prompt: "Birth month")
+              %>
+            </div>
+            <div class="Grid-cell u-size1of4 select-birthday">
+              <%= select_day(
+                    nil,
+                    field_name: "child_birth_day",
+                    prompt: "Birth date")
+              %>
+            </div>
+            <div class="Grid-cell u-size1of4 select-birthday">
+              <%= select_year(
+                    nil,
+                    start_year: Date.today.year,
+                    end_year: (Date.today - 12.years).year,
+                    field_name: "child_birth_year",
+                    prompt: "Birth year")
+              %>
+            </div>
+          </div>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= select_tag(
+                "child_gender",
+                options_for_select(["Boy", "Girl"]),
+                class: "float-right",
+                include_blank: "* Gender",
+                required: true)
+          %>
+        </div>
+      </div>
+
+      <h4 class="section-label">Shipping Address</h4>
+      <div class="Grid form-section">
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "subscription_address_line1",
+                nil,
+                placeholder: "* Shipping Address Line 1",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "subscription_address_line2",
+                nil,
+                class: "float-right",
+                placeholder: "  Shipping Address Line 2")
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "subscription_city",
+                nil,
+                placeholder: "* City",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= select_tag(
+                "subscription_state",
+                options_for_select(@states),
+                class: "float-right",
+                include_blank: "* Select state...",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "subscription_zip",
+                nil,
+                placeholder: "* Zip Code",
+                required: true)
+          %>
+        </div>
+      </div>
+
+      <h2 class="section-label">ACCOUNT INFORMATION</h2>
+      <div class="Grid form-section">
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "user_first_name",
+                nil,
+                placeholder: "* First name",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "user_last_name",
+                nil,
+                placeholder: "* Last name",
+                class: "float-right",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "password",
+                nil,
+                type: :password,
+                placeholder: "* Password",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "password_confirmation",
+                nil,
+                type: :password,
+                placeholder: "* Re-type password",
+                class: "float-right",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "email",
+                nil,
+                type: :email,
+                pattern: "[^@]+@[^@]+\.[a-zA-Z]{2,}",
+                placeholder: "* Email",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field(
+                "phone",
+                nil,
+                class: "float-right",
+                placeholder: "  Phone (xxx) xxx-xxxx")
+          %>
+        </div>
+      </div>
+
+      <h4 class="billing-address">Billing Address</h4>
+      <div class="billing-address-checkbox">
+        <%= check_box_tag(
+              'same_billing_address',
+              false)
+        %>
+        <label class="same-billing-address">
+          Same as shipping address
+        </label>
+      </div>
+
+      <div class="Grid form-section billing-address">
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "user_address_line1",
+                nil,
+                placeholder: "* Address Line 1",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "user_address_line2",
+                nil,
+                class: "float-right",
+                placeholder: "Address Line 2")
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "user_city",
+                nil,
+                placeholder: "* City",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= select_tag(
+                "user_state",
+                options_for_select(@states),
+                class: "float-right",
+                include_blank: "* Select state...",
+                required: true)
+          %>
+        </div>
+        <div class="Grid-cell u-size1of2">
+          <%= text_field_tag(
+                "user_zip",
+                nil,
+                placeholder: "* Zip Code",
+                required: true)
+          %>
+        </div>
+      </div>
+      <a href="#" class="join-submit button">Submit</a>
+    <% end %>
+  </section>
 </main>

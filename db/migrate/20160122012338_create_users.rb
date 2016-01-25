@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :state
       t.string :zip
       t.string :password_digest
+      t.boolean :is_admin, default: false
 
       t.timestamps null: false
     end

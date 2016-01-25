@@ -1,0 +1,60 @@
+#join {
+  .subscription-container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+
+  h2 {
+    margin: 50px 0 15px;
+  }
+
+  h4.section-label {
+    margin: 25px 0 15px;
+  }
+
+  input, select {
+    display: inline-block;
+    width: 96%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .select-birthday {
+    select {
+      font-size: .8em;
+    }
+  }
+
+  .form-section {
+    margin-right: 10px
+  }
+
+  .float-right {
+    float: right;
+  }
+
+  h4.billing-address {
+    margin-top: 25px;
+    margin-bottom: 5px;
+  }
+
+  .billing-address-checkbox {
+    margin-left: 15px;
+
+
+    input[type=checkbox]#same_billing_address {
+      width: 15px;
+      vertical-align: middle;
+    }
+
+    label {
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+  }
+
+  .join-submit {
+    margin-top: 50px;
+  }
+}
