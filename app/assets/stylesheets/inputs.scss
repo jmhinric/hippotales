@@ -3,10 +3,10 @@
 input[type=text], input[type=email], input[type=password],textarea, select {
   display: block;
   width: 50%;
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
   outline: none;
   padding: 10px 0px 10px 15px;
   margin: 20px 1px 20px 0px;
@@ -52,7 +52,7 @@ input[type=submit]:disabled {
   cursor: default;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, a.submit {
   -moz-transition:all .2s ease;
   -o-transition:all .2s ease;
   -webkit-transition:all .2s ease;

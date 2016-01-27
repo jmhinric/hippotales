@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'gift' => 'welcome#gift'
-  get 'our_box' => 'welcome#our_box'
+  get 'our_box' => 'books#index'
 
   get "/login" => "session#new"
   post "/session" => "session#create"

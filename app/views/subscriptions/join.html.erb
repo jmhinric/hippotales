@@ -8,13 +8,12 @@
   <section class="subscription-container">
     <h2>SUBSCRIPTION INFORMATION</h2>
     <%= form_tag('join', class: "subscription-form") do %>
-      <h4 class="section-label">Your Child</h4>
       <div class="Grid form-section">
         <div class="Grid-cell u-size1of2">
           <%= text_field_tag(
                 "child_first_name",
                 nil,
-                placeholder: "* First name",
+                placeholder: "* Child's first name",
                 required: true)
           %>
         </div>
@@ -22,7 +21,7 @@
           <%= text_field_tag(
                 "child_last_name",
                 nil,
-                placeholder: "* Last name",
+                placeholder: "* Child's last name",
                 class: "float-right",
                 required: true)
           %>
@@ -110,6 +109,25 @@
         </div>
       </div>
 
+      <h4 class="section-label">Is this a gift?</h4>
+      <div class="checkbox gift-message-checkbox">
+        <%= check_box_tag(
+              'is_gift',
+              false)
+        %>
+        <label class="is-gift">
+          Yes! Send as a gift!
+        </label>
+      </div>
+
+      <div class="gift-message hidden">
+      <%= text_area_tag(
+            "gift_message",
+            nil,
+            placeholder: "Gift message (optional)")
+      %>
+      </div>
+
       <h2 class="section-label">ACCOUNT INFORMATION</h2>
       <div class="Grid form-section">
         <div class="Grid-cell u-size1of2">
@@ -169,7 +187,7 @@
       </div>
 
       <h4 class="billing-address">Billing Address</h4>
-      <div class="billing-address-checkbox">
+      <div class="checkbox billing-address-checkbox">
         <%= check_box_tag(
               'same_billing_address',
               false)
@@ -222,7 +240,11 @@
           %>
         </div>
       </div>
-      <a href="#" class="join-submit button">Submit</a>
+
+      <h2 class="section-label">PAYMENT INFORMATION</h2>
+
+
+      <a href="#" class="submit join-submit button">Submit</a>
     <% end %>
   </section>
 </main>

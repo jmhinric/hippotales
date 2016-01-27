@@ -26,6 +26,15 @@
     }
   }
 
+  .checkbox label, .checkbox input {
+    cursor: pointer;
+  }
+
+  .gift-message textarea {
+    height: 120px;
+    width: 70%;
+  }
+
   .form-section {
     margin-right: 10px
   }
@@ -39,11 +48,10 @@
     margin-bottom: 5px;
   }
 
-  .billing-address-checkbox {
+  .checkbox {
     margin-left: 15px;
 
-
-    input[type=checkbox]#same_billing_address {
+    input[type=checkbox] {
       width: 15px;
       vertical-align: middle;
     }

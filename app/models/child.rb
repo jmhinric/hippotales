@@ -16,5 +16,5 @@ class Child < ActiveRecord::Base
   validates :last_name, :uniqueness => {:scope => [:first_name, :birthday]}
   has_and_belongs_to_many :subscriptions
 
-  enum gender: { boy: 0, girl: 1 }
+  enum gender: [:boy, :girl]
 end
