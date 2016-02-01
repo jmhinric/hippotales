@@ -12,7 +12,7 @@ var join = function(){
   };
 
   var copyBilling = function() {
-    var checked = HT.billingChecked();
+    var checked = billingChecked();
 
     var address_line1 = checked ? $("#subscription_address_line1").val() : "";
     var address_line2 = checked ? $("#subscription_address_line2").val() : "";
@@ -77,6 +77,97 @@ var join = function(){
       $("#user_zip").val($("#subscription_zip").val());
     }
   });
+
+  // submit
+  // $(".subscription-form").submit(function(e) {
+  //   e.preventDefault();
+  //   if (noErrors()) {
+  //     $.post( "/users", $(this).serialize())
+  //       .done(createSubscription)
+  //       .fail(function() {
+  //         console.log("There was a problem somewheres");
+  //     });
+  //   } else {
+  //     console.log("Form problems");
+  //   }
+  // });
+
+  // function userData() {
+  //   return {
+  //     first_name: $("#user_first_name").val(),
+  //     last_name: $("#user_last_name").val(),
+  //     password: $("#password").val(),
+  //     password_confirmation: $("#password_confirmation").val(),
+  //     email: $("#email").val(),
+  //     phone: $("#phone").val(),
+  //     address_line1: $("#user_address_line1").val(),
+  //     address_line2: $("#user_address_line2").val(),
+  //     city: $("#user_city").val(),
+  //     state: $("#user_state").val(),
+  //     zip: $("#user_zip").val()
+  //   };
+  // };
+
+  function noErrors() {
+    return passwordsMatch() && subscriptionSelected();
+  };
+
+  function passwordsMatch() {
+    return $("#password").val() === $("#password_confirmation").val();
+  };
+
+  function subscriptionSelected() {
+    return ["1", "3", "6"].includes($('input[type=radio]:checked').val());
+  };
+
+  function createSubscription(data) {
+    $.get("users/" + data["user_id"]);
+    console.log("Success!");
+    console.log(data["success_message"]);
+    // $.post("/join", function() {
+
+    // })
+    //   .done(function() {
+    //     console.log("Success");
+    //   })
+    //   .fail(function() {
+    //     console.log("There was a problem");
+    // });
+  };
+
+  // Braintree
+
+  function checkoutParams(result) {
+    var nonce = "&nonce=" + result["nonce"];
+    var paymentType = "&payment_type=" + result["type"]
+    return $(".subscription-form").serialize() + nonce + paymentType;
+  };
+
+  var paymentNonceReceived = function(result) {
+    console.log(result);
+    if (noErrors()) {
+      $.post( "/subscriptions", checkoutParams(result))
+        .done(createSubscription)
+        .fail(function() {
+          console.log("There was a problem somewheres");
+      });
+    } else {
+      console.log("Form problems");
+    }
+  };
+
+  var clientToken;
+  $.get("/client_token")
+    .done(function(result) {
+      clientToken = result["client_token"]
+      braintree.setup(clientToken, "dropin", {
+        container: "payment-form",
+        onPaymentMethodReceived: paymentNonceReceived
+      });
+    })
+    .fail(function() {
+      console.log("Failed to get Braintree client token.")
+    });
 };
 
 $(function() {

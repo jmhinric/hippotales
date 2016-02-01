@@ -5,18 +5,24 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  get 'gift' => 'welcome#gift'
-  get 'our_box' => 'books#index'
-
   get "/login" => "session#new"
   post "/session" => "session#create"
   delete "/session" => "session#destroy"
 
+  get 'our_box' => 'books#index'
+
   get 'contact' => 'contact_comments#new'
   post 'contact' => 'contact_comments#create'
 
-  get 'join' => 'subscriptions#join'
+
+  get "/client_token" => 'subscriptions#client_token'
+  post "/checkout" => 'subscriptions#checkout'
+  get 'join' => 'subscriptions#new'
   post 'join' => 'subscriptions#create'
+
+  resources :subscriptions, only: [:create]
+
+  resources :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

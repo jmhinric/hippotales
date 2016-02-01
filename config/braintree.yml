@@ -1,0 +1,17 @@
+production:
+  environment: :proudction
+  merchant_id: <%= ENV["BRAINTREE_MERCHANT_ID"] %>
+  public_key: <%= ENV["BRAINTREE_PUBLIC_KEY"] %>
+  private_key: <%= ENV["BRAINTREE_PRIVATE_KEY"] %>
+
+development:
+  environment: :sandbox
+  merchant_id: 8w2kvh8q4zsmdw53
+  public_key: rhhhfj2fq7vwc76d
+  private_key: 6abd465846d67a7288f082cb65a88bd1
+
+test:
+  environment: :sandbox
+  merchant_id: 8w2kvh8q4zsmdw53
+  public_key: rhhhfj2fq7vwc76d
+  private_key: 6abd465846d67a7288f082cb65a88bd1

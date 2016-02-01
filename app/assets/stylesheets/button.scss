@@ -22,3 +22,7 @@
 .button-yellow {
   background-color: $button-yellow;
 }
+
+.button-yellow:hover {
+  background-color: $button-yellow-light;
+}

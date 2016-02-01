@@ -1,3 +1,6 @@
+@import "colors";
+@import "fonts";
+
 #join {
   .subscription-container {
     width: 70%;
@@ -5,24 +8,89 @@
     padding: 50px 0;
   }
 
-  h2 {
+  h3 {
     margin: 50px 0 15px;
+    font-size: 1.2em;
+    text-align: center;
   }
 
   h4.section-label {
     margin: 25px 0 15px;
   }
 
-  input, select {
+  input[type=text],
+  input[type=email],
+  input[type=date],
+  input[type=password],
+  select {
     display: inline-block;
     width: 96%;
     margin-top: 10px;
     margin-bottom: 10px;
   }
 
-  .select-birthday {
-    select {
-      font-size: .8em;
+  .subscription-nav {
+    padding: 50px 0;
+
+    .nav-item {
+      display: inline;
+      text-align: center;
+      // margin-right: 100px;
+      cursor: pointer;
+    }
+
+    .Grid-cell {
+      text-align: center;
+      border-right: 1px solid $light-gray;
+    }
+
+    .active {
+      color: black;
+      font-weight: bold;
+    }
+
+    .inactive {
+      color: $light-gray;
+    }
+  }
+
+  .subscription-options {
+    margin-top: 50px;
+    text-align: center;
+
+    .subscription-info {
+      margin-bottom: 23px;
+    }
+
+    span {
+      display: block;
+      margin: 0 0 3px 3px;
+    }
+
+    .month-number {
+      display: inline-block;
+      font-family: $cabin-sketch-family;
+      font-size: 2em;
+      color: $book-green-color;
+      margin-right: 3px;
+    }
+  }
+
+  // .select-birthday {
+  //   width: 50%;
+
+  //   select {
+  //     font-size: .8em;
+  //     width: 96%;
+  //   }
+  // }
+
+  .child-birthday {
+    label {
+      position: absolute;
+      vertical-align: middle;
+      padding: 2px 0;
+      margin: 20px 0;
     }
   }
 
@@ -35,8 +103,13 @@
     width: 70%;
   }
 
-  .form-section {
+  .Grid {
     margin-right: 10px
+  }
+
+  .form-section {
+    border-bottom: 3px solid $book-green-color;
+    padding-bottom: 50px;
   }
 
   .float-right {
@@ -64,5 +137,18 @@
 
   .join-submit {
     margin-top: 50px;
+  }
+
+  /* Braintree */
+  #checkout {
+    margin-top: 25px;
+
+    input[type=submit] {
+      margin-top: 50px;
+    }
+
+    button#braintree-paypal-button {
+      background-color: $book-green-color
+    }
   }
 }
