@@ -48,7 +48,6 @@ class SubscriptionsController < ApplicationController
 
     if subscription.save!
       @user.subscriptions << subscription
-      child.subscriptions << subscription
       @user.save!
       child.save!
     end

@@ -55,6 +55,6 @@ class Book < ActiveRecord::Base
 
   def display_creator(creators)
     return nil unless creators.present?
-    return and_join(creators.map(&:display_name))
+    and_join(creators.map(&:display_name))
   end
 end
