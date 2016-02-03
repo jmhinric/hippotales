@@ -1,8 +1,38 @@
-<main>
+<main id="user-show">
   <%= render "shared/header" %>
 
   <div id="page-title">
     <h1>Your Profile</h1>
+  </div>
+
+  <div class="user-show-container">
+
+    <div class="Grid user-nav">
+      <span class="Grid-cell border-cell u-size1of2">
+        <div class="nav-item active">
+          Subscriptions
+        </div>
+      </span>
+      <span class="Grid-cell u-size1of2">
+        <div class="nav-item inactive">
+          Account Info
+        </div>
+      </span>
+    </div>
+
+    <div class="user-show-subscriptions">
+      <% @subscriptions.each do |subscription| %>
+        <div>
+          <%= subscription.child_names %>
+        </div>
+        <div>
+          <%= render partial: "shared/address", locals: { entity: subscription } %>
+        </div>
+        <div>
+          <%= subscription.duration %> months, $<%= subscription.cost_per_month.to_s %> / month
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </main>

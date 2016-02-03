@@ -18,12 +18,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user
+    @user = User.find(params["id"])
+    @subscriptions = @user.subscriptions
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:user_first_name, :user_last_name, :password, :password_confirmation, :email, :phone, :user_address_line1, :user_address_line2, :user_city, :user_state, :user_zip)
+    params.require(:user).permit(:id, :user_first_name, :user_last_name, :password, :password_confirmation, :email, :phone, :user_address_line1, :user_address_line2, :user_city, :user_state, :user_zip)
   end
 end

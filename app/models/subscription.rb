@@ -18,7 +18,13 @@
 #
 
 class Subscription < ActiveRecord::Base
+  include TextUtils
+
   validates :duration, :cost_per_month, :address_line1, :city, :state, :zip, presence: true
   belongs_to :user
   has_and_belongs_to_many :children
+
+  def child_names
+    and_join(children.map(&:full_name))
+  end
 end
