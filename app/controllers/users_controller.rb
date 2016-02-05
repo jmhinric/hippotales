@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :uuid             not null, primary key
+#  first_name      :string
+#  last_name       :string
+#  email           :string
+#  phone           :string
+#  address_line1   :string
+#  address_line2   :string
+#  city            :string
+#  state           :string
+#  zip             :string
+#  password_digest :string
+#  is_admin        :boolean          default(FALSE)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class UsersController < ApplicationController
   def create
     user = User.new(
