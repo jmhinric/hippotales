@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  get "/login" => "session#new"
-  post "/session" => "session#create"
-  delete "/session" => "session#destroy"
+  get "/login" => "sessions#new"
+  post "/session" => "sessions#create"
+  delete "/session" => "sessions#destroy"
 
   get 'our_box' => 'books#index'
 

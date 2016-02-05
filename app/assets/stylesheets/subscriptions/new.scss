@@ -9,13 +9,13 @@
   }
 
   h3 {
-    margin: 50px 0 15px;
+    margin: 50px 0 35px;
     font-size: 1.2em;
     text-align: center;
   }
 
   h4.section-label {
-    margin: 25px 0 15px;
+    margin: 45px 0 15px;
   }
 
   input[type=text],
@@ -24,9 +24,12 @@
   input[type=password],
   select {
     display: inline-block;
-    width: 96%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .color-gray {
+    color: $light-gray !important;
   }
 
   .subscription-nav {
@@ -88,8 +91,13 @@
     label {
       position: absolute;
       vertical-align: middle;
-      padding: 2px 0;
-      margin: 20px 0;
+      // padding: 2px 0;
+      margin: 15px 0;
+    }
+
+    input {
+      // -webkit-margin-before: 0em;
+      -webkit-padding-after: 0.7em;
     }
   }
 
@@ -103,7 +111,7 @@
   }
 
   .Grid {
-    margin-right: 10px
+    // margin-right: 10px
   }
 
   .form-section {
@@ -115,13 +123,14 @@
     float: right;
   }
 
-  h4.billing-address {
-    margin-top: 25px;
+  h4.billing-address, .billing-address-checkbox {
+    margin-top: 50px;
     margin-bottom: 5px;
   }
 
   .checkbox {
     margin-left: 15px;
+    padding-bottom: 15px;
 
     input[type=checkbox] {
       width: 15px;

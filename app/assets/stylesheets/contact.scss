@@ -2,35 +2,45 @@
 @import "colors";
 @import "fonts";
 
-.contact-info {
-  width: 60%;
-  margin: 0 auto;
-  padding: 30px 0;
+#contact {
 
-  .address-phone {
-    padding: 15px 0;
+  .contact-info {
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px 0;
+
+    .address-phone {
+      padding: 15px 0;
+    }
+
+    h2 {
+      font-size: 36px;
+      font-weight: bold;
+    }
+    p {
+      line-height: 1.4;
+    }
+    a {
+      line-height: 1.8;
+      color: $link-green;
+    }
   }
 
-  h2 {
-    font-size: 36px;
-    font-weight: bold;
-  }
-  p {
-    line-height: 1.4;
-  }
-  a {
-    line-height: 1.8;
-    color: $link-green;
-  }
-}
+  .email-form {
+    padding: 40px 10px;
 
-.email-form {
-  padding: 40px 10px;
+    h3 {
+      margin-bottom: 20px;
+    }
 
-  #comments {
-    width: 80%;
-    height: 100px;
+    #comments {
+      width: 80%;
+      height: 100px;
+    }
   }
 
-
+  .contact-submit {
+    margin-top: 40px;
+    margin-left: 0;
+  }
 }

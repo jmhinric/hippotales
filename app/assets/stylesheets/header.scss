@@ -2,108 +2,86 @@
 @import "fonts";
 
 #navbar {
-  width: 78%;
+  width: 80%;
   margin: 0 auto;
   height: 160px;
-  position: relative;
+
+  .logo {
+    top: 10px;
+    left: 0;
+    background-color: white;
+
+    .home-logo {
+      width: 130px;
+      padding: 5px;
+    }
+  }
+
+  .menus {
+    right: 0;
+    float: right;
+    height: 150px;
+    position: relative;
+
+    li {
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .login-container, .menu-container {
+      right: 0;
+      position: absolute;
+      float: right;
+    }
+
+    .login-container {
+      padding: 12px 5px;
+      background-color: $book-green-color;
+      border-radius: 0 0 10px 10px;
+
+      a {
+        color: white;
+        font-size: 0.8em;
+      }
+
+      .border-right {
+        border-right: 1px white dashed;
+      }
+
+      li {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+    }
+
+    .menu-container {
+      bottom: 10px;
+
+      a {
+        color: $menu-green;
+        font-size: 1.3em;
+        font-family: $arvo-family;
+      }
+
+      a:hover {
+        color: $selected-menu-item;
+      }
+
+      a, a:hover {
+        -moz-transition:color .2s ease;
+        -o-transition:color .2s ease;
+        -webkit-transition:color .2s ease;
+      }
+
+      li {
+        margin-left: 20px;
+        margin-right: 0;
+      }
+    }
+  }
 }
 
-.logo, .login-container, .menu-container {
-  position: absolute;
-}
 
-.login-container {
-  top: 0;
-}
-
-.home-logo {
-  width: 130px;
-  padding: 5px;
-}
-
-.logo {
-  top: 10px;
-  left: 0;
-  background-color: white;
-  /* Used to make the original design with transparent circular background */
-  /*top: -30px;
-  padding: 40px;
-  border-radius: 150px;*/
-}
-
-.menus {
-  right: 0;
-  float: right;
-  height: 150px;
-}
-
-.login-container, .menu-container {
-  right: 0;
-  float: right;
-}
-
-.login-container {
-  margin-top: 0;
-}
-
-.login {
-  padding: 12px 30px 12px 30px;
-  background-color: $book-green-color;
-  border-radius: 0 0 10px 10px;
-}
-
-#login-item1 {
-  border-right: 1px white dashed;
-  padding-right: 25px;
-}
-
-#login-item2 {
-  padding-left: 15px;
-}
-
-.menu-container {
-  bottom: 10px;
-}
-
-.menu .menu-item {
-  margin-left: 20px;
-  margin-right: 0;
-}
-
-.menu-item a, .menu-item a:hover {
-  -moz-transition:color .2s ease;
-  -o-transition:color .2s ease;
-  -webkit-transition:color .2s ease;
-}
-
-.menu-item a:hover {
-  color: $selected-menu-item;
-}
-
-.login-item, .menu-item {
-  display: inline-block;
-  font-size: 16px;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  cursor: pointer;
-}
-
-.login a {
-  color: white;
-  font-size: 1.1em;
-}
-
-.menu a {
-  color: $menu-green;
-  font-size: 1.3em;
-  font-family: $arvo-family;
-}
 
 /* Hightlight menu item for selected page */
 #homepage #menu-how-it-works a,

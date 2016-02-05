@@ -78,6 +78,7 @@
                   "child_first_name",
                   nil,
                   placeholder: "* Child's first name",
+                  class: "border-right",
                   required: true)
             %>
           </div>
@@ -96,6 +97,7 @@
                 <%# select_month(
                       nil,
                       field_name: "child_birth_month",
+                      class: "border-right",
                       prompt: "Birth month")
                 %>
               </div>
@@ -103,6 +105,7 @@
                 <%# select_day(
                       nil,
                       field_name: "child_birth_day",
+                      class: "border-right",
                       prompt: "Birth date")
                 %>
               </div>
@@ -117,21 +120,22 @@
               </div>
             </div>
           </div> -->
-          <div class="Grid-cell u-size1of2">
-            <div class="Grid child-birthday">
+          <div class="Grid-cell child-birthday u-size1of2">
+            <div class="Grid-cell u-size4of4">
+              <%= date_field_tag(
+                    "child_birthday",
+                    value=nil,
+                    class: "border-right",
+                    placeholder: "mm/dd/yyyy")
+              %>
+            </div>
+            <!-- <div class="Grid child-birthday">
               <div class="Grid-cell u-size1of4">
                 <label>
                   Birthday:
                 </label>
               </div>
-              <div class="Grid-cell u-size3of4">
-                <%= date_field_tag(
-                      "child_birthday",
-                      value=nil,
-                      placeholder: "mm/dd/yyyy")
-                %>
-              </div>
-            </div>
+            </div> -->
           </div>
           <div class="Grid-cell u-size1of2">
             <%= select_tag(
@@ -144,12 +148,13 @@
           </div>
         </div>
 
-        <h4 class="section-label">Shipping Address</h4>
+        <!-- <h4 class="section-label">Shipping Address</h4> -->
         <div class="Grid">
           <div class="Grid-cell u-size1of2">
             <%= text_field_tag(
                   "subscription_address_line1",
                   nil,
+                  class: "border-right",
                   placeholder: "* Shipping Address Line 1",
                   required: true)
             %>
@@ -166,6 +171,7 @@
             <%= text_field_tag(
                   "subscription_city",
                   nil,
+                  class: "border-right",
                   placeholder: "* City",
                   required: true)
             %>
@@ -174,6 +180,7 @@
             <%= select_tag(
                   "subscription_state",
                   options_for_select(@states),
+                  class: "border-right",
                   include_blank: "* Select state...",
                   required: true)
             %>
@@ -216,6 +223,7 @@
             <%= text_field_tag(
                   "user_first_name",
                   nil,
+                  class: "border-right",
                   placeholder: "* First name",
                   required: true)
             %>
@@ -224,8 +232,8 @@
             <%= text_field_tag(
                   "user_last_name",
                   nil,
-                  placeholder: "* Last name",
                   class: "float-right",
+                  placeholder: "* Last name",
                   required: true)
             %>
           </div>
@@ -234,6 +242,7 @@
                   "password",
                   nil,
                   type: :password,
+                  class: "border-right",
                   placeholder: "* Password",
                   required: true)
             %>
@@ -254,6 +263,7 @@
                   nil,
                   type: :email,
                   pattern: "[^@]+@[^@]+\.[a-zA-Z]{2,}",
+                  class: "border-right",
                   placeholder: "* Email",
                   required: true)
             %>
@@ -268,7 +278,7 @@
           </div>
         </div>
 
-        <h4 class="billing-address">Billing Address</h4>
+        <!-- <h4 class="billing-address">Billing Address</h4> -->
         <div class="checkbox billing-address-checkbox">
           <%= check_box_tag(
                 'same_billing_address',
@@ -284,7 +294,8 @@
             <%= text_field_tag(
                   "user_address_line1",
                   nil,
-                  placeholder: "* Address Line 1",
+                  class: "border-right",
+                  placeholder: "* Billing Address Line 1",
                   required: true)
             %>
           </div>
@@ -293,13 +304,14 @@
                   "user_address_line2",
                   nil,
                   class: "float-right",
-                  placeholder: "Address Line 2")
+                  placeholder: "Billing Address Line 2")
             %>
           </div>
           <div class="Grid-cell u-size1of3">
             <%= text_field_tag(
                   "user_city",
                   nil,
+                  class: "border-right",
                   placeholder: "* City",
                   required: true)
             %>
@@ -308,6 +320,7 @@
             <%= select_tag(
                   "user_state",
                   options_for_select(@states),
+                  class: "border-right",
                   include_blank: "* Select state...",
                   required: true)
             %>
