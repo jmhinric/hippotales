@@ -1,37 +1,58 @@
 <header>
-  <div id="navbar">
-    <div class="u-size3of12">
+  <div id="navbar" class="Grid">
+    <div class="Grid-cell u-size3of12">
       <div class="logo">
         <a title="HippoTales" href="/">
           <%= image_tag "hippotales_logo.png", class:"home-logo" %>
         </a>
       </div>
     </div>
-    <div class="menus u-size9of12">
+    <div class="Grid-cell u-size9of12 menus">
       <div class="login-container">
         <ul class="login">
-          <li id="login-item1" class="login-item">
-            <a href="#">Login</a>
+          <!-- <li class="border-right">
+            <a href="/signup">Sign Up</a>
           </li>
-          <li id="login-item2"class="login-item">
-            <a href="/contact">Contact Us</a>
+          <li class="border-right">
+            <a href="#">Login</a>
+          </li> -->
+          <% if logged_in? %>
+            <li class="border-right">
+              <%= link_to "My Account", user_path(current_user) %>
+            </li>
+            <li class="border-right">
+              <%= link_to "Log Out", "/session", method: "delete" %>
+            </li>
+          <% else %>
+            <li class="border-right">
+              <%= link_to "Sign Up", new_user_path %>
+            </li>
+            <li class="border-right">
+              <%= link_to "Log In","/login" %>
+            </li>
+          <% end %>
+          <li class="">
+            <a href="/contact">Contact</a>
           </li>
         </ul>
       </div>
 
+        <ul>
+        </ul>
+
       <div class="menu-container">
         <ul class="menu">
-          <li id="menu-join" class="menu-item">
+          <li id="menu-join">
             <a href="/join">Join</a>
           </li>
-          <li id="menu-our-box" class="menu-item">
+          <li id="menu-our-box">
             <a href="/our_box">Our Box</a>
           </li>
-          <li id="menu-how-it-works" class="menu-item">
+          <li id="menu-how-it-works">
             <a href="/#how-it-works">How It Works</a>
           </li>
-          <li id="menu-gift" class="menu-item">
-            <a href="/gift">Gift</a>
+          <li id="menu-gift">
+            <a href="/join">Gift</a>
           </li>
         </ul>
       </div>

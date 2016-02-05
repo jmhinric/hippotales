@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: contact_comments
+#
+#  id         :uuid             not null, primary key
+#  name       :string
+#  email      :string
+#  message    :text
+#  replied    :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class ContactCommentsController < ApplicationController
   def new
     @contact_comment = ContactComment.new

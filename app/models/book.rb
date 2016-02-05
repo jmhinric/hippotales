@@ -24,8 +24,8 @@ class Book < ActiveRecord::Base
   has_and_belongs_to_many :illustrators
   belongs_to :publisher
 
-  enum age: { "0-1" => 0, "1-2" => 1, "3-6" => 2 }
-  enum gender: { both: 0, boy: 1, girl: 2 }
+  enum age: ["0-1", "1-2", "3-6"]
+  enum gender: [:both, :boy, :girl]
 
   def display_author
     display_creator(authors)
@@ -55,6 +55,6 @@ class Book < ActiveRecord::Base
 
   def display_creator(creators)
     return nil unless creators.present?
-    return and_join(creators.map(&:display_name))
+    and_join(creators.map(&:display_name))
   end
 end

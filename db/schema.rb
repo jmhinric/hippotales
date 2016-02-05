@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114025740) do
+ActiveRecord::Schema.define(version: 20160123175100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,20 @@ ActiveRecord::Schema.define(version: 20160114025740) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "children", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "birthday"
+    t.integer  "gender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "children_subscriptions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid "child_id"
+    t.uuid "subscription_id"
+  end
+
   create_table "contact_comments", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -77,6 +91,39 @@ ActiveRecord::Schema.define(version: 20160114025740) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "subscriptions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.integer  "duration"
+    t.decimal  "cost_per_month"
+    t.boolean  "is_gift",        default: false
+    t.text     "gift_message"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.uuid     "user_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "password_digest"
+    t.boolean  "is_admin",        default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "books", "publishers", name: "fk_books_publishers_publisher_id"
 end

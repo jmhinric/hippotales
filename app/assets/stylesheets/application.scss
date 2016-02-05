@@ -15,8 +15,16 @@
  *= require flash_notice
  *= require header
  *= require footer
+ *= require inputs
+ *= require button
+
  *= require homepage
  *= require our_box
+
+ *= require sessions/new
+ *= require subscriptions/new
+ *= require users/show
+
  *= require responsive
  *= require_tree .
  *= require_self

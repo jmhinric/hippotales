@@ -1,0 +1,351 @@
+<main id="join">
+  <%= render "shared/header" %>
+
+  <div id="page-title">
+    <h1>Join</h1>
+  </div>
+
+  <div class="subscription-container">
+    <section class="form-section">
+
+    <!-- <div class="Grid subscription-nav">
+      <span class="Grid-cell u-size1of4">
+        <div class="nav-item active">
+          Subscription Type
+        </div>
+      </span>
+      <span class="Grid-cell u-size1of4">
+        <div class="nav-item inactive">
+          Child Information
+        </div>
+      </span>
+      <span class="Grid-cell u-size1of4">
+        <div class="nav-item inactive">
+          Account Information
+        </div>
+      </span>
+      <span class="Grid-cell u-size1of4">
+        <div class="nav-item inactive">
+          Pay & Finish
+        </div>
+      </span>
+    </div> -->
+
+      <%= form_tag('join', class: "subscription-form") do %>
+        <section class="form-section">
+          <h3 class="section-label">CHOOSE SUBSCRIPTION:</h3>
+          <div class="Grid subscription-options">
+            <div class="Grid-cell u-size1of3">
+              <div class="subscription-info">
+                <span>
+                  <span class="month-number">1 Month</span> Subscription
+                </span>
+                <span>
+                  $29.95 / month
+                </span>
+              </div>
+              <%= radio_button_tag("subscription_type", 1) %>
+            </div>
+            <div class="Grid-cell u-size1of3">
+              <div class="subscription-info">
+                <span>
+                  <span class="month-number">3 Month</span> Subscription
+                </span>
+                <span>
+                  $27.95 / month
+                </span>
+              </div>
+              <%= radio_button_tag("subscription_type", 3) %>
+            </div>
+            <div class="Grid-cell u-size1of3">
+              <div class="subscription-info">
+                <span>
+                  <span class="month-number">6 Month</span> Subscription
+                </span>
+                <span>
+                  $25.95 / month
+                </span>
+              </div>
+              <%= radio_button_tag("subscription_type", 6) %>
+            </div>
+          </div>
+
+        </section>
+        <h3>CHILD INFO</h3>
+        <div class="Grid">
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "child_first_name",
+                  nil,
+                  placeholder: "* Child's first name",
+                  class: "border-right",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "child_last_name",
+                  nil,
+                  placeholder: "* Child's last name",
+                  class: "float-right",
+                  required: true)
+            %>
+          </div>
+          <!-- <div class="select-birthday">
+            <div class="Grid">
+              <div class="Grid-cell u-size1of3">
+                <%# select_month(
+                      nil,
+                      field_name: "child_birth_month",
+                      class: "border-right",
+                      prompt: "Birth month")
+                %>
+              </div>
+              <div class="Grid-cell u-size1of3 select-birthday">
+                <%# select_day(
+                      nil,
+                      field_name: "child_birth_day",
+                      class: "border-right",
+                      prompt: "Birth date")
+                %>
+              </div>
+              <div class="Grid-cell u-size1of3 select-birthday">
+                <%# select_year(
+                      nil,
+                      start_year: Date.today.year,
+                      end_year: (Date.today - 12.years).year,
+                      field_name: "child_birth_year",
+                      prompt: "Birth year")
+                %>
+              </div>
+            </div>
+          </div> -->
+          <div class="Grid-cell child-birthday u-size1of2">
+            <div class="Grid-cell u-size4of4">
+              <%= date_field_tag(
+                    "child_birthday",
+                    value=nil,
+                    class: "border-right",
+                    placeholder: "mm/dd/yyyy")
+              %>
+            </div>
+            <!-- <div class="Grid child-birthday">
+              <div class="Grid-cell u-size1of4">
+                <label>
+                  Birthday:
+                </label>
+              </div>
+            </div> -->
+          </div>
+          <div class="Grid-cell u-size1of2">
+            <%= select_tag(
+                  "child_gender",
+                  options_for_select(["Boy", "Girl"]),
+                  class: "float-right",
+                  include_blank: "* Gender",
+                  required: true)
+            %>
+          </div>
+        </div>
+
+        <!-- <h4 class="section-label">Shipping Address</h4> -->
+        <div class="Grid">
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "subscription_address_line1",
+                  nil,
+                  class: "border-right",
+                  placeholder: "* Shipping Address Line 1",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "subscription_address_line2",
+                  nil,
+                  class: "float-right",
+                  placeholder: "  Shipping Address Line 2")
+            %>
+          </div>
+          <div class="Grid-cell u-size1of3">
+            <%= text_field_tag(
+                  "subscription_city",
+                  nil,
+                  class: "border-right",
+                  placeholder: "* City",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of3">
+            <%= select_tag(
+                  "subscription_state",
+                  options_for_select(@states),
+                  class: "border-right",
+                  include_blank: "* Select state...",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of3">
+            <%= text_field_tag(
+                  "subscription_zip",
+                  nil,
+                  placeholder: "* Zip Code",
+                  class: "float-right",
+                  required: true)
+            %>
+          </div>
+        </div>
+
+        <h4 class="section-label">Is this a gift?</h4>
+        <div class="checkbox gift-message-checkbox">
+          <%= check_box_tag(
+                'is_gift',
+                false)
+          %>
+          <label class="is-gift">
+            Yes! Send as a gift!
+          </label>
+        </div>
+
+        <div class="gift-message hidden">
+        <%= text_area_tag(
+              "gift_message",
+              nil,
+              placeholder: "Gift message (optional)")
+        %>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h3 class="section-label">ACCOUNT INFORMATION</h3>
+        <div class="Grid">
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "user_first_name",
+                  nil,
+                  class: "border-right",
+                  placeholder: "* First name",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "user_last_name",
+                  nil,
+                  class: "float-right",
+                  placeholder: "* Last name",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "password",
+                  nil,
+                  type: :password,
+                  class: "border-right",
+                  placeholder: "* Password",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "password_confirmation",
+                  nil,
+                  type: :password,
+                  placeholder: "* Re-type password",
+                  class: "float-right",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "email",
+                  nil,
+                  type: :email,
+                  pattern: "[^@]+@[^@]+\.[a-zA-Z]{2,}",
+                  class: "border-right",
+                  placeholder: "* Email",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of2">
+            <%= text_field(
+                  "phone",
+                  nil,
+                  class: "float-right",
+                  placeholder: "  Phone (xxx) xxx-xxxx")
+            %>
+          </div>
+        </div>
+
+        <!-- <h4 class="billing-address">Billing Address</h4> -->
+        <div class="checkbox billing-address-checkbox">
+          <%= check_box_tag(
+                'same_billing_address',
+                false)
+          %>
+          <label class="same-billing-address">
+            Same as shipping address
+          </label>
+        </div>
+
+        <div class="Grid billing-address">
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "user_address_line1",
+                  nil,
+                  class: "border-right",
+                  placeholder: "* Billing Address Line 1",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of2">
+            <%= text_field_tag(
+                  "user_address_line2",
+                  nil,
+                  class: "float-right",
+                  placeholder: "Billing Address Line 2")
+            %>
+          </div>
+          <div class="Grid-cell u-size1of3">
+            <%= text_field_tag(
+                  "user_city",
+                  nil,
+                  class: "border-right",
+                  placeholder: "* City",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of3">
+            <%= select_tag(
+                  "user_state",
+                  options_for_select(@states),
+                  class: "border-right",
+                  include_blank: "* Select state...",
+                  required: true)
+            %>
+          </div>
+          <div class="Grid-cell u-size1of3">
+            <%= text_field_tag(
+                  "user_zip",
+                  nil,
+                  placeholder: "* Zip Code",
+                  class: "float-right",
+                  required: true)
+            %>
+          </div>
+        </div>
+      </section>
+
+      <%# submit_tag "Submit", class: "submit join-submit button" %>
+    <% end %>
+
+    <h3 class="section-label">PAYMENT</h3>
+    <form id="checkout" method="post" action="/checkout">
+      <div id="payment-form"></div>
+      <input type="submit" class="button" value="Submit">
+    </form>
+  </div>
+</main>
+
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>

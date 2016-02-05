@@ -1,0 +1,38 @@
+@import "colors";
+
+#user-show {
+  .user-show-container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+
+  .user-nav {
+    padding: 30px 0;
+
+    .nav-item {
+      display: inline;
+      text-align: center;
+      cursor: pointer;
+      padding: 0 5px;
+    }
+
+    .Grid-cell {
+      text-align: center;
+    }
+
+    .border-cell {
+      border-right: 1px solid $light-gray;
+    }
+
+    .active {
+      color: black;
+      font-style: underline;
+      font-weight: bold;
+    }
+
+    .inactive {
+      color: $light-gray;
+    }
+  }
+}

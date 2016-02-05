@@ -34,7 +34,9 @@ gem 'sprockets_better_errors'
 gem 'annotate', github: 'ctran/annotate_models'
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'braintree'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

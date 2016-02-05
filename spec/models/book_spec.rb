@@ -42,7 +42,7 @@ RSpec.describe Book, type: :model do
       expect(book.gender).to eq("boy")
     end
 
-    it "has gender 'girl' for value 0" do
+    it "has gender 'girl' for value 2" do
       book.update!(gender: 2)
       expect(book.gender).to eq("girl")
     end
