@@ -19,6 +19,8 @@
 #
 
 class User < ActiveRecord::Base
+  include Personable
+
   has_secure_password
   validates :first_name, :last_name, :email, :address_line1, :city, :state, :zip, presence: true
   validates :email, uniqueness: { case_sensitive: false }

@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative '../support/shared_examples/personable_spec'
 
 RSpec.describe Child, type: :model do
   [:first_name, :last_name, :birthday, :gender].each do |attr|
@@ -7,24 +8,26 @@ RSpec.describe Child, type: :model do
   it { should validate_uniqueness_of(:last_name).scoped_to([:first_name, :birthday]) }
   it { should have_and_belong_to_many :subscriptions }
 
+  it_behaves_like 'a personable'
+
   let(:child) { create :child }
   let(:subscription) { create :subscription }
 
   before { child.update!(subscriptions: [subscription]) }
 
-  it "has subscriptions" do
+  it 'has subscriptions' do
     expect(child.subscriptions).to be
   end
 
-  describe "#gender" do
-    it "has gender 'boy' for value 0" do
+  describe '#gender' do
+    it 'has gender boy for value 0' do
       child.update!(gender: 0)
-      expect(child.gender).to eq("boy")
+      expect(child.gender).to eq('boy')
     end
 
-    it "has gender 'girl' for value 1" do
+    it 'has gender girl for value 1' do
       child.update!(gender: 1)
-      expect(child.gender).to eq("girl")
+      expect(child.gender).to eq('girl')
     end
   end
 end

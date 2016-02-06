@@ -12,13 +12,11 @@
 #
 
 class Child < ActiveRecord::Base
+  include Personable
+
   validates :first_name, :last_name, :birthday, :gender, presence: true
   validates :last_name, :uniqueness => {:scope => [:first_name, :birthday]}
   has_and_belongs_to_many :subscriptions
 
-  enum gender: [:boy, :girl]
-
-  def full_name
-    "#{first_name} #{last_name}"
-  end
+  enum gender: ['boy', 'girl']
 end
