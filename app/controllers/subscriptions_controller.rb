@@ -53,6 +53,9 @@ class SubscriptionsController < ApplicationController
     end
 
     render :js => "window.location = '/users/#{@user.id}'"
+  rescue Exception => e
+    binding.pry
+    render json: { error: e.message }, status: :not_acceptable
   end
 
   def client_token
