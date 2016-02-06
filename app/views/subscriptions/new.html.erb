@@ -6,7 +6,6 @@
   </div>
 
   <div class="subscription-container">
-    <section class="form-section">
 
     <!-- <div class="Grid subscription-nav">
       <span class="Grid-cell u-size1of4">
@@ -31,46 +30,47 @@
       </span>
     </div> -->
 
-      <%= form_tag('join', class: "subscription-form") do %>
-        <section class="form-section">
-          <h3 class="section-label">CHOOSE SUBSCRIPTION:</h3>
-          <div class="Grid subscription-options">
-            <div class="Grid-cell u-size1of3">
-              <div class="subscription-info">
-                <span>
-                  <span class="month-number">1 Month</span> Subscription
-                </span>
-                <span>
-                  $29.95 / month
-                </span>
-              </div>
-              <%= radio_button_tag("subscription_type", 1) %>
+    <%= form_tag('join', class: "subscription-form") do %>
+      <section class="form-section">
+        <h3>CHOOSE SUBSCRIPTION:</h3>
+        <div class="Grid subscription-options">
+          <div class="Grid-cell u-size1of3">
+            <div class="subscription-info">
+              <span>
+                <span class="month-number">1 Month</span> Subscription
+              </span>
+              <span>
+                $29.95 / month
+              </span>
             </div>
-            <div class="Grid-cell u-size1of3">
-              <div class="subscription-info">
-                <span>
-                  <span class="month-number">3 Month</span> Subscription
-                </span>
-                <span>
-                  $27.95 / month
-                </span>
-              </div>
-              <%= radio_button_tag("subscription_type", 3) %>
-            </div>
-            <div class="Grid-cell u-size1of3">
-              <div class="subscription-info">
-                <span>
-                  <span class="month-number">6 Month</span> Subscription
-                </span>
-                <span>
-                  $25.95 / month
-                </span>
-              </div>
-              <%= radio_button_tag("subscription_type", 6) %>
-            </div>
+            <%= radio_button_tag("subscription_type", 1) %>
           </div>
+          <div class="Grid-cell u-size1of3">
+            <div class="subscription-info">
+              <span>
+                <span class="month-number">3 Month</span> Subscription
+              </span>
+              <span>
+                $27.95 / month
+              </span>
+            </div>
+            <%= radio_button_tag("subscription_type", 3) %>
+          </div>
+          <div class="Grid-cell u-size1of3">
+            <div class="subscription-info">
+              <span>
+                <span class="month-number">6 Month</span> Subscription
+              </span>
+              <span>
+                $25.95 / month
+              </span>
+            </div>
+            <%= radio_button_tag("subscription_type", 6) %>
+          </div>
+        </div>
+      </section>
 
-        </section>
+      <section class="form-section">
         <h3>CHILD INFO</h3>
         <div class="Grid">
           <div class="Grid-cell u-size1of2">
@@ -196,7 +196,7 @@
           </div>
         </div>
 
-        <h4 class="section-label">Is this a gift?</h4>
+        <h4>Is this a gift?</h4>
         <div class="checkbox gift-message-checkbox">
           <%= check_box_tag(
                 'is_gift',
@@ -208,16 +208,16 @@
         </div>
 
         <div class="gift-message hidden">
-        <%= text_area_tag(
-              "gift_message",
-              nil,
-              placeholder: "Gift message (optional)")
-        %>
+          <%= text_area_tag(
+                "gift_message",
+                nil,
+                placeholder: "Gift message (optional)")
+          %>
         </div>
       </section>
 
       <section class="form-section">
-        <h3 class="section-label">ACCOUNT INFORMATION</h3>
+        <h3>ACCOUNT INFORMATION</h3>
         <div class="Grid">
           <div class="Grid-cell u-size1of2">
             <%= text_field_tag(

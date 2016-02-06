@@ -10,12 +10,6 @@
     <div class="Grid-cell u-size9of12 menus">
       <div class="login-container">
         <ul class="login">
-          <!-- <li class="border-right">
-            <a href="/signup">Sign Up</a>
-          </li>
-          <li class="border-right">
-            <a href="#">Login</a>
-          </li> -->
           <% if logged_in? %>
             <li class="border-right">
               <%= link_to "My Account", user_path(current_user) %>
@@ -24,9 +18,9 @@
               <%= link_to "Log Out", "/session", method: "delete" %>
             </li>
           <% else %>
-            <li class="border-right">
-              <%= link_to "Sign Up", new_user_path %>
-            </li>
+            <!-- <li class="border-right"> -->
+              <%# link_to "Sign Up", new_user_path %>
+            <!-- </li> -->
             <li class="border-right">
               <%= link_to "Log In","/login" %>
             </li>
