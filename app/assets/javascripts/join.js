@@ -149,7 +149,7 @@ var join = function(){
       $.post( "/subscriptions", checkoutParams(result))
         .done(createSubscription)
         .fail(function(error) {
-          console.log(`There was a problem somewhere: ${error.responseText}`);
+          console.log("There was a problem somewhere: " + error.responseText);
       });
     } else {
       console.log("Form problems");
