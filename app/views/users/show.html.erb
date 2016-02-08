@@ -25,15 +25,27 @@
         <h2>Your Subscriptions</h2>
         <div class="subscription-types">
           <ul>
-            <li><span class="nav-item">Active</span></li>
-            <li><span class="nav-item inactive">History</span></li>
-            <li><span class="nav-item inactive">Gifts</span></li>
+            <li><span id="active-subscriptions" class="nav-item">Active</span></li>
+            <li><span id="gift-subscriptions" class="nav-item inactive">Gifts</span></li>
+            <li><span id="inactive-subscriptions" class="nav-item inactive">History</span></li>
           </ul>
         </div>
         <div class="subscriptions">
-          <% @subscriptions.each do |subscription| %>
-            <%= render partial: "shared/subscription", locals: { subscription: subscription } %>
-          <% end %>
+          <div class="active-subscriptions">
+            <% @active_subscriptions.each do |subscription| %>
+              <%= render partial: "shared/subscription", locals: { subscription: subscription } %>
+            <% end %>
+          </div>
+          <div class="inactive-subscriptions hidden">
+            <% @inactive_subscriptions.each do |subscription| %>
+              <%= render partial: "shared/subscription", locals: { subscription: subscription } %>
+            <% end %>
+          </div>
+          <div class="gift-subscriptions hidden">
+            <% @gift_subscriptions.each do |subscription| %>
+              <%= render partial: "shared/subscription", locals: { subscription: subscription } %>
+            <% end %>
+          </div>
         </div>
       </div>
 
@@ -50,6 +62,7 @@
             <%= @user.phone %>
           </div>
           <%= render partial: "shared/address", locals: { entity: @user } %>
+
         </div>
       </div>
 

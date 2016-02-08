@@ -39,7 +39,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params["id"])
-    @subscriptions = @user.subscriptions
+    @active_subscriptions = @user.subscriptions
+    @inactive_subscriptions = []
+    @gift_subscriptions = []
   end
 
   private
