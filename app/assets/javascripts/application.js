@@ -16,6 +16,7 @@
 //= homepage
 //= contact
 //= join
+//= user-show
 //= require turbolinks
 //= require_tree .
 

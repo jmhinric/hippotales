@@ -1,4 +1,5 @@
 @import "colors";
+@import "mixins";
 
 .button, .button-yellow {
   width: 140px;
@@ -12,17 +13,21 @@
 
 .button {
   color: white;
-  background-color: $book-green-color;
+  background-color: $base-green;
+  cursor: pointer;
 }
 
 .button:hover {
-  background-color: $book-green-color-light;
+  background-color: $base-green-light;
+  @include transition;
 }
 
 .button-yellow {
+  color: black;
   background-color: $button-yellow;
 }
 
 .button-yellow:hover {
   background-color: $button-yellow-light;
+  @include transition;
 }

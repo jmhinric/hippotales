@@ -25,6 +25,6 @@ class Subscription < ActiveRecord::Base
   has_and_belongs_to_many :children
 
   def child_names
-    and_join(children.map(&:full_name))
+    and_join(children.map(&:display_name))
   end
 end

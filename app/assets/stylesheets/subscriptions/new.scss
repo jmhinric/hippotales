@@ -73,7 +73,7 @@
       display: inline-block;
       font-family: $cabin-sketch-family;
       font-size: 2em;
-      color: $book-green-color;
+      color: $base-green;
       margin-right: 3px;
     }
   }
@@ -115,7 +115,7 @@
   }
 
   .form-section {
-    border-bottom: 3px solid $book-green-color;
+    border-bottom: 3px solid $base-green;
     padding-bottom: 50px;
   }
 
@@ -156,7 +156,7 @@
     }
 
     button#braintree-paypal-button {
-      background-color: $book-green-color
+      background-color: $base-green
     }
   }
 }
