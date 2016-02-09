@@ -24,7 +24,8 @@
       cursor: pointer;
       color: black;
       font-weight: bold;
-      border-bottom: 2px solid $active-nav-red;
+      padding-bottom: 3px;
+      border-bottom: 1px solid $active-nav-red;
       // border-bottom: 2px solid $base-green;
     }
 

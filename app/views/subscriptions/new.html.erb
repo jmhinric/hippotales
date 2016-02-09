@@ -40,7 +40,7 @@
                 <span class="month-number">1 Month</span> Subscription
               </span>
               <span>
-                $29.95 / month
+                $<%= @cost.one_month.to_s %> / month
               </span>
             </div>
             <%= radio_button_tag("subscription_type", 1) %>
@@ -51,7 +51,7 @@
                 <span class="month-number">3 Month</span> Subscription
               </span>
               <span>
-                $27.95 / month
+                $<%= @cost.three_month.to_s %> / month
               </span>
             </div>
             <%= radio_button_tag("subscription_type", 3) %>
@@ -62,7 +62,7 @@
                 <span class="month-number">6 Month</span> Subscription
               </span>
               <span>
-                $25.95 / month
+                $<%= @cost.six_month.to_s %> / month
               </span>
             </div>
             <%= radio_button_tag("subscription_type", 6) %>

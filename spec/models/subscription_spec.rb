@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Subscription, type: :model do
   [:duration, :cost_per_month, :address_line1, :city, :state, :zip].each do |attr|
-    it { should validate_presence_of(attr) }
+    it { is_expected.to validate_presence_of(attr) }
   end
-  it { should belong_to :user }
-  it { should have_and_belong_to_many :children }
+  it { is_expected.to belong_to :user }
+  it { is_expected.to belong_to :subscription_cost }
+  it { is_expected.to have_and_belong_to_many :children }
 
   let(:subscription) { create :subscription }
   let(:child) { create :child }
