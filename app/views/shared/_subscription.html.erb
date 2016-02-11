@@ -16,7 +16,7 @@
             <span class="details-data">$<%= subscription.cost_per_month.to_s %> / month</span>
           </li>
           <li class="Grid-cell u-size1of4">
-            <div class="details-header">DURATION</div>
+            <div class="details-header">SUBSCRIPTION CYCLE</div>
             <span class="details-data"><%= pluralize(subscription.duration, "month") %></span>
           </li>
         </ul>
@@ -33,10 +33,12 @@
             <div>
               <%= render partial: "shared/address", locals: { entity: subscription } %>
             </div>
-            <span>Edit shipping address</span>
+            <span class="edit-link">Edit shipping address</span>
           </div>
         </div>
-        <div class="small-info">Paid with:</div>
+        <div class="small-info">
+          <span class="bold">Paid with: </span>
+        </div>
         <div class="small-info">Shipments remaining:</div>
       </div>
 

@@ -26,7 +26,6 @@
         <div class="subscription-types">
           <ul>
             <li><span id="active-subscriptions" class="nav-item">Active</span></li>
-            <li><span id="gift-subscriptions" class="nav-item inactive">Gifts</span></li>
             <li><span id="inactive-subscriptions" class="nav-item inactive">History</span></li>
           </ul>
         </div>
@@ -38,11 +37,6 @@
           </div>
           <div class="inactive-subscriptions hidden">
             <% @inactive_subscriptions.each do |subscription| %>
-              <%= render partial: "shared/subscription", locals: { subscription: subscription } %>
-            <% end %>
-          </div>
-          <div class="gift-subscriptions hidden">
-            <% @gift_subscriptions.each do |subscription| %>
               <%= render partial: "shared/subscription", locals: { subscription: subscription } %>
             <% end %>
           </div>

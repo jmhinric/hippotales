@@ -39,12 +39,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params["id"])
-    @active_subscriptions = @user.subscriptions
+    @active_subscriptions = subscriptions
     @inactive_subscriptions = []
-    @gift_subscriptions = []
+    @gift_subscriptions = subscriptions.where(is_gift: true)
   end
 
   private
+
+  def subscriptions
+    @_subscriptions ||= @user.subscriptions
+  end
 
   def user_params
     params.require(:user).permit(:id, :user_first_name, :user_last_name, :password, :password_confirmation, :email, :phone, :user_address_line1, :user_address_line2, :user_city, :user_state, :user_zip)
