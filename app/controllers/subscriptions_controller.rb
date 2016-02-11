@@ -84,7 +84,7 @@ class SubscriptionsController < ApplicationController
       first_name: params["user_first_name"],
       last_name: params["user_last_name"],
       email: params["email"],
-      phone: params["phone"],
+      phone: phone,
       password: params["password"],
       password_confirmation: params["password_confirmation"],
       address_line1: params["user_address_line1"],
@@ -93,6 +93,10 @@ class SubscriptionsController < ApplicationController
       state: params["user_state"],
       zip: params["user_zip"]
     )
+  end
+
+  def phone
+    params["phone"].first.gsub(/[^\d]/, '')
   end
 
   def child_params
