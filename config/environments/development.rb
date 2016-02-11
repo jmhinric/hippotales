@@ -41,4 +41,7 @@ Rails.application.configure do
 
   # For 'sprockets_better_errors' gem
   # config.assets.raise_production_errors = true
+
+  # For react.js
+  config.react.variant = :development
 end
