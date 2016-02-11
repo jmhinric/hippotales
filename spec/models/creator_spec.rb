@@ -10,25 +10,25 @@ RSpec.describe Creator, type: :model do
     should validate_uniqueness_of(:last_name)
       .scoped_to(:first_name)
       .case_insensitive
-      .with_message "Creator already exists with that first and last name"
+      .with_message 'Creator already exists with that first and last name'
   end
 
-  describe "#display_name" do
+  describe '#display_name' do
     let(:creator) do
       create :creator,
-        first_name: "Billy",
-        middle_name: "Bob",
-        last_name: "Thornton"
+        first_name: 'Catherine',
+        middle_name: 'Zeta',
+        last_name: 'Jones'
      end
      let(:result) { creator.display_name }
 
-    it "gives concatenates the first, middle, and last names" do
-      expect(result).to eq("Billy Bob Thornton")
+    it 'gives concatenates the first, middle, and last names' do
+      expect(result).to eq('Catherine Zeta Jones')
     end
 
-    it "gives first and last name if no middle" do
+    it 'gives first and last name if no middle' do
       creator.update!(middle_name: nil)
-      expect(result).to eq("Billy Thornton")
+      expect(result).to eq('Catherine Jones')
     end
   end
 end

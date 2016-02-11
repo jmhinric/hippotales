@@ -44,3 +44,10 @@ a:hover {
 .hidden {
   display: none;
 }
+
+.edit-link {
+  text-decoration: underline;
+  color: blue;
+  font-size: 12px;
+  cursor: pointer;
+}

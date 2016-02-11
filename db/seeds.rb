@@ -6,6 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+# Subscription Cost
+subscription_cost = SubscriptionCost.create!(
+  one_month: 29.95,
+  three_month: 27.95,
+  six_month: 25.95
+)
+
 # Publishers
 dk_publisher = Publisher.create!(name: "DK Publishing")
 

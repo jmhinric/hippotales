@@ -2,19 +2,20 @@
 #
 # Table name: subscriptions
 #
-#  id             :uuid             not null, primary key
-#  duration       :integer
-#  cost_per_month :decimal(, )
-#  is_gift        :boolean          default(FALSE)
-#  gift_message   :text
-#  address_line1  :string
-#  address_line2  :string
-#  city           :string
-#  state          :string
-#  zip            :string
-#  user_id        :uuid
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id                   :uuid             not null, primary key
+#  duration             :integer
+#  cost_per_month       :decimal(, )
+#  is_gift              :boolean          default(FALSE)
+#  gift_message         :text
+#  address_line1        :string
+#  address_line2        :string
+#  city                 :string
+#  state                :string
+#  zip                  :string
+#  user_id              :uuid
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  subscription_cost_id :uuid
 #
 
 class SubscriptionsController < ApplicationController
@@ -25,6 +26,7 @@ class SubscriptionsController < ApplicationController
     @child = Child.new
     @months = MONTHS
     @states = US_STATES
+    @cost = current_cost
   end
 
   def create
@@ -36,20 +38,18 @@ class SubscriptionsController < ApplicationController
     if braintree_result
       @user = new_user
       if @user.save!
-        session[:user_id] = @user.id
         child = new_child
         if child.save!
           subscription = new_subscription
-          subscription.user = @user
-          subscription.children << child
+          if subscription.save!
+            session[:user_id] = @user.id
+            subscription.user = @user
+            subscription.children << child
+            subscription.subscription_cost = SubscriptionCost.current
+            subscription.save!
+          end
         end
       end
-    end
-
-    if subscription.save!
-      @user.subscriptions << subscription
-      @user.save!
-      child.save!
     end
 
     render :js => "window.location = '/users/#{@user.id}'"
@@ -84,7 +84,7 @@ class SubscriptionsController < ApplicationController
       first_name: params["user_first_name"],
       last_name: params["user_last_name"],
       email: params["email"],
-      phone: params["phone"],
+      phone: phone,
       password: params["password"],
       password_confirmation: params["password_confirmation"],
       address_line1: params["user_address_line1"],
@@ -93,6 +93,10 @@ class SubscriptionsController < ApplicationController
       state: params["user_state"],
       zip: params["user_zip"]
     )
+  end
+
+  def phone
+    params["phone"].first.gsub(/[^\d]/, '')
   end
 
   def child_params
@@ -133,7 +137,7 @@ class SubscriptionsController < ApplicationController
   def new_subscription
     Subscription.new(
       duration: params["subscription_type"],
-      cost_per_month: payment_amount.to_d,
+      cost_per_month: payment_amount,
       is_gift: params["is_gift"],
       gift_message: params["gift_message"],
       address_line1: params["subscription_address_line1"],
@@ -153,11 +157,18 @@ class SubscriptionsController < ApplicationController
   end
 
   def payment_amount
-    cost_map = {
-      "1" => "29.95",
-      "3" => "27.95",
-      "6" => "25.95"
-    }
     cost_map[params["subscription_type"]]
+  end
+
+  def cost_map
+    {
+      "1" => current_cost.one_month,
+      "3" => current_cost.three_month,
+      "6" => current_cost.six_month
+    }
+  end
+
+  def current_cost
+    SubscriptionCost.current
   end
 end

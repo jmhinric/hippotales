@@ -1,0 +1,54 @@
+<div class="subscription-show">
+  <div class="subscription-details">
+        <ul class="Grid">
+          <li class="Grid-cell u-size1of4">
+            <div class="details-header">ORDERED ON</div>
+            <span class="details-data">
+              <%= subscription.created_at.to_date.strftime("%B %d, %Y") %>
+            </span>
+          </li>
+          <li class="Grid-cell u-size1of4">
+            <div class="details-header">NEXT SHIPMENT ON</div>
+            <span class="details-data">-</span>
+          </li>
+          <li class="Grid-cell u-size1of4">
+            <div class="details-header">COST</div>
+            <span class="details-data">$<%= subscription.cost_per_month.to_s %> / month</span>
+          </li>
+          <li class="Grid-cell u-size1of4">
+            <div class="details-header">SUBSCRIPTION CYCLE</div>
+            <span class="details-data"><%= pluralize(subscription.duration, "month") %></span>
+          </li>
+        </ul>
+      <div class="Grid-cell u-size1of3"></div>
+  </div>
+  <div class="subscription-info">
+    <div class="Grid">
+      <div class="Grid-cell u-size2of3">
+        <div class="child-info">
+          <h3>
+            <%= subscription.child_names %>
+          </h3>
+          <div class="subscription-recipient">
+            <div>
+              <%= render partial: "shared/address", locals: { entity: subscription } %>
+            </div>
+            <span class="edit-link">Edit shipping address</span>
+          </div>
+        </div>
+        <div class="small-info">
+          <span class="bold">Paid with: </span>
+        </div>
+        <div class="small-info">Shipments remaining:</div>
+      </div>
+
+      <div class="Grid-cell u-size1of12">
+      </div>
+      <div class="Grid-cell u-size1of4">
+        <div class="subscription-button button">Extend Subscription</div>
+        <div class="subscription-button button">Add Child</div>
+        <div class="subscription-button button button-yellow">Suspend Subscription</div>
+      </div>
+    </div>
+  </div>
+</div>

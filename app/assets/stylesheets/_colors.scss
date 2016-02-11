@@ -6,13 +6,18 @@ $header-footer-blue: rgb(185, 223, 222);
 $link-green: rgb(119, 151, 138);
 $menu-green: rgb(170, 193, 114);
 
-$book-green-color: rgb(0, 139, 139);
-$book-green-color-light: rgb(0, 154, 139);
+$base-green: rgb(0, 139, 139);
+$base-green-light: rgb(0, 154, 139);
 
 $button-yellow: rgb(223, 218, 73);
 $button-yellow-light: rgb(223, 226, 73);
 
+$success-green: $menu-green;
 $error-red: rgb(178, 64, 0);
+
+$active-nav-red: rgb(255, 80, 119);
 
 $dark-gray: rgb(150, 150, 150);
 $light-gray: rgb(173, 173, 173);
+$lighter-gray: rgb(203, 203, 203);
+$lightest-gray: rgb(233, 233, 233);

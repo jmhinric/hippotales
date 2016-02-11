@@ -1,38 +1,119 @@
 @import "colors";
+@import "mixins";
 
 #user-show {
   .user-show-container {
     width: 70%;
     margin: 0 auto;
     padding: 50px 0;
-  }
 
-  .user-nav {
-    padding: 30px 0;
+    .user-nav.Grid {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    .nav-item.inactive {
+      color: $light-gray;
+      font-weight: normal;
+      border-bottom: 0;
+    }
 
     .nav-item {
       display: inline;
       text-align: center;
       cursor: pointer;
-      padding: 0 5px;
-    }
-
-    .Grid-cell {
-      text-align: center;
-    }
-
-    .border-cell {
-      border-right: 1px solid $light-gray;
-    }
-
-    .active {
       color: black;
-      font-style: underline;
       font-weight: bold;
+      padding-bottom: 3px;
+      border-bottom: 1px solid $base-green;
     }
 
-    .inactive {
-      color: $light-gray;
+    .user-nav {
+      padding: 30px 0;
+
+      .Grid-cell {
+        text-align: center;
+      }
+
+      .border-cell {
+        border-right: 1px solid $light-gray;
+      }
+    }
+
+    .user-main {
+      .subscription-types {
+        padding: 20px;
+
+        li {
+          padding: 10px 20px 10px 0;
+          display: inline;
+        }
+      }
+
+      h2 {
+        padding-bottom: 15px;
+      }
+
+      .subscriptions, .user-account-info {
+        border: 1px solid $lighter-gray;
+        border-radius: 5px;
+      }
+
+      .user-account-info {
+        padding: 30px;
+      }
+    }
+  }
+}
+
+.subscription-show {
+  .subscription-details {
+    text-align: left;
+    background-color: $lightest-gray;
+    padding: 20px;
+
+    li {
+
+      .details-header {
+        font-size: 0.7em;
+        padding-bottom: 3px;
+        font-weight: bold;
+      }
+
+      .details-data {
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  .subscription-info {
+    padding: 20px;
+
+    .small-info {
+      font-size: 0.8em;
+      padding-bottom: 15px;
+    }
+
+    .child-info {
+      padding-bottom: 20px;
+    }
+
+    .subscription-button {
+      float: right;
+      font-size: 0.9em;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+
+  h3 {
+    padding-bottom: 5px;
+  }
+
+  .subscription-recipient {
+
+    .subscription-cost {
+      padding-bottom: 5px;
     }
   }
 }

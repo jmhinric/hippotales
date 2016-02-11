@@ -1,0 +1,11 @@
+@mixin transition {
+  -webkit-transition: all 0.15s ease-in;
+  -moz-transition: all 0.15s ease-in;
+  -ms-transition: all 0.15s ease-in;
+  -o-transition: all 0.15s ease-in;
+
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  -ms-transition: all 0.15s ease-out;
+  -o-transition: all 0.15s ease-out;
+}

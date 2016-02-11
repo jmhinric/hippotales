@@ -2,37 +2,64 @@
   <%= render "shared/header" %>
 
   <div id="page-title">
-    <h1>Your Profile</h1>
+    <h1>Your Account</h1>
   </div>
 
   <div class="user-show-container">
 
     <div class="Grid user-nav">
       <span class="Grid-cell border-cell u-size1of2">
-        <div class="nav-item active">
+        <div id="subscriptions" class="nav-item">
           Subscriptions
         </div>
       </span>
       <span class="Grid-cell u-size1of2">
-        <div class="nav-item inactive">
+        <div id="account-info" class="nav-item inactive">
           Account Info
         </div>
       </span>
     </div>
 
-    <div class="user-show-subscriptions">
-      <% @subscriptions.each do |subscription| %>
-        <div>
-          <%= subscription.child_names %>
+    <section class="user-main">
+      <div id="user-show-subscriptions">
+        <h2>Your Subscriptions</h2>
+        <div class="subscription-types">
+          <ul>
+            <li><span id="active-subscriptions" class="nav-item">Active</span></li>
+            <li><span id="inactive-subscriptions" class="nav-item inactive">History</span></li>
+          </ul>
         </div>
-        <div>
-          <%= render partial: "shared/address", locals: { entity: subscription } %>
+        <div class="subscriptions">
+          <div class="active-subscriptions">
+            <% @active_subscriptions.each do |subscription| %>
+              <%= render partial: "shared/subscription", locals: { subscription: subscription } %>
+            <% end %>
+          </div>
+          <div class="inactive-subscriptions hidden">
+            <% @inactive_subscriptions.each do |subscription| %>
+              <%= render partial: "shared/subscription", locals: { subscription: subscription } %>
+            <% end %>
+          </div>
         </div>
-        <div>
-          <%= subscription.duration %> months, $<%= subscription.cost_per_month.to_s %> / month
-        </div>
-      <% end %>
-    </div>
+      </div>
 
+      <div id="user-show-account-info" class="hidden">
+        <h2>Your Account Info</h2>
+        <div class="user-account-info">
+          <div>
+            <%= @user.display_name %>
+          </div>
+          <div>
+            <%= @user.email %>
+          </div>
+          <div>
+            <%= @user.phone %>
+          </div>
+          <%= render partial: "shared/address", locals: { entity: @user } %>
+
+        </div>
+      </div>
+
+    </section>
   </div>
 </main>

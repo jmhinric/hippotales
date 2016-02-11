@@ -34,7 +34,9 @@ var join = function(){
   $(".gift-message-checkbox :checkbox").click(giftMessage);
   $(".gift-message-checkbox label").click(function() {
     var checkbox = $(".gift-message-checkbox :checkbox");
-    checkbox.prop("checked", !checkbox.prop("checked"));
+    var checkedState = checkbox.prop("checked");
+    checkbox.val(!checkedState);
+    checkbox.prop("checked", !checkedState);
     giftMessage();
   });
 
