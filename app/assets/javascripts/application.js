@@ -13,17 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery_mask
-//= homepage
-//= contact
-//= join
-//= user-show
+//= require homepage
+//= require join
+//= require user-show
 //= require turbolinks
-//= require_tree .
 
 // Global variable to be able to clear timer of homepage slideshow
 // FIXME find a better solution to this.
 window.HT = {
   Homepage: function() {
-      this.slideshow;
+    this.slideshow;
   }
 };

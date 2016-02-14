@@ -12,6 +12,7 @@
  *
  *= require suit
  *= require style
+ *= require text
  *= require flash_notice
  *= require header
  *= require footer
@@ -20,12 +21,12 @@
 
  *= require homepage
  *= require our_box
+ *= require contact
 
  *= require sessions/new
  *= require subscriptions/new
  *= require users/show
 
  *= require responsive
- *= require_tree .
  *= require_self
  */
