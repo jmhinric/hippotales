@@ -95,20 +95,3 @@
     </div>
   </section>
 </main>
-
-<script>
-  // slideshow- needs to be on homepage so the script is always loaded
-  //   so clearInterval is called
-  $(function(){
-    clearInterval(HT.Homepage.slideshow);
-    $('#baby-pictures-container > div:gt(0)').hide();
-    HT.Homepage.slideshow = setInterval(function(){
-      $('#baby-pictures-container :first-child')
-        .fadeOut(1000)
-        .next('div')
-        .fadeIn(1000)
-        .end()
-        .appendTo('#baby-pictures-container');
-    }, 5000);
-  });
-</script>
