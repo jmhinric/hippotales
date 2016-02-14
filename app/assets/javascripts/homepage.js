@@ -1,3 +1,18 @@
+HT.Homepage = function() {};
+
+HT.Homepage.prototype.runSlideshow = function() {
+  // clearInterval(slideshow);
+  $('#baby-pictures-container > div:gt(0)').hide();
+  HT.Globals.slideshow = setInterval(function(){
+    $('#baby-pictures-container :first-child')
+      .fadeOut(1000)
+      .next('div')
+      .fadeIn(1000)
+      .end()
+      .appendTo('#baby-pictures-container');
+  }, 5000);
+};
+
 // responsive design
 $(window).resize(function(){
   var width = $(window).width();
@@ -13,3 +28,9 @@ $(window).resize(function(){
   }
 })
 .resize();
+
+$(document).on("page:change", function() {
+  clearInterval(HT.Globals.slideshow);
+  var homepage = new HT.Homepage();
+  homepage.runSlideshow();
+});
