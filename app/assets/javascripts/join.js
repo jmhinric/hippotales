@@ -5,6 +5,17 @@ HT.Join = function() {
 
 HT.Join.prototype.init = function() {
   var self = this;
+
+  // fix color of placeholder text for dropdowns
+  $("select").val("").css("color", "rgb(173, 173, 173)");
+  // fix color of placeholder text for date selector
+  var dateInput = $("input[type=date]");
+  dateInput.css("color", "rgb(173, 173, 173)")
+  dateInput.on("change keyup, keydown", function() {
+    var color = dateInput.val() === '' ? "rgb(173, 173, 173)" : "black";
+    dateInput.css("color", color);
+  });
+
   // mask the phone number input with format characters
   $("#phone_").mask("(999) 999-9999");
 
