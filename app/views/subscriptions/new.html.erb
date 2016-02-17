@@ -7,7 +7,7 @@
 
   <div class="subscription-container">
 
-    <div class="Grid subscription-nav">
+    <!-- <div class="Grid subscription-nav">
       <span class="Grid-cell u-size1of4">
         <div class="nav-item active">
           Subscription Type
@@ -28,7 +28,7 @@
           Pay & Finish
         </div>
       </span>
-    </div>
+    </div> -->
 
     <%= form_tag('join', class: "subscription-form") do %>
       <section class="form-section">
@@ -337,12 +337,13 @@
         </div>
       </section>
 
-      <%# submit_tag "Submit", class: "submit join-submit button" %>
     <% end %>
 
     <h3 class="section-label">PAYMENT</h3>
     <form id="checkout" method="post" action="/checkout">
       <div id="payment-form"></div>
+      <div class="flash">
+      </div>
       <input type="submit" class="button" value="Submit">
     </form>
   </div>

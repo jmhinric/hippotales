@@ -1,5 +1,5 @@
 var userShow = function() {
-  // Main menu
+  // Main menu toggle- Subscriptions and Account Info
   $("#subscriptions").click(function() {
     $("#user-show-subscriptions").removeClass("hidden");
     $("#user-show-account-info").addClass("hidden");
@@ -16,7 +16,7 @@ var userShow = function() {
     $("#account-info").removeClass("inactive");
   });
 
-  // Subscriptions sub-menu
+  // Subscriptions sub-menu- Active and History
   $("#active-subscriptions").click(function() {
     $(".active-subscriptions").removeClass("hidden");
     $(".inactive-subscriptions").addClass("hidden");

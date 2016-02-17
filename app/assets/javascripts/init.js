@@ -2,5 +2,6 @@ window.HT = {
   Globals: {
     slideshow: {}
   },
-  Homepage: {}
+  Homepage: {},
+  Join: {}
 };

@@ -72,7 +72,7 @@ end
 
 # Load bower packages
 source 'https://rails-assets.org' do
-  # gem 'rails-assets-BOWER_PACKAGE_NAME'
+  gem 'rails-assets-moment'
 end
 
 ruby '2.2.3'
