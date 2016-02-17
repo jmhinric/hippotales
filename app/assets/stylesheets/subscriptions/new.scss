@@ -1,5 +1,6 @@
 @import "colors";
 @import "fonts";
+@import "mixins";
 
 #join {
   .subscription-container {
@@ -60,6 +61,17 @@
     padding: 10px;
     margin-top: 40px;
     text-align: center;
+
+    .selected {
+      background-color: $lightest-gray;
+      border: 1px solid $light-gray;
+      @include classTransition;
+    }
+
+    .subscription-option {
+      padding: 15px;
+
+    }
 
     .subscription-info {
       margin-bottom: 23px;

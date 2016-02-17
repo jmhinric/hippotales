@@ -22,6 +22,12 @@ HT.Join.prototype.init = function() {
     self.copyBilling();
   });
 
+  // highlight the selected subscription
+  $(".subscription-options input:radio").click(function(e) {
+    $(e.target.parentElement).addClass("selected");
+    $(e.target.parentElement).siblings().removeClass("selected");
+  });
+
   // update billing address fields on change
   this.addressListenersSetup(self);
 
