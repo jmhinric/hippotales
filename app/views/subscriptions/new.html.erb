@@ -344,8 +344,36 @@
       <div id="payment-form"></div>
       <div class="flash">
       </div>
+
+      <div class="checkbox terms-conditions-checkbox">
+        <%= check_box_tag(
+              'terms_conditions',
+              false)
+        %>
+        <label>
+          I agree to the <span class="terms-link">Terms and Conditions</a>
+        </label>
+      </div>
       <input type="submit" class="button" value="Submit">
     </form>
+  </div>
+
+  <div class="terms-conditions-wrapper hidden">
+    <div id="terms-conditions">
+      <div class="Grid">
+        <div class="Grid-cell u-size1of2">
+          <span class="close-button">X</span>
+          <div class="terms-conditions-content">
+            <h3>Terms and Conditions</h3>
+            <div class="terms-conditions-body">
+              <% 40.times do |x| %>
+                <p><%= x+1 %>) These are our terms and conditions</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 

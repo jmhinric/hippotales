@@ -1,6 +1,8 @@
 HT.Join = function() {
   this.hasSubmitted = false;
   this.INVALID_BIRTHDAY_MESSAGE = "Invalid Birthday";
+  this.TERMS_CONDITIONS_MESSAGE = "You must agree to the Terms and Conditions";
+  this.termsConditionsOpen = false;
 };
 
 HT.Join.prototype.init = function() {
@@ -45,6 +47,10 @@ HT.Join.prototype.init = function() {
 
   // update billing address fields on change
   this.addressListenersSetup(self);
+
+  // set up terms and conditions modal behavior
+  $(".terms-link").click(this.toggleTermsConditions);
+  $(".close-button").click(this.toggleTermsConditions);
 
   // initial Braintree setup
   $.get("/client_token")
@@ -151,6 +157,8 @@ HT.Join.prototype.errorListenersSetup = function() {
   $('input[type=radio]').click(this.subscriptionSelected.bind(this));
 
   $('input[type=date]').on("change keyup blur", this.validChildBirthday.bind(this));
+
+  $('#terms_conditions').click(this.termsAndConditions.bind(this));
 };
 
 HT.Join.prototype.renderError = function(message) {
@@ -159,9 +167,10 @@ HT.Join.prototype.renderError = function(message) {
 
 HT.Join.prototype.noErrors = function() {
   $(".flash-message").remove();
-  return this.noRequiredErrors() &&
+  return this.termsAndConditions() && this.noRequiredErrors() &&
     this.passwordsMatch() &&
     this.validChildBirthday();
+
 };
 
 HT.Join.prototype.noRequiredErrors = function() {
@@ -281,6 +290,26 @@ HT.Join.prototype.validBirthYears = function() {
   return years;
 };
 
+HT.Join.prototype.termsAndConditions = function() {
+  $(".flash-message").text(this.TERMS_CONDITIONS_MESSAGE).remove();
+
+  var valid = $('#terms_conditions').prop("checked");
+
+  if (valid) {
+    $(".terms-conditions-checkbox").removeClass("required-error");
+  }
+  else {
+    $(".terms-conditions-checkbox").addClass("required-error");
+    this.renderError(this.TERMS_CONDITIONS_MESSAGE);
+
+  }
+  return valid;
+};
+
+HT.Join.prototype.toggleTermsConditions = function() {
+  $('.terms-conditions-wrapper').toggleClass("hidden");
+};
+
 // Braintree
 HT.Join.prototype.checkoutParams = function(result) {
   var nonce = "&nonce=" + result["nonce"];
@@ -301,6 +330,7 @@ HT.Join.prototype.paymentNonceReceived = function(result) {
 
   this.errorListenersSetup();
 };
+
 
 $(document).on("page:change", function() {
   new HT.Join().init();
