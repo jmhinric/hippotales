@@ -8,6 +8,10 @@ HT.Join.prototype.init = function() {
 
   // fix color of placeholder text for dropdowns
   $("select").val("").css("color", "rgb(173, 173, 173)");
+  $("select").change(function(e) {
+    var color = $(e.target).val() === "" ? "rgb(173, 173, 173)" : "black";
+    $(e.target).css("color", color);
+  });
   // fix color of placeholder text for date selector
   var dateInput = $("input[type=date]");
   dateInput.css("color", "rgb(173, 173, 173)")
@@ -87,6 +91,8 @@ HT.Join.prototype.copyBilling = function() {
   $("#user_state option[value='" + state + "'").attr("selected", true);
   $("#user_zip").val(zip);
 
+  this.updateStatePlaceholder();
+
   if (this.hasSubmitted) { this.noRequiredErrors(); }
 };
 
@@ -115,6 +121,7 @@ HT.Join.prototype.addressListenersSetup = function(self) {
     if (self.billingChecked()) {
       var state = $("#subscription_state").val();
       $("#user_state option[value='" + state + "'").attr("selected", true);
+      this.updateStatePlaceholder();
     }
     if (self.hasSubmitted) { self.validateRequired("#user_state") }
   });
@@ -125,6 +132,11 @@ HT.Join.prototype.addressListenersSetup = function(self) {
     }
     if (self.hasSubmitted) { self.validateRequired("#user_zip") }
   });
+};
+
+HT.Join.prototype.updateStatePlaceholder = function() {
+  var stateColor = $("#user_state").val() === "" ? "rgb(173, 173, 173)" : "black";
+  $("#user_state").css("color", stateColor);
 };
 
 // Error handling
