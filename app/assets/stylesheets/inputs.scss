@@ -46,7 +46,7 @@ input[type=date]:focus,
 input[type=password]:focus,
 textarea:focus,
 select:focus {
-  box-shadow: 0 0 5px $base-green;
+  box-shadow: 0 0 3px $base-green;
   // margin: 20px 1px 20px 0px;
   border: 1px solid $base-green;
 }
@@ -111,4 +111,9 @@ input[type=radio] {
 input[type=submit], .button {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.required-error, input.required-error, input.required-error:focus {
+  box-shadow: 0 0 2px $error-red;
+  border: 1px solid $error-red;
 }

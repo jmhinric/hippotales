@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery_mask
+//= require moment
 //= require turbolinks
 //= require init
 //= require homepage

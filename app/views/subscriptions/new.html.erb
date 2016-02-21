@@ -7,7 +7,7 @@
 
   <div class="subscription-container">
 
-    <div class="Grid subscription-nav">
+    <!-- <div class="Grid subscription-nav">
       <span class="Grid-cell u-size1of4">
         <div class="nav-item active">
           Subscription Type
@@ -28,13 +28,13 @@
           Pay & Finish
         </div>
       </span>
-    </div>
+    </div> -->
 
     <%= form_tag('join', class: "subscription-form") do %>
       <section class="form-section">
         <h3>CHOOSE SUBSCRIPTION:</h3>
         <div class="Grid subscription-options">
-          <div class="Grid-cell u-size1of3">
+          <div class="Grid-cell u-size1of3 subscription-option">
             <div class="subscription-info">
               <span>
                 <span class="month-number">1 Month</span> Subscription
@@ -45,7 +45,7 @@
             </div>
             <%= radio_button_tag("subscription_type", 1) %>
           </div>
-          <div class="Grid-cell u-size1of3">
+          <div class="Grid-cell u-size1of3 subscription-option">
             <div class="subscription-info">
               <span>
                 <span class="month-number">3 Month</span> Subscription
@@ -56,7 +56,7 @@
             </div>
             <%= radio_button_tag("subscription_type", 3) %>
           </div>
-          <div class="Grid-cell u-size1of3">
+          <div class="Grid-cell u-size1of3 subscription-option">
             <div class="subscription-info">
               <span>
                 <span class="month-number">6 Month</span> Subscription
@@ -337,14 +337,43 @@
         </div>
       </section>
 
-      <%# submit_tag "Submit", class: "submit join-submit button" %>
     <% end %>
 
     <h3 class="section-label">PAYMENT</h3>
     <form id="checkout" method="post" action="/checkout">
       <div id="payment-form"></div>
+      <div class="flash">
+      </div>
+
+      <div class="checkbox terms-conditions-checkbox">
+        <%= check_box_tag(
+              'terms_conditions',
+              false)
+        %>
+        <label>
+          I agree to the <span class="terms-link">Terms and Conditions</a>
+        </label>
+      </div>
       <input type="submit" class="button" value="Submit">
     </form>
+  </div>
+
+  <div class="terms-conditions-wrapper hidden">
+    <div id="terms-conditions">
+      <div class="Grid">
+        <div class="Grid-cell u-size1of2">
+          <span class="close-button">X</span>
+          <div class="terms-conditions-content">
+            <h3>Terms and Conditions</h3>
+            <div class="terms-conditions-body">
+              <% 40.times do |x| %>
+                <p><%= x+1 %>) These are our terms and conditions</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 
