@@ -70,17 +70,7 @@ textarea {
 }
 
 input[type=submit] {
-  font-size: .9em;
-  font-weight: 300;
-  padding: 12px 15px;
-  border: 0 none;
-  cursor: pointer;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-
-input[type=submit].button-yellow {
-  background: $button-yellow;
+  @include submitButton;
 }
 
 input[type=submit].button-yellow {

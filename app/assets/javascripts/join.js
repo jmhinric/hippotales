@@ -1,8 +1,11 @@
 HT.Join = function() {
   this.hasSubmitted = false;
+  this.termsConditionsOpen = false;
+
   this.INVALID_BIRTHDAY_MESSAGE = "Invalid Birthday";
   this.TERMS_CONDITIONS_MESSAGE = "You must agree to the Terms and Conditions";
-  this.termsConditionsOpen = false;
+  this.FAILED_TO_SUBMIT_MESSAGE = "Something is wrong with the form. Please try again."
+  this.SERVER_JOIN_ERROR_MESSAGE = "Something went wrong. Please try again."
 };
 
 HT.Join.prototype.init = function() {
@@ -33,7 +36,12 @@ HT.Join.prototype.init = function() {
   });
 
   // set up behavior for the 'same address' checkbox
-  $(".billing-address-checkbox :checkbox").click(this.copyBilling.bind(this));
+  $(".billing-address-checkbox :checkbox").change(function(e) {
+    if ($(".billing-address-checkbox :checked").prop("checked")) {
+      $(".billing-address-checkbox :checked").val("true");
+    }
+    self.copyBilling();
+  });
   $(".billing-address-checkbox label").click(function() {
     self.setCheckbox($(".billing-address-checkbox :checkbox"));
     self.copyBilling();
@@ -50,7 +58,11 @@ HT.Join.prototype.init = function() {
 
   // set up terms and conditions modal behavior
   $(".terms-link").click(this.toggleTermsConditions);
-  $(".close-button").click(this.toggleTermsConditions);
+  $(".close-terms").click(this.toggleTermsConditions);
+
+  // set up confirm subscription page behavior
+  $(".close-confirm").click(this.toggleConfirmModal);
+  $(".confirm-submit").click(this.sendConfirmedSubscription.bind(self));
 
   // initial Braintree setup
   $.get("/client_token")
@@ -162,15 +174,17 @@ HT.Join.prototype.errorListenersSetup = function() {
 };
 
 HT.Join.prototype.renderError = function(message) {
+  $(".flash").children().remove();
   $(".flash").append($("<div class='flash-message error'>").text(message));
 };
 
 HT.Join.prototype.noErrors = function() {
   $(".flash-message").remove();
-  return this.termsAndConditions() && this.noRequiredErrors() &&
+
+  return this.termsAndConditions() &&
+    this.noRequiredErrors() &&
     this.passwordsMatch() &&
     this.validChildBirthday();
-
 };
 
 HT.Join.prototype.noRequiredErrors = function() {
@@ -310,25 +324,100 @@ HT.Join.prototype.toggleTermsConditions = function() {
   $('.terms-conditions-wrapper').toggleClass("hidden");
 };
 
-// Braintree
-HT.Join.prototype.checkoutParams = function(result) {
-  var nonce = "&nonce=" + result["nonce"];
-  var paymentType = "&payment_type=" + result["type"]
-  return $(".subscription-form").serialize() + nonce + paymentType;
+HT.Join.prototype.toggleConfirmModal = function() {
+  $(".confirm-subscription-wrapper").toggleClass("hidden");
+  $(".subscription-container").toggleClass("hidden");
 };
 
+HT.Join.prototype.renderConfirmModalDetails = function() {
+  $(".confirm-subscription-type").text(this.subscriptionTypeData());
+
+  $(".confirm-child-name").text($("#child_first_name").val() + " " + $("#child_last_name").val());
+  $(".confirm-child-birth").text(moment($("#child_birthday").val()).format("LL"));
+
+  $(".confirm-child-gender").text($("#child_gender").val());
+
+  $(".confirm-shipping-address-line1").text($("#subscription_address_line1").val());
+
+  $(".confirm-shipping-address-line2").text($("#subscription_address_line2").val());
+
+  $(".confirm-shipping-address-city-state-zip").text(
+    $("#subscription_city").val() + ", " +
+      $("#subscription_state").val() + "  " + $("#subscription_zip").val()
+  );
+  $(".confirm-is-gift").text(this.isGiftText());
+
+  $(".confirm-gift-message").text(this.giftMessageText());
+
+  $(".confirm-account-name").text($("#user_first_name").val() + " " + $("#user_last_name").val());
+
+  $(".confirm-account-email").text($("#email").val());
+
+  $(".confirm-account-phone").text($("#phone_").val());
+
+  $(".confirm-user-address-line1").text($("#user_address_line1").val());
+
+  $(".confirm-user-address-line2").text($("#user_address_line2").val());
+
+  $(".confirm-user-address-city-state-zip").text(
+    $("#user_city").val() + ", " + $("#user_state").val() + "  " + $("#user_zip").val()
+  );
+};
+
+HT.Join.prototype.subscriptionTypeData = function() {
+  var months = $("input[type=radio]:checked").val();
+  var cost;
+  if (months === "1") {
+    cost = "$29.99";
+  }
+  else if (months === "3") {
+    cost = "$27.99";
+  }
+  else if (months === "6") {
+    cost = "$25.99";
+  }
+  return months + " month subscription, " + cost + "/month"
+};
+
+HT.Join.prototype.isGiftText = function() {
+  return $(".gift-message-checkbox :checked").prop("checked") ? "Yes" : "No";
+};
+
+HT.Join.prototype.giftMessageText = function() {
+  return $(".gift-message-checkbox :checked").prop("checked") ? $("#gift_message").val() : "";
+};
+
+// Braintree
 HT.Join.prototype.paymentNonceReceived = function(result) {
   this.hasSubmitted = true;
+  this.nonce = result;
+
   if (this.noErrors()) {
-    $.post( "/subscriptions", this.checkoutParams(result))
+    this.renderConfirmModalDetails();
+    $(".confirm-subscription-wrapper").toggleClass("hidden");
+    $(".subscription-container").toggleClass("hidden");
+  }
+  this.errorListenersSetup();
+};
+
+HT.Join.prototype.sendConfirmedSubscription = function() {
+  this.toggleConfirmModal();
+  if (this.noErrors() && this.nonce) {
+    $.post( "/subscriptions", this.checkoutParams())
       .fail(function(error) {
         console.log("There was a problem somewhere: " + error.responseText);
+        this.renderError(this.SERVER_JOIN_ERROR_MESSAGE);
       });
-  } else {
-    console.log("Form problems");
   }
+  else {
+    this.renderError(this.FAILED_TO_SUBMIT_MESSAGE);
+  }
+};
 
-  this.errorListenersSetup();
+HT.Join.prototype.checkoutParams = function() {
+  var nonce = "&nonce=" + this.nonce["nonce"];
+  var paymentType = "&payment_type=" + this.nonce["type"]
+  return $(".subscription-form").serialize() + nonce + paymentType;
 };
 
 

@@ -6,30 +6,6 @@
   </div>
 
   <div class="subscription-container">
-
-    <!-- <div class="Grid subscription-nav">
-      <span class="Grid-cell u-size1of4">
-        <div class="nav-item active">
-          Subscription Type
-        </div>
-      </span>
-      <span class="Grid-cell u-size1of4">
-        <div class="nav-item inactive">
-          Child Information
-        </div>
-      </span>
-      <span class="Grid-cell u-size1of4">
-        <div class="nav-item inactive">
-          Account Information
-        </div>
-      </span>
-      <span class="Grid-cell u-size1of4">
-        <div class="nav-item inactive">
-          Pay & Finish
-        </div>
-      </span>
-    </div> -->
-
     <%= form_tag('join', class: "subscription-form") do %>
       <section class="form-section">
         <h3>CHOOSE SUBSCRIPTION:</h3>
@@ -91,35 +67,6 @@
                   required: true)
             %>
           </div>
-          <!-- <div class="select-birthday">
-            <div class="Grid">
-              <div class="Grid-cell u-size1of3">
-                <%# select_month(
-                      nil,
-                      field_name: "child_birth_month",
-                      class: "border-right",
-                      prompt: "Birth month")
-                %>
-              </div>
-              <div class="Grid-cell u-size1of3 select-birthday">
-                <%# select_day(
-                      nil,
-                      field_name: "child_birth_day",
-                      class: "border-right",
-                      prompt: "Birth date")
-                %>
-              </div>
-              <div class="Grid-cell u-size1of3 select-birthday">
-                <%# select_year(
-                      nil,
-                      start_year: Date.today.year,
-                      end_year: (Date.today - 12.years).year,
-                      field_name: "child_birth_year",
-                      prompt: "Birth year")
-                %>
-              </div>
-            </div>
-          </div> -->
           <div class="Grid-cell child-birthday u-size1of2">
             <div class="Grid-cell u-size4of4">
               <%= date_field_tag(
@@ -129,13 +76,6 @@
                     placeholder: "mm/dd/yyyy")
               %>
             </div>
-            <!-- <div class="Grid child-birthday">
-              <div class="Grid-cell u-size1of4">
-                <label>
-                  Birthday:
-                </label>
-              </div>
-            </div> -->
           </div>
           <div class="Grid-cell u-size1of2">
             <%= select_tag(
@@ -148,7 +88,6 @@
           </div>
         </div>
 
-        <!-- <h4 class="section-label">Shipping Address</h4> -->
         <div class="Grid">
           <div class="Grid-cell u-size1of2">
             <%= text_field_tag(
@@ -278,7 +217,6 @@
           </div>
         </div>
 
-        <!-- <h4 class="billing-address">Billing Address</h4> -->
         <div class="checkbox billing-address-checkbox">
           <%= check_box_tag(
                 'same_billing_address',
@@ -354,24 +292,72 @@
           I agree to the <span class="terms-link">Terms and Conditions</a>
         </label>
       </div>
-      <input type="submit" class="button" value="Submit">
+      <input type="submit" class="button" value="Checkout">
     </form>
   </div>
 
-  <div class="terms-conditions-wrapper hidden">
+  <div class="modal-overlay-wrapper terms-conditions-wrapper hidden">
     <div id="terms-conditions">
       <div class="Grid">
-        <div class="Grid-cell u-size1of2">
-          <span class="close-button">X</span>
-          <div class="terms-conditions-content">
+        <div class="Grid-cell u-size3of4">
+          <span class="close-button close-terms">X</span>
+          <div class="modal-overlay-content">
             <h3>Terms and Conditions</h3>
-            <div class="terms-conditions-body">
+            <div class="modal-overlay-body">
               <% 40.times do |x| %>
                 <p><%= x+1 %>) These are our terms and conditions</p>
               <% end %>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="confirm-subscription-wrapper hidden">
+    <div class="confirm-subscription">
+      <h2>Confirm Subscription Details</h2>
+      <div class="confirm-subscription-border">
+        <h3 class="confirm-subscription-type"></h3>
+
+        <div class="Grid confirm-subscription-info">
+          <div class="Grid-cell u-size1of2">
+            <h3>Subscription for:</h3>
+            <h4>Child name:</h4>
+            <div class="confirm-child-name"></div>
+            <h4>Birthday:</h4>
+            <div class="confirm-child-birth"></div>
+            <h4>Gender:</h4>
+            <div class="confirm-child-gender"></div>
+            <h4>Shipping address:</h4>
+            <div class="confirm-shipping-address-line1"></div>
+            <div class="confirm-shipping-address-line2"></div>
+            <div class="confirm-shipping-address-city-state-zip"></div>
+            <h4>Is this a gift?</h4>
+            <div class="confirm-is-gift"></div>
+            <h4>Gift message:</h4>
+            <div class="confirm-gift-message"></div>
+          </div>
+
+          <div class="Grid-cell u-size1of2">
+            <h3>Account Information:</h3>
+            <h4>Name:</h4>
+            <div class="confirm-account-name"></div>
+            <h4>Email:</h4>
+            <div class="confirm-account-email"></div>
+            <h4>Phone:</h4>
+            <div class="confirm-account-phone"></div>
+            <h4>Address:</h4>
+            <div class="confirm-user-address-line1"></div>
+            <div class="confirm-user-address-line2"></div>
+            <div class="confirm-user-address-city-state-zip"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="Grid confirm-buttons">
+          <input class="button button-yellow close-confirm" value="Go Back">
+          <input type="submit" class="button confirm-submit" value="Place My Order">
       </div>
     </div>
   </div>

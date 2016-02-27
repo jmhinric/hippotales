@@ -35,6 +35,7 @@ class SubscriptionsController < ApplicationController
       :amount => payment_amount,
       :payment_method_nonce => "fake-valid-visa-nonce"
     )
+
     if braintree_result
       @user = new_user
       if @user.save!

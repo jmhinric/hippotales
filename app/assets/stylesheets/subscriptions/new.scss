@@ -95,12 +95,10 @@
     label {
       position: absolute;
       vertical-align: middle;
-      // padding: 2px 0;
       margin: 15px 0;
     }
 
     input {
-      // -webkit-margin-before: 0em;
       -webkit-padding-after: 0.7em;
     }
   }
@@ -154,7 +152,9 @@
     cursor: pointer;
   }
 
-  .terms-conditions-wrapper {
+/* Modal overlay */
+/* ****************************************************** */
+  .modal-overlay-wrapper {
     position: fixed;
     top: 0;
     left: 0;
@@ -162,55 +162,102 @@
     height: 100%;
     background: rgba(84, 84, 84, .5);
     z-index: 1000000;
+  }
 
-    /*http://stackoverflow.com/questions/2005954/center-element-with-positionfixed*/
-    #terms-conditions {
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      left: 25%;
-      margin-top: -200px;
-      z-index: 1000001;
+  /* http://stackoverflow.com/questions/2005954/center-element-with-positionfixed */
+  #terms-conditions {
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 1000001;
+  }
+
+  .close-button {
+    font-size: 25px;
+    width: 35px;
+    height: 35px;
+    color: white;
+    border: 3px solid white;
+    border-radius: 50%;
+    text-align: center;
+    float: right;
+    cursor: pointer;
+    margin-top: -34px;
+    margin-left: 6px;
+  }
+
+  .Grid-cell {
+    margin: 0 auto;
+  }
+
+  .modal-overlay-content {
+    height: 600px;
+    padding: 50px;
+    background: white;
+    color: black;
+    overflow: scroll;
+    border: 10px solid $dark-gray;
+
+    h3 {
+      margin-top: 0;
     }
 
-    .close-button {
-      font-size: 25px;
-      width: 35px;
-      height: 35px;
-      color: white;
-      border: 3px solid white;
-      border-radius: 50%;
-      text-align: center;
-      float: right;
-      cursor: pointer;
-      margin-top: -34px;
-      margin-left: 6px;
-    }
-
-    .terms-conditions-content {
-      height: 400px;
-      padding: 50px;
-      background: white;
-      color: black;
-      overflow: scroll;
-      border: 10px solid $dark-gray;
-
-      h3 {
-        margin-top: 0;
-      }
-
-      .terms-conditions-body {
-        border: 3px solid black;
-        padding: 15px;
-      }
+    .modal-overlay-body {
+      border: 3px solid black;
+      padding: 15px;
     }
   }
 
-  .join-submit {
-    margin-top: 50px;
+  /* Confirm subscription page */
+  /* ****************************************************** */
+  .confirm-subscription-wrapper {
+    h2 {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .confirm-subscription {
+      width: 80%;
+      margin: 0 auto;
+
+      .confirm-subscription-border {
+        border: 3px solid black;
+      }
+
+      .confirm-subscription-type {
+        margin-top: 60px;
+        text-align: center;
+        color: $base-green;
+      }
+
+      .confirm-subscription-info {
+        text-align: center;
+        padding: 15px 70px 70px;
+      }
+
+      .confirm-section {
+        padding: 0 30px;
+        border: 1px solid red;
+      }
+
+      h3 {
+        margin: 20px 0 15px;
+      }
+
+      h4 {
+        margin: 15px 0 5px;
+      }
+
+      .confirm-buttons .button {
+        margin: 50px auto;
+        display: inline;
+      }
+    }
   }
 
   /* Braintree */
+  /* ****************************************************** */
   #checkout {
     margin-top: 25px;
 
