@@ -21,3 +21,13 @@
   -ms-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
 }
+
+@mixin submitButton {
+  font-size: .9em;
+  font-weight: 300;
+  padding: 12px 15px;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}

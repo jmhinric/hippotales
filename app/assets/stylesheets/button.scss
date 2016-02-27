@@ -12,6 +12,7 @@
 }
 
 .button {
+  @include submitButton;
   color: white;
   background-color: $base-green;
   cursor: pointer;
@@ -23,6 +24,7 @@
 }
 
 .button-yellow {
+  @include submitButton;
   color: black;
   background-color: $button-yellow;
 }
