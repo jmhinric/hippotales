@@ -44,4 +44,5 @@ Rails.application.configure do
 
   # For react.js
   config.react.variant = :development
+  config.react.camelize_props = true
 end
