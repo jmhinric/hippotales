@@ -402,11 +402,12 @@ HT.Join.prototype.paymentNonceReceived = function(result) {
 
 HT.Join.prototype.sendConfirmedSubscription = function() {
   this.toggleConfirmModal();
+  var self = this;
   if (this.noErrors() && this.nonce) {
     $.post( "/subscriptions", this.checkoutParams())
       .fail(function(error) {
         console.log("There was a problem somewhere: " + error.responseText);
-        this.renderError(this.SERVER_JOIN_ERROR_MESSAGE);
+        self.renderError(self.SERVER_JOIN_ERROR_MESSAGE);
       });
   }
   else {

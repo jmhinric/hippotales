@@ -26,4 +26,5 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: { case_sensitive: false }
   validates_with Validators::EmailValidator, attributes: [:email]
   has_many :subscriptions
+  has_one :customer
 end

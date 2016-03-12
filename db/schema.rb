@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208230747) do
+ActiveRecord::Schema.define(version: 20160304041611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,9 +81,31 @@ ActiveRecord::Schema.define(version: 20160208230747) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "customers", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string "braintree_customer_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.uuid   "user_id"
+  end
+
   create_table "illustrators", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "payment_methods", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid    "customer_id"
+    t.boolean "active",           default: true
+    t.string  "email"
+    t.string  "image_url"
+    t.integer "payment_method"
+    t.string  "card_type"
+    t.string  "cardholder_name"
+    t.string  "token"
+    t.string  "expiration_month"
+    t.string  "expiration_year"
+    t.string  "last_4"
   end
 
   create_table "publishers", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -114,6 +136,9 @@ ActiveRecord::Schema.define(version: 20160208230747) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.uuid     "subscription_cost_id"
+    t.boolean  "active",               default: true
+    t.integer  "status",               default: 0
+    t.uuid     "payment_method_id"
   end
 
   create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -135,4 +160,8 @@ ActiveRecord::Schema.define(version: 20160208230747) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "books", "publishers", name: "fk_books_publishers_publisher_id"
+  add_foreign_key "customers", "users"
+  add_foreign_key "payment_methods", "customers"
+  add_foreign_key "subscriptions", "payment_methods"
+  add_foreign_key "subscriptions", "users"
 end
