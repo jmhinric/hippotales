@@ -9,6 +9,7 @@ FactoryGirl.define do
     city { Faker::Address.city }
     state { Faker::Address.state_abbr }
     zip { Faker::Address.zip }
-    user { create :user }
+    user
+    subscription_cost
   end
 end

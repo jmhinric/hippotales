@@ -14,5 +14,5 @@ class SubscriptionCost < ActiveRecord::Base
   validates :one_month, :three_month, :six_month, presence: true
   has_many :subscriptions
 
-  scope :current, -> { order(created_at: :desc).limit(1).first }
+  scope :current, -> { order(:created_at).last }
 end
