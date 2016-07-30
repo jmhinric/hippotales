@@ -18,7 +18,6 @@
 //= require init
 //= require homepage
 //= require join
-//= require user-show
 
 //= require react
 //= require react_ujs

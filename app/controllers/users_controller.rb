@@ -38,9 +38,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @react_user = user.as_json(methods: :display_name)
     @active_subscriptions = subscriptions.map do |subscription|
-      subscription.as_json(methods: :child_names)
+      React.camelize_props(subscription.as_json(methods: :child_names))
     end
     @inactive_subscriptions = []
     @gift_subscriptions = subscriptions.where(is_gift: true)
@@ -50,6 +50,10 @@ class UsersController < ApplicationController
 
   def subscriptions
     @subscriptions ||= @user.subscriptions
+  end
+
+  def user
+    @user ||= User.find(params[:id])
   end
 
   def user_params
