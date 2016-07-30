@@ -32,7 +32,7 @@
         <div class="subscriptions">
           <div class="active-subscriptions">
             <% @active_subscriptions.each do |subscription| %>
-              <%= react_component('Subscription', subscription: @active_subscriptions.first) %>
+              <%= react_component('Subscription', subscription: subscription) %>
               <%# render partial: "shared/subscription", locals: { subscription: subscription } %>
             <% end %>
           </div>

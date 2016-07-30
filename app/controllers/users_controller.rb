@@ -38,8 +38,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params["id"])
-    @active_subscriptions = subscriptions
+    @user = User.find(params[:id])
+    @active_subscriptions = subscriptions.map do |subscription|
+      subscription.as_json(methods: :child_names)
+    end
     @inactive_subscriptions = []
     @gift_subscriptions = subscriptions.where(is_gift: true)
   end
@@ -47,7 +49,7 @@ class UsersController < ApplicationController
   private
 
   def subscriptions
-    @_subscriptions ||= @user.subscriptions
+    @subscriptions ||= @user.subscriptions
   end
 
   def user_params

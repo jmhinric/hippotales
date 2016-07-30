@@ -1,28 +1,35 @@
-let Subscription = React.createClass({
-  propTypes: {
-    // subscription: React.
-    // duration: React.PropTypes.number,
-    // costPerMonth: React.PropTypes.number,
-    // isGift: React.PropTypes.bool,
-    // giftMessage: React.PropTypes.string,
-    // addressLine1: React.PropTypes.string,
-    // addressLine2: React.PropTypes.string,
-    // city: React.PropTypes.string,
-    // state: React.PropTypes.string,
-    // zip: React.PropTypes.string,
-    // createdAt: React.PropTypes.instanceOf(Date)
-  },
+const Subscription = React.createClass({
+  // propTypes: {
+    // subscription: PropTypes.instanceOf(Subscription)
+    // duration: PropTypes.number,
+    // costPerMonth: PropTypes.number,
+    // isGift: PropTypes.bool,
+    // giftMessage: PropTypes.string,
+    // addressLine1: PropTypes.string,
+    // addressLine2: PropTypes.string,
+    // city: PropTypes.string,
+    // state: PropTypes.string,
+    // zip: PropTypes.string,
+    // createdAt: PropTypes.instanceOf(Date)
+  // },
 
   render() {
+    const { subscription } = this.props;
+    const {
+      createdAt,
+      costPerMonth,
+      duration,
+      childNames
+    } = subscription;
+
     return (
       <div className="subscription-show">
-
         <div className="subscription-details">
           <ul className="Grid">
             <li className="Grid-cell u-size1of4">
               <div className="details-header">ORDERED ON</div>
               <span className="details-data">
-                {this.props.subscription.created_at}
+                {createdAt}
               </span>
             </li>
             <li className="Grid-cell u-size1of4">
@@ -31,11 +38,11 @@ let Subscription = React.createClass({
             </li>
             <li className="Grid-cell u-size1of4">
               <div className="details-header">COST</div>
-              <span className="details-data">${this.props.costPerMonth} / month</span>
+              <span className="details-data">${costPerMonth} / month</span>
             </li>
             <li className="Grid-cell u-size1of4">
               <div className="details-header">SUBSCRIPTION CYCLE</div>
-              <span className="details-data">{this.props.duration} months</span>
+              <span className="details-data">{duration} months</span>
             </li>
           </ul>
           <div className="Grid-cell u-size1of3"></div>
@@ -45,9 +52,7 @@ let Subscription = React.createClass({
           <div className="Grid">
             <div className="Grid-cell u-size2of3">
               <div className="child-info">
-                <h3>
-                  Bobby (needs to be child names)
-                </h3>
+                <h3>{childNames}</h3>
               </div>
               <div className="small-info">
                 <span className="bold">Paid with: </span>
@@ -64,7 +69,6 @@ let Subscription = React.createClass({
             </div>
           </div>
         </div>
-
       </div>
     );
   }
