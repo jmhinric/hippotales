@@ -1,9 +1,7 @@
 <main id="join">
   <%= render "shared/header" %>
 
-  <div id="page-title">
-    <h1>Join</h1>
-  </div>
+  <%= react_component('SubscriptionNew') %>
 
   <div class="subscription-container">
     <%= form_tag('join', class: "subscription-form") do %>
