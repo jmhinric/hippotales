@@ -14,6 +14,8 @@ const Subscription = React.createClass({
   // },
 
   render() {
+    const timezone = moment.tz.guess();
+    const timezoneLabel = moment().tz(timezone).format('zz');
     const { subscription } = this.props;
     const {
       createdAt,
@@ -29,7 +31,7 @@ const Subscription = React.createClass({
             <li className="Grid-cell u-size1of4">
               <div className="details-header">ORDERED ON</div>
               <span className="details-data">
-                {createdAt}
+                {`${moment(createdAt).tz(timezone).format('LLL')} ${timezoneLabel}`}
               </span>
             </li>
             <li className="Grid-cell u-size1of4">
