@@ -38,7 +38,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'braintree'
 
-gem 'react-rails', '~> 1.6.0'
+gem 'react-rails', '~> 1.8.1'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
