@@ -75,6 +75,7 @@ end
 # Load bower packages
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment'
+  gem 'rails-assets-moment-timezone'
 end
 
 ruby '2.2.3'

@@ -169,6 +169,8 @@ GEM
       railties (= 4.2.4)
       sprockets-rails
     rails-assets-moment (2.11.2)
+    rails-assets-moment-timezone (0.5.5)
+      rails-assets-moment (>= 2.6.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -254,6 +256,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.2.4)
   rails-assets-moment!
+  rails-assets-moment-timezone!
   rails_12factor
   react-rails (~> 1.8.1)
   rspec-core!
