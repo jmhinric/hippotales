@@ -1,4 +1,4 @@
-const Address = React.createClass({
+const DisplayAddress = React.createClass({
   render() {
     const {
       addressLine1,

@@ -31,7 +31,7 @@ class SubscriptionsController < ApplicationController
     @child = Child.new.as_json
     @subscription = Subscription.new.as_json
     @states = US_STATES
-    @cost = current_subscription_cost
+    @cost = current_subscription_cost.as_json
   end
 
   def create

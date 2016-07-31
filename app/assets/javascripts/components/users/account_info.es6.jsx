@@ -10,7 +10,7 @@ const AccountInfo = React.createClass({
           <div>{displayName}</div>
           <div>{email}</div>
           <div>{phone}</div>
-          <Address entity={user} />
+          <DisplayAddress entity={user} />
         </div>
       </div>
     );
