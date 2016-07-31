@@ -17,7 +17,7 @@ const SubscriptionNew = React.createClass({
       user,
       child,
       states,
-      cost
+      costs
     } = this.props;
 
 // TODO: extract shared component from SubscriptionAddress and UserAddress
@@ -28,7 +28,13 @@ const SubscriptionNew = React.createClass({
         <div className="subscription-container">
           <div className="form-section">
             <h3>CHOOSE SUBSCRIPTION:</h3>
-            <SubscriptionTypeSelect cost={cost} />
+            <section>
+              <div className="Grid subscription-options">
+                {costs.map(cost => {
+                  return <SubscriptionTypeSelect cost={cost} subscription={subscription} />;
+                 })}
+              </div>
+            </section>
           </div>
 
           <div className="form-section">
