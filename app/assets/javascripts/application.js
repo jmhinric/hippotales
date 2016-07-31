@@ -10,16 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require react
-//= require react_ujs
-//= require components
 
 //= require jquery
 //= require jquery_ujs
 //= require jquery_mask
-//= require moment
-//= require moment-timezone
 //= require turbolinks
 //= require init
 //= require homepage
 //= require join
+
+//= require react
+//= require react_ujs
+//= require components
+
+//= require moment
+//= require moment-timezone

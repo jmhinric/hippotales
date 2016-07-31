@@ -1,5 +1,6 @@
 module Constants
   US_STATES = [
+    ['* Select state...', ''],
     ['Alabama', 'AL'],
     ['Alaska', 'AK'],
     ['Arizona', 'AZ'],

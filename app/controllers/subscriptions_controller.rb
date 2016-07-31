@@ -27,9 +27,9 @@ class SubscriptionsController < ApplicationController
   attr_reader :user
 
   def new
-    @user = User.new
-    @child = Child.new
-    @months = MONTHS
+    @user = User.new.as_json
+    @child = Child.new.as_json
+    @subscription = Subscription.new.as_json
     @states = US_STATES
     @cost = current_subscription_cost
   end

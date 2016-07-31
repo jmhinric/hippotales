@@ -422,9 +422,9 @@ HT.Join.prototype.checkoutParams = function() {
 };
 
 
-$(document).on("page:change", function() {
-  new HT.Join().init();
+// $(document).on("page:change", function() {
+//   new HT.Join().init();
 
-  // clear Braintree iframes to prevent duplicates
-  $("#payment-form iframe").remove();
-});
+//   // clear Braintree iframes to prevent duplicates
+//   $("#payment-form iframe").remove();
+// });
