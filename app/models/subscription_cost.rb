@@ -2,17 +2,30 @@
 #
 # Table name: subscription_costs
 #
-#  id          :uuid             not null, primary key
-#  one_month   :decimal(, )
-#  three_month :decimal(, )
-#  six_month   :decimal(, )
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :uuid             not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  cost       :decimal(, )
+#  duration   :integer
 #
 
 class SubscriptionCost < ActiveRecord::Base
-  validates :one_month, :three_month, :six_month, presence: true
+  has_and_belongs_to_many :subscription_plans
   has_many :subscriptions
 
-  scope :current, -> { order(:created_at).last }
+  validates :cost, :duration, presence: true
+  validates :cost, uniqueness: { scope: :duration }
+
+  def description
+    "#{months} #{'Month'.pluralize(months)}"
+  end
+
+  def months
+    duration % 12
+  end
+
+  # cost is per month
+  def per_month
+    "$#{cost} / month"
+  end
 end

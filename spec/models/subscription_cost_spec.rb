@@ -1,35 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe SubscriptionCost, type: :model do
-  it { is_expected.to validate_presence_of(:one_month) }
-  it { is_expected.to validate_presence_of(:three_month) }
-  it { is_expected.to validate_presence_of(:six_month) }
+  it { is_expected.to validate_presence_of(:cost) }
+  it { is_expected.to validate_presence_of(:duration) }
   it { is_expected.to have_many :subscriptions }
 
-  describe ".current" do
-    let(:subject) { described_class.current }
+  let(:cost) { build(:subscription_cost, duration: 1, cost: 10.99) }
+  let(:cost2) { build(:subscription_cost, duration: 3, cost: 13.99) }
+  let(:cost3) { build(:subscription_cost, duration: 16, cost: 13.99) }
 
-    let!(:cost1) do
-      create(
-        :subscription_cost,
-        one_month: 29.99,
-        three_month: 27.99,
-        six_month: 25.99,
-        created_at: Date.new(2016, 1, 15)
-      )
+  describe '#description' do
+    it 'gives the duration in months' do
+      expect(cost.description).to eq('1 Month')
+      expect(cost2.description).to eq('3 Months')
+      expect(cost3.description).to eq('4 Months')
     end
-    let!(:cost2) do
-      create(
-        :subscription_cost,
-        one_month: 19.99,
-        three_month: 17.99,
-        six_month: 15.99,
-        created_at: Date.new(2016, 1, 20)
-      )
-    end
+  end
 
-    specify { expect(subject.one_month).to eq(19.99) }
-    specify { expect(subject.three_month).to eq(17.99) }
-    specify { expect(subject.six_month).to eq(15.99) }
+  describe '#per_month' do
+    it 'gives a formatted string of the cost per month' do
+      expect(cost.per_month).to eq('$10.99 / month')
+    end
   end
 end

@@ -8,11 +8,20 @@
 
 
 # Subscription Cost
-subscription_cost = SubscriptionCost.create!(
-  one_month: 29.95,
-  three_month: 27.95,
-  six_month: 25.95
+sc1 = SubscriptionCost.create!(
+  cost: 29.95,
+  duration: 1
 )
+sc2 = SubscriptionCost.create!(
+  cost: 27.95,
+  duration: 3
+)
+sc3 = SubscriptionCost.create!(
+  cost: 25.95,
+  duration: 6
+)
+
+SubscriptionPlan.create!(subscription_costs: [sc1, sc2, sc3])
 
 # Publishers
 dk_publisher = Publisher.create!(name: "DK Publishing")

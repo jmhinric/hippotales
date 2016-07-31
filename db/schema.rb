@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304041611) do
+ActiveRecord::Schema.define(version: 20160731205415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,11 +115,20 @@ ActiveRecord::Schema.define(version: 20160304041611) do
   end
 
   create_table "subscription_costs", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.decimal  "one_month"
-    t.decimal  "three_month"
-    t.decimal  "six_month"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal  "cost"
+    t.integer  "duration"
+  end
+
+  create_table "subscription_costs_plans", id: false, force: :cascade do |t|
+    t.uuid "subscription_cost_id", null: false
+    t.uuid "subscription_plan_id", null: false
+  end
+
+  create_table "subscription_plans", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subscriptions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
