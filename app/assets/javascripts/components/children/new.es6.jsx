@@ -1,12 +1,4 @@
 const ChildNew = React.createClass({
-  handleFirstNameChange(e) {
-    this.props.child.firstName = e.target.value;
-  },
-
-  handleLastNameChange(e) {
-    this.props.child.lastName = e.target.value;
-  },
-
   handleBirthdayChange(e) {
     this.props.child.birthday = e.target.value;
   },
@@ -23,21 +15,19 @@ const ChildNew = React.createClass({
       <section>
         <div className="Grid">
           <div className="Grid-cell u-size1of2">
-            <input
-              type="text"
-              name="child_first_name"
+            <TextInput
+              model={child}
+              attribute="firstName"
               placeholder="* Child's first name"
-              className="border-right"
-              onChange={this.handleFirstNameChange}
+              classNames="border-right"
             />
           </div>
           <div className="Grid-cell u-size1of2">
-            <input
-              type="text"
-              name="child_last_name"
+            <TextInput
+              model={child}
+              attribute="lastName"
               placeholder="* Child's last name"
-              className="float-right"
-              onChange={this.handleLastNameChange}
+              classNames="float-right"
             />
           </div>
           <div className="Grid-cell child-birthday u-size1of2">
