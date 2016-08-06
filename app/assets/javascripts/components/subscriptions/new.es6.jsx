@@ -5,12 +5,6 @@ const SubscriptionNew = React.createClass({
     $("#payment-form iframe").remove();
   },
 
-  stateOptions() {
-    return this.props.states.map((state, i) => {
-      return <option key={i} value={state[1]}>{state[0]}</option>;
-    });
-  },
-
   render() {
     const {
       subscription,
@@ -20,7 +14,6 @@ const SubscriptionNew = React.createClass({
       costs
     } = this.props;
 
-// TODO: extract shared component from SubscriptionAddress and UserAddress
     return (
       <div>
         <div id="page-title"><h1>Join</h1></div>
@@ -40,9 +33,10 @@ const SubscriptionNew = React.createClass({
           <div className="form-section">
             <h3>CHILD INFO</h3>
             <ChildNew child={child} />
-            <SubscriptionAddress
-              subscription={subscription}
-              stateOptions={this.stateOptions}
+            <Address
+              model={subscription}
+              descriptor="Subscription"
+              states={states}
             />
             <GiftMessage subscription={subscription} />
           </div>
@@ -50,7 +44,22 @@ const SubscriptionNew = React.createClass({
           <div className="form-section">
             <h3>ACCOUNT INFORMATION</h3>
             <UserNew user={user} stateOptions={this.stateOptions} states={states} />
-            <UserAddress user={user} stateOptions={this.stateOptions} />
+            <div className="checkbox billing-address-checkbox">
+              <input
+                type="checkbox"
+                name="same_billing_address"
+                id="same_billing_address"
+                value="false"
+              />
+              <label className="same-billing-address">
+                Same as shipping address
+              </label>
+            </div>
+            <Address
+              model={user}
+              descriptor="Billing"
+              states={states}
+            />
           </div>
 
           <h3 className="section-label">PAYMENT</h3>
