@@ -17,7 +17,7 @@ const Address = React.createClass({
       <section>
         <div className="Grid">
           <div className="Grid-cell u-size1of2">
-            <TextInput
+            <ModelInput
               model={model}
               attribute="addressLine1"
               placeholder={`* ${placeholderDescriptor}Address Line 1`}
@@ -25,7 +25,7 @@ const Address = React.createClass({
             />
           </div>
           <div className="Grid-cell u-size1of2">
-            <TextInput
+            <ModelInput
               model={model}
               attribute="addressLine2"
               placeholder={`* ${placeholderDescriptor}Address Line 2`}
@@ -33,7 +33,7 @@ const Address = React.createClass({
             />
           </div>
           <div className="Grid-cell u-size1of3">
-            <TextInput
+            <ModelInput
               model={model}
               attribute="city"
               placeholder={`* ${placeholderDescriptor}City`}
@@ -46,7 +46,7 @@ const Address = React.createClass({
             </select>
           </div>
           <div className="Grid-cell u-size1of3">
-            <TextInput
+            <ModelInput
               model={model}
               attribute="zip"
               placeholder={`* ${placeholderDescriptor}Zip Code`}

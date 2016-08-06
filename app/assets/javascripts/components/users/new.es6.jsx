@@ -2,64 +2,59 @@ const UserNew = React.createClass({
   render() {
     const { user } = this.props;
 
+    // email pattern="[^@]+@[^@]+.[a-zA-Z]{2,}"
     return (
       <section>
         <div className="Grid">
           <div className="Grid-cell u-size1of2">
-            <input
-              type="text"
-              name="user_first_name"
-              id="user_first_name"
-              className="border-right"
+            <ModelInput
+              model={user}
+              attribute="firstName"
               placeholder="* First name"
+              classNames="border-right"
             />
           </div>
           <div className="Grid-cell u-size1of2">
-            <input
-              type="text"
-              name="user_last_name"
-              id="user_last_name"
-              className="float-right"
+            <ModelInput
+              model={user}
+              attribute="lastName"
               placeholder="* Last name"
+              classNames="float-right"
             />
           </div>
           <div className="Grid-cell u-size1of2">
-            <input
-              type="password"
-              name="password"
-              id="password"
-              className="border-right"
+            <ModelInput
+              type='password'
+              model={user}
+              attribute="password"
               placeholder="* Password"
+              classNames="border-right"
             />
           </div>
           <div className="Grid-cell u-size1of2">
-            <input
-              type="password"
-              name="password_confirmation"
-              id="password_confirmation"
+            <ModelInput
+              type='password'
+              model={user}
+              attribute="passwordConfirmation"
               placeholder="* Re-type password"
-              className="float-right"
+              classNames="float-right"
             />
           </div>
           <div className="Grid-cell u-size1of2">
-            <input
-              type="email"
-              name="email"
-              id="email"
-              pattern="[^@]+@[^@]+.[a-zA-Z]{2,}"
-              className="border-right"
+            <ModelInput
+              type='email'
+              model={user}
+              attribute="email"
               placeholder="* Email"
+              classNames="border-right"
             />
           </div>
           <div className="Grid-cell u-size1of2">
-            <input
-              className="float-right"
+            <ModelInput
+              model={user}
+              attribute="phone"
               placeholder="  Phone (xxx) xxx-xxxx"
-              type="text"
-              name="phone[]"
-              id="phone_"
-              maxLength="14"
-              autoComplete="off"
+              classNames="float-right"
             />
           </div>
         </div>

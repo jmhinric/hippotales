@@ -15,7 +15,7 @@ const ChildNew = React.createClass({
       <section>
         <div className="Grid">
           <div className="Grid-cell u-size1of2">
-            <TextInput
+            <ModelInput
               model={child}
               attribute="firstName"
               placeholder="* Child's first name"
@@ -23,7 +23,7 @@ const ChildNew = React.createClass({
             />
           </div>
           <div className="Grid-cell u-size1of2">
-            <TextInput
+            <ModelInput
               model={child}
               attribute="lastName"
               placeholder="* Child's last name"
