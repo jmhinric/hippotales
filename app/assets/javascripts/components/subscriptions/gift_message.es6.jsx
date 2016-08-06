@@ -1,19 +1,37 @@
 const GiftMessage = React.createClass({
+  getInitialState() {
+    return {
+      isGift: false
+    };
+  },
+
+  handleChange() {
+    const { isGift } = this.state;
+    this.props.subscription.isGift = !isGift;
+    this.setState({ isGift: !isGift });
+  },
+
+  handleMessageChange(e) {
+    this.props.subscription.giftMessage = e.target.value;
+  },
+
   render() {
-    const { subscription } = this.props;
+    const { isGift } = this.state;
 
     return (
       <section>
         <h4>Is this a gift?</h4>
-        <div className="checkbox gift-message-checkbox">
-          <input type="checkbox" name="is_gift" id="is_gift" value="false" />
+        <div className="checkbox">
+          <input type="checkbox" onChange={this.handleChange} />
           <label className="is-gift">Yes! Send as a gift!</label>
         </div>
 
-        <div className="gift-message hidden">
-          <textarea name="gift_message" id="gift_message" placeholder="Gift message (optional)">
-          </textarea>
-        </div>
+        {isGift &&
+          <div className="gift-message">
+            <textarea placeholder="Gift message (optional)" onChange={this.handleMessageChange}>
+            </textarea>
+          </div>
+        }
       </section>
     );
   }
