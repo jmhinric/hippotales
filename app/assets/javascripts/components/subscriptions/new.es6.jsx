@@ -31,7 +31,7 @@ const SubscriptionNew = React.createClass({
             <section>
               <div className="Grid subscription-options">
                 {costs.map(cost => {
-                  return <SubscriptionTypeSelect cost={cost} subscription={subscription} />;
+                  return <SubscriptionTypeSelect key={cost.id} cost={cost} subscription={subscription} />;
                  })}
               </div>
             </section>

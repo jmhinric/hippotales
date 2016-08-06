@@ -16,7 +16,6 @@ const SubscriptionAddress = React.createClass({
               id="subscription_address_line1"
               className="border-right"
               placeholder="* Shipping Address Line 1"
-              required="required"
             />
           </div>
           <div className="Grid-cell u-size1of2">
@@ -35,7 +34,6 @@ const SubscriptionAddress = React.createClass({
               id="subscription_city"
               className="border-right"
               placeholder="* City"
-              required="required"
             />
           </div>
           <div className="Grid-cell u-size1of3">
@@ -43,7 +41,6 @@ const SubscriptionAddress = React.createClass({
               name="subscription_state"
               id="subscription_state"
               className="border-right"
-              required="required"
             >
               {stateOptions()}
             </select>
@@ -55,7 +52,6 @@ const SubscriptionAddress = React.createClass({
               id="subscription_zip"
               placeholder="* Zip Code"
               className="float-right"
-              required="required"
             />
           </div>
         </div>

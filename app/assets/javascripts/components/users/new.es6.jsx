@@ -12,7 +12,6 @@ const UserNew = React.createClass({
               id="user_first_name"
               className="border-right"
               placeholder="* First name"
-              required="required"
             />
           </div>
           <div className="Grid-cell u-size1of2">
@@ -22,7 +21,6 @@ const UserNew = React.createClass({
               id="user_last_name"
               className="float-right"
               placeholder="* Last name"
-              required="required"
             />
           </div>
           <div className="Grid-cell u-size1of2">
@@ -32,7 +30,6 @@ const UserNew = React.createClass({
               id="password"
               className="border-right"
               placeholder="* Password"
-              required="required"
             />
           </div>
           <div className="Grid-cell u-size1of2">
@@ -42,7 +39,6 @@ const UserNew = React.createClass({
               id="password_confirmation"
               placeholder="* Re-type password"
               className="float-right"
-              required="required"
             />
           </div>
           <div className="Grid-cell u-size1of2">
@@ -53,7 +49,6 @@ const UserNew = React.createClass({
               pattern="[^@]+@[^@]+.[a-zA-Z]{2,}"
               className="border-right"
               placeholder="* Email"
-              required="required"
             />
           </div>
           <div className="Grid-cell u-size1of2">

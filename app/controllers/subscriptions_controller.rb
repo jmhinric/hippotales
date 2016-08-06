@@ -31,7 +31,7 @@ class SubscriptionsController < ApplicationController
     @child = Child.new.as_json
     @subscription = Subscription.new.as_json
     @states = US_STATES
-    @costs = current_subscription_plan.subscription_costs.map do |plan|
+    @costs = SubscriptionPlan.current.subscription_costs.map do |plan|
       React.camelize_props(plan.as_json(methods: [:description, :per_month]))
     end
   end
@@ -179,9 +179,5 @@ class SubscriptionsController < ApplicationController
       "3" => current_subscription_cost.three_month,
       "6" => current_subscription_cost.six_month
     }
-  end
-
-  def current_subscription_plan
-    SubscriptionPlan.current
   end
 end

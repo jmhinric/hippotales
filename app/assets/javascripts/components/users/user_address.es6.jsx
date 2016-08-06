@@ -28,7 +28,6 @@ const UserAddress = React.createClass({
               id="user_address_line1"
               className="border-right"
               placeholder="* Billing Address Line 1"
-              required="required"
             />
           </div>
           <div className="Grid-cell u-size1of2">
@@ -47,7 +46,6 @@ const UserAddress = React.createClass({
               id="user_city"
               className="border-right"
               placeholder="* City"
-              required="required"
             />
           </div>
           <div className="Grid-cell u-size1of3">
@@ -55,7 +53,6 @@ const UserAddress = React.createClass({
               name="user_state"
               id="user_state"
               className="border-right"
-              required="required"
             >
               {stateOptions()}
             </select>
@@ -67,7 +64,6 @@ const UserAddress = React.createClass({
               id="user_zip"
               placeholder="* Zip Code"
               className="float-right"
-              required="required"
             />
           </div>
         </div>
