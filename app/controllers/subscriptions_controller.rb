@@ -27,9 +27,11 @@ class SubscriptionsController < ApplicationController
   attr_reader :user
 
   def new
-    @user = User.new.as_json
-    @child = Child.new.as_json
-    @subscription = Subscription.new.as_json
+    @user = User.new.as_json(except: [:id, :created_at, :updated_at, :password_digest, :is_admin])
+    @child = Child.new.as_json(except: [:id, :created_at, :updated_at])
+    @subscription = Subscription.new.as_json(
+      except: [:id, :created_at, :updated_at, :active, :status, :payment_method_id, :user_id]
+    )
     @states = US_STATES
     @costs = SubscriptionPlan.current.subscription_costs.map do |plan|
       React.camelize_props(plan.as_json(methods: [:description, :per_month]))
@@ -69,18 +71,18 @@ class SubscriptionsController < ApplicationController
   private
 
   def user_params
-    params.permit(
-      :user_first_name,
-      :user_last_name,
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
       :password,
       :password_confirmation,
       :email,
       :phone,
-      :user_address_line1,
-      :user_address_line2,
-      :user_city,
-      :user_state,
-      :user_zip
+      :address_line1,
+      :address_line2,
+      :city,
+      :state,
+      :zip
     )
   end
 
@@ -129,6 +131,7 @@ class SubscriptionsController < ApplicationController
 
   def subscription_params
     params.permit(
+      :subscription_subscription_cost_id,
       :subscription_type,
       :subscription_address_line1,
       :subscription_address_line2,
@@ -142,8 +145,7 @@ class SubscriptionsController < ApplicationController
 
   def create_subscription(child)
     Subscription.create!(
-      duration: subscription_params["subscription_type"],
-      cost_per_month: payment_amount,
+      subscription_cost_id: subscription_params["subscription_subscription_cost_id"],
       is_gift: subscription_params["is_gift"],
       gift_message: subscription_params["gift_message"],
       address_line1: address_line(subscription_params["subscription_address_line1"]),
@@ -152,8 +154,7 @@ class SubscriptionsController < ApplicationController
       state: subscription_params["subscription_state"],
       zip: subscription_params["subscription_zip"],
       user: user,
-      children: [child],
-      subscription_cost: SubscriptionCost.current
+      children: [child]
     )
   end
 
@@ -167,17 +168,5 @@ class SubscriptionsController < ApplicationController
 
   def payment_params
     params.permit(:nonce, :payment_type)
-  end
-
-  def payment_amount
-    cost_map[subscription_params["subscription_type"]]
-  end
-
-  def cost_map
-    {
-      "1" => current_subscription_cost.one_month,
-      "3" => current_subscription_cost.three_month,
-      "6" => current_subscription_cost.six_month
-    }
   end
 end
