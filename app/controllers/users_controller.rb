@@ -40,16 +40,25 @@ class UsersController < ApplicationController
   def show
     @react_user = user.as_json(methods: :display_name)
     @active_subscriptions = subscriptions.map do |subscription|
-      React.camelize_props(subscription.as_json(methods: :child_names))
+      serialized_subscription(subscription)
     end
-    @inactive_subscriptions = []
-    @gift_subscriptions = subscriptions.where(is_gift: true)
+
+    # TODO- scope to inactive subscriptions
+    @inactive_subscriptions = subscriptions.map do |subscription|
+      serialized_subscription(subscription)
+    end
   end
 
   private
 
   def subscriptions
     @subscriptions ||= @user.subscriptions
+  end
+
+  def serialized_subscription(subscription)
+    React.camelize_props(
+      subscription.as_json(methods: [:child_names, :cost_per_month, :duration])
+    )
   end
 
   def user
