@@ -6,13 +6,7 @@ const SubscriptionNew = React.createClass({
   },
 
   render() {
-    const {
-      subscription,
-      user,
-      child,
-      states,
-      costs
-    } = this.props;
+    const { subscription, user, child, states, costs } = this.props;
 
     return (
       <div>
@@ -21,13 +15,7 @@ const SubscriptionNew = React.createClass({
         <div className="subscription-container">
           <div className="form-section">
             <h3>CHOOSE SUBSCRIPTION:</h3>
-            <section>
-              <div className="Grid subscription-options">
-                {costs.map(cost => {
-                  return <SubscriptionTypeSelect key={cost.id} cost={cost} subscription={subscription} />;
-                 })}
-              </div>
-            </section>
+            <SubscriptionTypeSelect costs={costs} subscription={subscription} />
           </div>
 
           <div className="form-section">
