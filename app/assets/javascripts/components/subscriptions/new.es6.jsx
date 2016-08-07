@@ -44,17 +44,6 @@ const SubscriptionNew = React.createClass({
           <div className="form-section">
             <h3>ACCOUNT INFORMATION</h3>
             <UserNew user={user} stateOptions={this.stateOptions} states={states} />
-            <div className="checkbox billing-address-checkbox">
-              <input
-                type="checkbox"
-                name="same_billing_address"
-                id="same_billing_address"
-                value="false"
-              />
-              <label className="same-billing-address">
-                Same as shipping address
-              </label>
-            </div>
             <Address
               model={user}
               descriptor="Billing"
