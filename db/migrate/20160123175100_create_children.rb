@@ -10,7 +10,7 @@ class CreateChildren < ActiveRecord::Migration
     end
   end
 
-  create_table :children_subscriptions, id: :uuid do |t|
+  create_table :children_subscriptions, id: false do |t|
     t.uuid :child_id
     t.uuid :subscription_id
   end

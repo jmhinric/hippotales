@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20160807153950) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "children_subscriptions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "children_subscriptions", id: false, force: :cascade do |t|
     t.uuid "child_id"
     t.uuid "subscription_id"
   end
