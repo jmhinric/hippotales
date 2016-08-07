@@ -22,25 +22,31 @@
 class SubscriptionsController < ApplicationController
   include Constants
 
-  attr_reader :user
+  attr_reader :user, :child, :subscription
 
   def new
-    @user = User.new.as_json(except: [:id, :created_at, :updated_at, :password_digest, :is_admin])
-    @child = Child.new.as_json(except: [:id, :created_at, :updated_at])
-    @subscription = Subscription.new.as_json(
-      except: [:id, :created_at, :updated_at, :active, :status, :payment_method_id, :user_id]
-    )
+    @user = current_user || User.as_new
+    @child = Child.as_new
+    @subscription = Subscription.as_new
     @states = US_STATES
-    @costs = SubscriptionPlan.current.subscription_costs.map do |plan|
-      React.camelize_props(plan.as_json(methods: [:description, :per_month]))
+    @costs = SubscriptionPlan.current.subscription_costs.map do |cost|
+      React.camelize_props(cost.as_new)
     end
   end
 
+  # TODO separate current_user case into an update action
+
+  # TODO:
+  #   - check if child already exists in user.children
+  #     - allow user to select from pre-existing children in the UI
+  #   - check if payment method already exists in user.payment_methods
+  #     - allow user to select from pre-existing payment methods in the UI
   def create
     ActiveRecord::Base.transaction do
       begin
-        @user = create_user
-        subscription = create_subscription(create_child)
+        @user = current_user || User.create!(user_params)
+        @child = Child.create!(child_params)
+        @subscription = Subscription.new(subscription_params.merge(user: user, children: [child]))
 
         BraintreeCustomerService.new(
           subscription: subscription,
@@ -84,47 +90,8 @@ class SubscriptionsController < ApplicationController
     )
   end
 
-  def create_user
-    User.create!(
-      first_name: user_params[:first_name].downcase,
-      last_name: user_params[:last_name].downcase,
-      email: user_params[:email].downcase,
-      phone: phone,
-      password: user_params[:password],
-      password_confirmation: user_params[:password_confirmation],
-      address_line1: address_line(user_params[:address_line1]),
-      address_line2: address_line(user_params[:address_line2]),
-      city: user_params[:city].downcase,
-      state: user_params[:state],
-      zip: user_params[:zip]
-    )
-  end
-
-  def phone
-    return unless user_params[:phone]
-    user_params[:phone].first.gsub(/[^\d]/, '')
-  end
-
   def child_params
-    params.require(:child).permit(
-      :first_name,
-      :last_name,
-      :birthday,
-      :gender
-    )
-  end
-
-  def create_child
-    Child.create!(
-      first_name: child_params[:first_name].downcase,
-      last_name: child_params[:last_name].downcase,
-      birthday: child_params[:birthday],
-      gender: gender
-    )
-  end
-
-  def gender
-    child_params[:gender].downcase == "boy" ? 1 : 0
+    params.require(:child).permit(:first_name, :last_name, :birthday, :gender)
   end
 
   def subscription_params
@@ -139,25 +106,6 @@ class SubscriptionsController < ApplicationController
       :is_gift,
       :gift_message
     )
-  end
-
-  def create_subscription(child)
-    Subscription.create!(
-      subscription_cost_id: subscription_params[:subscription_cost_id],
-      is_gift: subscription_params[:is_gift],
-      gift_message: subscription_params[:gift_message],
-      address_line1: address_line(subscription_params[:address_line1]),
-      address_line2: address_line(subscription_params[:address_line2]),
-      city: subscription_params[:city].downcase,
-      state: subscription_params[:state],
-      zip: subscription_params[:zip],
-      user: user,
-      children: [child]
-    )
-  end
-
-  def address_line(line)
-    line.try(:split, ' ').try(:map, &:downcase).try(:join, ' ')
   end
 
   def payment_params

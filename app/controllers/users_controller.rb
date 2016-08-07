@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     end
 
     # TODO- scope to inactive subscriptions
-    @inactive_subscriptions = subscriptions.map do |subscription|
+    @inactive_subscriptions = [subscriptions.first].map do |subscription|
       serialized_subscription(subscription)
     end
   end

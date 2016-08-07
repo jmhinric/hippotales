@@ -14,6 +14,7 @@ const Subscriptions = React.createClass({
   render() {
     const { activeSubscriptions, inactiveSubscriptions } = this.props;
     const { tabOne } = this.state;
+    const subscriptions = tabOne ? activeSubscriptions : inactiveSubscriptions;
 
     return (
       <div>
@@ -39,8 +40,7 @@ const Subscriptions = React.createClass({
           </ul>
         </div>
         <div className="subscriptions">
-          {tabOne && <Subscription subscription={activeSubscriptions[0]} /> }
-          {!tabOne && <Subscription subscription={inactiveSubscriptions[0]} /> }
+          {subscriptions.map(s => <Subscription key={s.id} subscription={s} />)}
         </div>
       </div>
     );

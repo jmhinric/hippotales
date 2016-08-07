@@ -37,16 +37,13 @@
       <div class="menu-container">
         <ul class="menu">
           <li id="menu-join">
-            <a href="/join">Join</a>
+            <a href="/join"><%= current_user ? 'New Subscription' : 'Join'%></a>
           </li>
           <li id="menu-our-box">
             <a href="/our_box">Our Box</a>
           </li>
           <li id="menu-how-it-works">
             <a href="/#how-it-works">How It Works</a>
-          </li>
-          <li id="menu-gift">
-            <a href="/join">Gift</a>
           </li>
         </ul>
       </div>

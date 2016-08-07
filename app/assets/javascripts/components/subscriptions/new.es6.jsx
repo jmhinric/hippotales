@@ -74,7 +74,7 @@ const SubscriptionNew = React.createClass({
 
     return (
       <div>
-        <div id="page-title"><h1>Join</h1></div>
+        <div id="page-title"><h1>{user.id ? 'New Subscription' : 'Join'}</h1></div>
 
         <div className="subscription-container">
           <div className="form-section">
@@ -93,15 +93,17 @@ const SubscriptionNew = React.createClass({
             <GiftMessage subscription={subscription} />
           </div>
 
-          <div className="form-section">
-            <h3>ACCOUNT INFORMATION</h3>
-            <UserNew user={user} stateOptions={this.stateOptions} states={states} />
-            <Address
-              model={user}
-              descriptor="Billing"
-              states={states}
-            />
-          </div>
+          {!user.id &&
+            <div className="form-section">
+              <h3>ACCOUNT INFORMATION</h3>
+              <UserNew user={user} stateOptions={this.stateOptions} states={states} />
+              <Address
+                model={user}
+                descriptor="Billing"
+                states={states}
+              />
+            </div>
+          }
 
           <h3 className="section-label">PAYMENT</h3>
           <form id="checkout" method="post" action="/checkout">

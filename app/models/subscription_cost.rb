@@ -28,4 +28,8 @@ class SubscriptionCost < ActiveRecord::Base
   def per_month
     "$#{cost} / month"
   end
+
+  def as_new
+    as_json(methods: [:description, :per_month])
+  end
 end

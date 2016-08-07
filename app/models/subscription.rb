@@ -38,11 +38,32 @@ class Subscription < ActiveRecord::Base
 
   enum status: [:waiting, :queued, :shipped, :finalized]
 
+  before_save :capitalize_fields
+
   def child_names
     and_join(children.map(&:display_name))
   end
 
   def payment_token
     payment_method.token
+  end
+
+  # Creates a json form of the model with selected fields
+  def self.as_new
+    new.as_json(except: [
+      :id,
+      :created_at,
+      :updated_at,
+      :active,
+      :status,
+      :payment_method_id,
+      :user_id
+    ])
+  end
+
+  private
+
+  def capitalize_fields
+    capitalize_attrs([:address_line1, :address_line2, :city])
   end
 end

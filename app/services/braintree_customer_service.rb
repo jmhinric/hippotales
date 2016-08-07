@@ -41,7 +41,7 @@ class BraintreeCustomerService
     if result.success?
       return result.customer
     else
-      fail "Failure in Braintree::Customer.create: #{result.errors}"
+      fail "Failure in Braintree::Customer.create: #{result.errors.first.message}"
     end
   end
 
@@ -60,7 +60,7 @@ class BraintreeCustomerService
     if result.success?
       result.payment_method
     else
-      fail "Failure in Braintree::PaymentMethod.create: #{result.errors}"
+      fail "Failure in Braintree::PaymentMethod.create: #{result.errors.first.message}"
     end
   end
 
