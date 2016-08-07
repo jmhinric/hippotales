@@ -25,3 +25,5 @@
 
 //= require moment
 //= require moment-timezone
+//= require underscore
+//= require braintree-web

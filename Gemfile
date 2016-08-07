@@ -76,6 +76,8 @@ end
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment'
   gem 'rails-assets-moment-timezone'
+  gem 'rails-assets-underscore'
+  gem 'rails-assets-braintree-web'
 end
 
 ruby '2.2.3'
