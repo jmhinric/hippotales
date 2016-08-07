@@ -3,8 +3,6 @@
 # Table name: subscriptions
 #
 #  id                   :uuid             not null, primary key
-#  duration             :integer
-#  cost_per_month       :decimal(, )
 #  is_gift              :boolean          default(FALSE)
 #  gift_message         :text
 #  address_line1        :string
@@ -46,12 +44,12 @@ class SubscriptionsController < ApplicationController
 
         BraintreeCustomerService.new(
           subscription: subscription,
-          nonce: payment_params["nonce"]
+          nonce: payment_params[:nonce]
         ).execute
 
         BraintreePaymentService.new(
           subscription: subscription,
-          amount: payment_amount
+          amount: subscription.cost_per_month
         ).execute_first_payment
 
         session[:user_id] = @user.id
@@ -88,56 +86,56 @@ class SubscriptionsController < ApplicationController
 
   def create_user
     User.create!(
-      first_name: user_params["user_first_name"].downcase,
-      last_name: user_params["user_last_name"].downcase,
-      email: user_params["email"].downcase,
+      first_name: user_params[:first_name].downcase,
+      last_name: user_params[:last_name].downcase,
+      email: user_params[:email].downcase,
       phone: phone,
-      password: user_params["password"],
-      password_confirmation: user_params["password_confirmation"],
-      address_line1: address_line(user_params["user_address_line1"]),
-      address_line2: address_line(user_params["user_address_line2"]),
-      city: user_params["user_city"].downcase,
-      state: user_params["user_state"],
-      zip: user_params["user_zip"]
+      password: user_params[:password],
+      password_confirmation: user_params[:password_confirmation],
+      address_line1: address_line(user_params[:address_line1]),
+      address_line2: address_line(user_params[:address_line2]),
+      city: user_params[:city].downcase,
+      state: user_params[:state],
+      zip: user_params[:zip]
     )
   end
 
   def phone
-    return unless user_params["phone"]
-    user_params["phone"].first.gsub(/[^\d]/, '')
+    return unless user_params[:phone]
+    user_params[:phone].first.gsub(/[^\d]/, '')
   end
 
   def child_params
-    params.permit(
-      :child_first_name,
-      :child_last_name,
-      :child_birthday,
-      :child_gender
+    params.require(:child).permit(
+      :first_name,
+      :last_name,
+      :birthday,
+      :gender
     )
   end
 
   def create_child
     Child.create!(
-      first_name: child_params["child_first_name"].downcase,
-      last_name: child_params["child_last_name"].downcase,
-      birthday: child_params["child_birthday"],
+      first_name: child_params[:first_name].downcase,
+      last_name: child_params[:last_name].downcase,
+      birthday: child_params[:birthday],
       gender: gender
     )
   end
 
   def gender
-    child_params["child_gender"].downcase == "boy" ? 1 : 0
+    child_params[:gender].downcase == "boy" ? 1 : 0
   end
 
   def subscription_params
-    params.permit(
-      :subscription_subscription_cost_id,
-      :subscription_type,
-      :subscription_address_line1,
-      :subscription_address_line2,
-      :subscription_city,
-      :subscription_state,
-      :subscription_zip,
+    params.require(:subscription).permit(
+      :subscription_cost_id,
+      :type,
+      :address_line1,
+      :address_line2,
+      :city,
+      :state,
+      :zip,
       :is_gift,
       :gift_message
     )
@@ -145,25 +143,21 @@ class SubscriptionsController < ApplicationController
 
   def create_subscription(child)
     Subscription.create!(
-      subscription_cost_id: subscription_params["subscription_subscription_cost_id"],
-      is_gift: subscription_params["is_gift"],
-      gift_message: subscription_params["gift_message"],
-      address_line1: address_line(subscription_params["subscription_address_line1"]),
-      address_line2: address_line(subscription_params["subscription_address_line2"]),
-      city: subscription_params["subscription_city"].downcase,
-      state: subscription_params["subscription_state"],
-      zip: subscription_params["subscription_zip"],
+      subscription_cost_id: subscription_params[:subscription_cost_id],
+      is_gift: subscription_params[:is_gift],
+      gift_message: subscription_params[:gift_message],
+      address_line1: address_line(subscription_params[:address_line1]),
+      address_line2: address_line(subscription_params[:address_line2]),
+      city: subscription_params[:city].downcase,
+      state: subscription_params[:state],
+      zip: subscription_params[:zip],
       user: user,
       children: [child]
     )
   end
 
-  def random_params
-    params.permit(:same_billing_address)
-  end
-
   def address_line(line)
-    line.try(:split, " ").try(:map, &:downcase).try(:join, " ")
+    line.try(:split, ' ').try(:map, &:downcase).try(:join, ' ')
   end
 
   def payment_params
