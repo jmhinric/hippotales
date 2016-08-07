@@ -1,8 +1,4 @@
 const ChildNew = React.createClass({
-  handleBirthdayChange(e) {
-    this.props.child.birthday = e.target.value;
-  },
-
   handleGenderChange(e) {
     const val = e.target.value;
     this.props.child.gender = val && val.toLowerCase();
@@ -32,13 +28,12 @@ const ChildNew = React.createClass({
           </div>
           <div className="Grid-cell child-birthday u-size1of2">
             <div className="Grid-cell u-size4of4">
-              <input
+              <ModelInput
                 type="date"
-                name="child_birthday"
-                id="child_birthday"
-                className="border-right"
+                model={child}
+                attribute="birthday"
                 placeholder="mm/dd/yyyy"
-                onChange={this.handleBirthdayChange}
+                classNames="border-right"
               />
             </div>
           </div>
