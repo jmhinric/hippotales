@@ -23,9 +23,9 @@ RSpec.describe BraintreeCustomerService do
     end
 
     context 'credit card' do
-      let(:nonce) { "fake-valid-visa-nonce" }
+      let(:nonce) { 'fake-valid-visa-nonce' }
 
-      it_behaves_like "a customer creator"
+      it_behaves_like 'a customer creator'
 
       it 'creates a PaymentMethod' do
         expect { service.execute }.to change { PaymentMethod.count }.by 1
@@ -34,7 +34,7 @@ RSpec.describe BraintreeCustomerService do
         customer = Customer.first
         payment_method = PaymentMethod.first
 
-        expect(payment_method.payment_method).to eq("credit_card")
+        expect(payment_method.payment_method).to eq('credit_card')
 
         expect(subscription.payment_method).to eq(payment_method)
         expect(payment_method.subscriptions).to include(subscription)
@@ -56,9 +56,9 @@ RSpec.describe BraintreeCustomerService do
     end
 
     context 'paypal' do
-      let(:nonce) { "fake-paypal-future-nonce" }
+      let(:nonce) { 'fake-paypal-future-nonce' }
 
-      it_behaves_like "a customer creator"
+      it_behaves_like 'a customer creator'
 
       it 'creates a PaymentMethod' do
         expect { service.execute }.to change { PaymentMethod.count }.by 1
@@ -67,7 +67,7 @@ RSpec.describe BraintreeCustomerService do
         customer = Customer.first
         payment_method = PaymentMethod.first
 
-        expect(payment_method.payment_method).to eq("paypal")
+        expect(payment_method.payment_method).to eq('paypal')
 
         expect(subscription.payment_method).to eq(payment_method)
         expect(payment_method.subscriptions).to include(subscription)

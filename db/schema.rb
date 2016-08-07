@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160731205415) do
+ActiveRecord::Schema.define(version: 20160807153950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,8 +132,6 @@ ActiveRecord::Schema.define(version: 20160731205415) do
   end
 
   create_table "subscriptions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.integer  "duration"
-    t.decimal  "cost_per_month"
     t.boolean  "is_gift",              default: false
     t.text     "gift_message"
     t.string   "address_line1"

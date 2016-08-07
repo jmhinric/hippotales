@@ -3,8 +3,6 @@
 # Table name: subscriptions
 #
 #  id                   :uuid             not null, primary key
-#  duration             :integer
-#  cost_per_month       :decimal(, )
 #  is_gift              :boolean          default(FALSE)
 #  gift_message         :text
 #  address_line1        :string
@@ -24,17 +22,19 @@
 class Subscription < ActiveRecord::Base
   include TextUtils
 
-  validates :duration, :cost_per_month, :address_line1, :city, :state, :zip, presence: true
-  belongs_to :user
-  belongs_to :subscription_cost
+  belongs_to :user, required: true
+  belongs_to :subscription_cost, required: true
   belongs_to :payment_method
   has_and_belongs_to_many :children
+  validates :address_line1, :city, :state, :zip, presence: true
 
+  delegate :cost, :duration, to: :subscription_cost
   delegate :customer, to: :user
   delegate :braintree_customer_id, to: :payment_method
   delegate :token, to: :payment_method
 
   alias :payment_token :token
+  alias :cost_per_month :cost
 
   enum status: [:waiting, :queued, :shipped, :finalized]
 

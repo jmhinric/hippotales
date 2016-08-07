@@ -3,8 +3,6 @@
 # Table name: subscriptions
 #
 #  id                   :uuid             not null, primary key
-#  duration             :integer
-#  cost_per_month       :decimal(, )
 #  is_gift              :boolean          default(FALSE)
 #  gift_message         :text
 #  address_line1        :string
