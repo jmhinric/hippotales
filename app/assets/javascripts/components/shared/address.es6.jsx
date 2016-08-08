@@ -1,4 +1,10 @@
 const Address = React.createClass({
+  getInitialState() {
+    return {
+      selectedState: ''
+    };
+  },
+
   stateOptions() {
     return this.props.states.map((state, i) => {
       return <option key={i} value={state[1]}>{state[0]}</option>;
@@ -7,11 +13,13 @@ const Address = React.createClass({
 
   handleStateChange(e) {
     this.props.model.state = e.target.value;
+    this.setState({ selectedState: e.target.value });
   },
 
   render() {
     const { model, descriptor } = this.props;
     const placeholderDescriptor = descriptor ? `${descriptor} ` : ''
+    const style = this.state.selectedState === '' ? {color: 'rgb(173, 173, 173)'} : {};
 
     return (
       <section>
@@ -41,7 +49,7 @@ const Address = React.createClass({
             />
           </div>
           <div className="Grid-cell u-size1of3">
-            <select className="border-right" onChange={this.handleStateChange}>
+            <select style={style} className="border-right" onChange={this.handleStateChange}>
               {this.stateOptions()}
             </select>
           </div>

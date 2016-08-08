@@ -2,12 +2,14 @@ const ModelInput = React.createClass({
   propTypes: {
     downcase: React.PropTypes.bool,
     classNames: React.PropTypes.string,
-    type: React.PropTypes.string
+    type: React.PropTypes.string,
+    style: React.PropTypes.object
   },
 
   getDefaultProps() {
     return {
-      type: 'text'
+      type: 'text',
+      style: {}
     };
   },
 
@@ -17,10 +19,11 @@ const ModelInput = React.createClass({
   },
 
   render() {
-    const { classNames, placeholder, type } = this.props;
+    const { classNames, placeholder, type, style } = this.props;
 
     return (
       <input
+        style={style}
         type={type}
         placeholder={placeholder}
         className={classNames}

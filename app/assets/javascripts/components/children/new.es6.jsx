@@ -1,11 +1,27 @@
 const ChildNew = React.createClass({
+  getInitialState() {
+    return {
+      selectedGender: '',
+      selectedBirthday: ''
+    };
+  },
+
+  handleBirthdayChange(e) {
+    const val = e.target.value;
+    this.props.child.birthday = val;
+    this.setState({ selectedBirthday: val });
+  },
+
   handleGenderChange(e) {
     const val = e.target.value;
     this.props.child.gender = val && val.toLowerCase();
+    this.setState({ selectedGender: val });
   },
 
   render() {
     const { child } = this.props;
+    const genderStyle = this.state.selectedGender === '' ? {color: 'rgb(173, 173, 173)'} : {};
+    const birthdayStyle = this.state.selectedBirthday === '' ? {color: 'rgb(173, 173, 173)'} : {};
 
     return (
       <section>
@@ -28,17 +44,19 @@ const ChildNew = React.createClass({
           </div>
           <div className="Grid-cell child-birthday u-size1of2">
             <div className="Grid-cell u-size4of4">
-              <ModelInput
+              <input
+                style={birthdayStyle}
+                ref="birthdayInput"
                 type="date"
-                model={child}
-                attribute="birthday"
                 placeholder="mm/dd/yyyy"
-                classNames="border-right"
+                className="border-right"
+                onChange={this.handleBirthdayChange}
               />
             </div>
           </div>
           <div className="Grid-cell u-size1of2">
             <select
+              style={genderStyle}
               name="child_gender"
               id="child_gender"
               className="float-right"

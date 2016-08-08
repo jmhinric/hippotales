@@ -7,6 +7,12 @@ const SubscriptionNew = React.createClass({
   },
 
   componentWillMount() {
+    const { user, child, subscription } = this.props;
+
+    HT.subscription = subscription;
+    HT.child = child;
+    HT.user = user;
+
     $.get("/client_token")
       .done(result => {
         braintree.setup(result["client_token"], "dropin", {
@@ -68,9 +74,6 @@ const SubscriptionNew = React.createClass({
 
   render() {
     const { subscription, user, child, states, costs } = this.props;
-    HT.subscription = subscription;
-    HT.child = child;
-    HT.user = user;
 
     return (
       <div>
