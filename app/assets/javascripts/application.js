@@ -17,7 +17,6 @@
 //= require turbolinks
 //= require init
 //= require homepage
-//= require join
 
 //= require react
 //= require react_ujs
